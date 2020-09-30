@@ -111,7 +111,7 @@ Edit Evaluation
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Evaluation</span>
+                                <li><span class="bread-blod">Evaluation criteria 3</span>
                                 </li>
                             </ul>
                         </div>
@@ -132,7 +132,7 @@ Edit Evaluation
                         <h2>Evaluation</h2>
                     </div>
                     <div class="tab-content-details mg-b-30">
-                        <h3>{{$schedule->location->name}}/{{$schedule->teacher->fullname}}
+                        <h3>{{$schedule->session->name}}/{{$schedule->teacher->fullname}}
                         </h3>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ Edit Evaluation
                 {{ csrf_field() }}
                 <input type="text" name="schedule" hidden value="{{$schedule->id}}">
                 <input type="text" name="teacher" hidden value="{{$schedule->teacher->id}}">
-                <input type="text" name="location" hidden value="{{$schedule->id_location}}">
+                <input type="text" name="subject" hidden value="{{$schedule->id_subject}}">
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -234,7 +234,7 @@ Edit Evaluation
                     <tbody>
                         <tr>
                             <td colspan="6" style="background-color: #134f5c; color: #fff;">
-                                <b>PART 1 - LESSON PLANNING</b>
+                                <b>PART 1 - LESSON PLANNING / CRITERIA 3</b>
                             </td>
                         </tr>
                         <tr class="none-bot">
@@ -1433,9 +1433,11 @@ Edit Evaluation
 
                         <div class="row pull-right">
                             <input type="submit" class="btn btn-primary mb-2"
+                                onclick="return confirm('Are you sure you want to submit the evalution?')"
                                 formaction="{{route('evaluation_complete')}}" value="complete">
-                            <input type="submit" class="btn btn-primary" formaction="{{route('evaluation_save')}}"
-                                value="save to draft">
+                            <input type="submit" class="btn btn-primary"
+                                onclick="return confirm('Are you sure you want to save to draft?')"
+                                formaction="{{route('evaluation_save')}}" value="save to draft">
                         </div>
                     </div>
                 </div>

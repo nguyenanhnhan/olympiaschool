@@ -122,12 +122,12 @@ Evaluation Draft
                                                 {{-- @if ($evaluation->status == 0 && $evaluation->author ==Auth::user()->id) --}}
                                                 <tr>
                                                     <td>{{$evaluation->id}}</td>
-                                                    <td>{{$evaluation->schedule->location->name}}</td>
-                                                    <td>{{$evaluation->schedule->teacher->fullname}}</td>
+                                                    <td>{{$evaluation->subject->name}}</td>
+                                                    <td>{{$evaluation->teacher->fullname}}</td>
                                                     <td>{{$evaluation->schedule->class}}</td>
-                                                    <td>{{$evaluation->schedule->time}}</td>
+                                                    <td>{{$evaluation->schedule->time1}}</td>
                                                     <td>
-                                                        <a href="/admin/evaluation/edit/{{$evaluation->id}}"
+                                                        <a href="{{route('evaluation_edit', $evaluation->id)}}"
                                                             data-toggle="tooltip" title="Draft" class="pd-setting-ed"><i
                                                                 class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             Edit</a>

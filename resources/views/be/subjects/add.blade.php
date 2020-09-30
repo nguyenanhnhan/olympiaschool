@@ -1,6 +1,6 @@
 @extends('be/layouts/index')
 @section('title')
-Schedules
+add new subject
 @endsection
 @section('content')
 <div class="breadcome-area">
@@ -17,14 +17,14 @@ Schedules
                                 </form>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Add Professor</span>
+                                <li><span class="bread-blod">Add Subject</span>
                                 </li>
                             </ul>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ Schedules
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <ul id="myTabedu1" class="tab-review-design">
-                        <li class="active"><a href="#description">Observation Plan</a></li>
+                        <li class="active"><a href="#description">Add new Subject</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -48,47 +48,43 @@ Schedules
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
-                                            <div class="row">
-                                                <div class="row" style="padding-top:50px;">
-                                                    <div>
-                                                        <table class="table table-striped table-bordered table-hover"
-                                                            id="example-table" cellspacing="0" width="100%">
-                                                            <thead>
-                                                                <tr
-                                                                    style="color: #fff; text-align: center; background-color: #114275;">
-                                                                    <th>Subject</th>
-                                                                    <th>Teacher</th>
-                                                                    {{-- <th>Class</th> --}}
-                                                                    <th>Time (dd-mm/yyyy)</th>
-                                                                    <th>Session</th>
-                                                                    <th>Booking</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody style="text-align:center; line-height: 120px">
-                                                                @foreach ($schedules as $book)
-                                                                <tr>
-                                                                    <td>{{$book->subject->name}}/{{$book->subject->criteria}}</td>
-                                                                    <td>{{$book->teacher->fullname}}</td>
-                                                                    <td>{{$book->time1}}</td>
-                                                                    <td>{{$book->session->name}}</td>
-                                                                    <td>{{$book->user->name}}</td>
-                                                                    <td>
-                                                                        @if ($book->booking == null)
-                                                                            
-                                                                        <a href="{{route('schedule_destroy',$book->id)}}">Cancel</a> /
-                                                                        <a href="{{route('evaluation_show',$book->id)}}">Evaluate</a>
-                                                                        {{-- @else --}}
-                                                                            
-                                                                        @endif
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
+                                            <form action="{{route('subject_add')}}" method="POST"
+                                                enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <select name="criteria" class="form-control">
+                                                                <option value="none" selected="" hidden disabled="">
+                                                                    Select criteria</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <input name="name" type="text" class="form-control"
+                                                                placeholder="Full Name Subject*">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="code_name"
+                                                                placeholder="Code name *">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

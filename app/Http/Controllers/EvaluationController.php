@@ -20,7 +20,7 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        $evaluations = Evaluation::all();
+        $evaluations = Evaluation::where('author', Auth::user()->id)->where('status', 0)->get();
         return view('be/evaluation/draft', compact('evaluations'));
     }
     public function json()
@@ -78,232 +78,283 @@ class EvaluationController extends Controller
             $evaluation = new Evaluation();
             $evaluation->id_schedules = $rq->schedule;
             $evaluation->id_teacher = $rq->teacher;
-            $evaluation->id_location = $rq->location;
+            $evaluation->id_subject = $rq->subject;
             $evaluation->content = $rq->content;
             $evaluation->objective = $rq->objective;
             $evaluation->lesson_flow = $rq->lesson_flow;
             $evaluation->strengths = $rq->strengths;
             $evaluation->improvement = $rq->improvement;
+            $evaluation->criteria = $rq->criteria;
             $evaluation->test = $rq->time;
         //     dd(date('Y-m-d',strtotime($rq->time)));
 
-            $evaluation->part1 = [
-                // 'part_1_1'=>$rq->part_1_1,
-                // 'part_1_2'=>$rq->part_1_2,
-                
-                'p1_1' => [
-                    'basic'=>$rq->part_1_1_basic,
-                    'appro'=>$rq->part_1_1_appro,
-                    'compe'=>$rq->part_1_1_compe,
-                    'outst'=>$rq->part_1_1_outst,
-                ],
-                'p1_2' => [
-                    'basic_1'=>$rq->part_1_2_1_basic,
-                    'appro_1'=>$rq->part_1_2_1_appro,
-                    'compe_1'=>$rq->part_1_2_1_compe,
-                    'outst_1'=>$rq->part_1_2_1_outst,
-                    'basic_2'=>$rq->part_1_2_2_basic,
-                    'appro_2'=>$rq->part_1_2_2_appro,
-                    'compe_2'=>$rq->part_1_2_2_compe,
-                    'outst_2'=>$rq->part_1_2_2_outst,
-                ]
-            ];
-            $evaluation->part2a = [
-                'p2a1' => [
-                    'basic'=>$rq->part_2a1_basic,
-                    'appro'=>$rq->part_2a1_appro,
-                    'compe'=>$rq->part_2a1_compe,
-                    'outst'=>$rq->part_2a1_outst,
-                ],
-                'p2a2' => [
-                    'basic'=>$rq->part_2a2_basic,
-                    'appro'=>$rq->part_2a2_appro,
-                    'compe'=>$rq->part_2a2_compe,
-                    'outst'=>$rq->part_2a2_outst,
-                ],
-                'p2a3' => [
-                    'basic'=>$rq->part_2a3_basic,
-                    'appro'=>$rq->part_2a3_appro,
-                    'compe'=>$rq->part_2a3_compe,
-                    'outst'=>$rq->part_2a3_outst,
-                ]
-                
-            ];
-            $evaluation->part2b = [
-                'p2b1' => [
-                    'basic'=>$rq->part_2b1_basic,
-                    'appro'=>$rq->part_2b1_appro,
-                    'compe'=>$rq->part_2b1_compe,
-                    'outst'=>$rq->part_2b1_outst,
-                ],
-                'p2b2' => [
-                    'basic'=>$rq->part_2b2_basic,
-                    'appro'=>$rq->part_2b2_appro,
-                    'compe'=>$rq->part_2b2_compe,
-                    'outst'=>$rq->part_2b2_outst,
-                ]
-            ];
-            $evaluation->part2c = [
-                'p2c1' => [
-                    'basic'=>$rq->part_2c1_basic,
-                    'appro'=>$rq->part_2c1_appro,
-                    'compe'=>$rq->part_2c1_compe,
-                    'outst'=>$rq->part_2c1_outst,
-                ],
-                'p2c2' => [
-                    'basic_1'=>$rq->part_2c2_1_basic,
-                    'appro_1'=>$rq->part_2c2_1_appro,
-                    'compe_1'=>$rq->part_2c2_1_compe,
-                    'outst_1'=>$rq->part_2c2_1_outst,
-                    'basic_2'=>$rq->part_2c2_2_basic,
-                    'appro_2'=>$rq->part_2c2_2_appro,
-                    'compe_2'=>$rq->part_2c2_2_compe,
-                    'outst_2'=>$rq->part_2c2_2_outst,
-                ],
-                'p2c3' => [
-                    'basic'=>$rq->part_2c3_basic,
-                    'appro'=>$rq->part_2c3_appro,
-                    'compe'=>$rq->part_2c3_compe,
-                    'outst'=>$rq->part_2c3_outst,
-                ],
-            ];
-            $evaluation->part2d = [
-                'p2d1' => [
-                    'basic'=>$rq->part_2d1_basic,
-                    'appro'=>$rq->part_2d1_appro,
-                    'compe'=>$rq->part_2d1_compe,
-                    'outst'=>$rq->part_2d1_outst,
-                ],
-                'p2d2' => [
-                    'basic'=>$rq->part_2d2_basic,
-                    'appro'=>$rq->part_2d2_appro,
-                    'compe'=>$rq->part_2d2_compe,
-                    'outst'=>$rq->part_2d2_outst,
-                ]
-            ];
-            $evaluation->part3a = [
-                'p3a1' => [
-                    'basic'=>$rq->part_3a1_basic,
-                    'appro'=>$rq->part_3a1_appro,
-                    'compe'=>$rq->part_3a1_compe,
-                    'outst'=>$rq->part_3a1_outst,
-                ],
-                'p3a2' => [
-                    'basic'=>$rq->part_3a2_basic,
-                    'appro'=>$rq->part_3a2_appro,
-                    'compe'=>$rq->part_3a2_compe,
-                    'outst'=>$rq->part_3a2_outst,
-                ],
-                'p3a3' => [
-                    'basic'=>$rq->part_3a3_basic,
-                    'appro'=>$rq->part_3a3_appro,
-                    'compe'=>$rq->part_3a3_compe,
-                    'outst'=>$rq->part_3a3_outst,
-                ],
-                'p3a4' => [
-                    'basic_1'=>$rq->part_3a4_1_basic,
-                    'appro_1'=>$rq->part_3a4_1_appro,
-                    'compe_1'=>$rq->part_3a4_1_compe,
-                    'outst_1'=>$rq->part_3a4_1_outst,
-                    'basic_2'=>$rq->part_3a4_2_basic,
-                    'appro_2'=>$rq->part_3a4_2_appro,
-                    'compe_2'=>$rq->part_3a4_2_compe,
-                    'outst_2'=>$rq->part_3a4_2_outst,
-                ]
-            ];
-            $evaluation->part3b = [
-                'p3b1' => [
-                    'basic_1'=>$rq->part_3b1_1_basic,
-                    'appro_1'=>$rq->part_3b1_1_appro,
-                    'compe_1'=>$rq->part_3b1_1_compe,
-                    'outst_1'=>$rq->part_3b1_1_outst,
-                    'basic_2'=>$rq->part_3b1_2_basic,
-                    'appro_2'=>$rq->part_3b1_2_appro,
-                    'compe_2'=>$rq->part_3b1_2_compe,
-                    'outst_2'=>$rq->part_3b1_2_outst,
-                ],
-                'p3b2' => [
-                    'basic'=>$rq->part_3b2_basic,
-                    'appro'=>$rq->part_3b2_appro,
-                    'compe'=>$rq->part_3b2_compe,
-                    'outst'=>$rq->part_3b2_outst,
-                ]
-            ];
-            $evaluation->part3c = [
-                'p3c1' => [
-                    'basic_1'=>$rq->part_3c1_1_basic,
-                    'appro_1'=>$rq->part_3c1_1_appro,
-                    'compe_1'=>$rq->part_3c1_1_compe,
-                    'outst_1'=>$rq->part_3c1_1_outst,
-                    'basic_2'=>$rq->part_3c1_2_basic,
-                    'appro_2'=>$rq->part_3c1_2_appro,
-                    'compe_2'=>$rq->part_3c1_2_compe,
-                    'outst_2'=>$rq->part_3c1_2_outst,
-                ],
-                'p3c2' => [
-                    'basic'=>$rq->part_3c2_basic,
-                    'appro'=>$rq->part_3c2_appro,
-                    'compe'=>$rq->part_3c2_compe,
-                    'outst'=>$rq->part_3c2_outst,
-                ]
-            ];
-            $evaluation->part3d = [
-                'p3d1' => [
-                    'basic'=>$rq->part_3d1_basic,
-                    'appro'=>$rq->part_3d1_appro,
-                    'compe'=>$rq->part_3d1_compe,
-                    'outst'=>$rq->part_3d1_outst,
-                ],
-                'p3d2' => [
-                    'basic_1'=>$rq->part_3d2_1_basic,
-                    'appro_1'=>$rq->part_3d2_1_appro,
-                    'compe_1'=>$rq->part_3d2_1_compe,
-                    'outst_1'=>$rq->part_3d2_1_outst,
-                    'basic_2'=>$rq->part_3d2_2_basic,
-                    'appro_2'=>$rq->part_3d2_2_appro,
-                    'compe_2'=>$rq->part_3d2_2_compe,
-                    'outst_2'=>$rq->part_3d2_2_outst,
-                    'basic_3'=>$rq->part_3d2_3_basic,
-                    'appro_3'=>$rq->part_3d2_3_appro,
-                    'compe_3'=>$rq->part_3d2_3_compe,
-                    'outst_3'=>$rq->part_3d2_3_outst,
-                ]
-            ];
-            $evaluation->part4a = [
-                'p4a1' => [
-                    'basic'=>$rq->part_4a1_basic,
-                    'appro'=>$rq->part_4a1_appro,
-                    'compe'=>$rq->part_4a1_compe,
-                    'outst'=>$rq->part_4a1_outst,
-                ],
-                'p4a2' => [
-                    'basic_1'=>$rq->part_4a2_1_basic,
-                    'appro_1'=>$rq->part_4a2_1_appro,
-                    'compe_1'=>$rq->part_4a2_1_compe,
-                    'outst_1'=>$rq->part_4a2_1_outst,
-                    'basic_2'=>$rq->part_4a2_2_basic,
-                    'appro_2'=>$rq->part_4a2_2_appro,
-                    'compe_2'=>$rq->part_4a2_2_compe,
-                    'outst_2'=>$rq->part_4a2_2_outst,
-                ]
-
-            ];
-            $evaluation->part4b = [
-                'p4b' => [
-                    'basic'=>$rq->part_4b_basic,
-                    'appro'=>$rq->part_4b_appro,
-                    'compe'=>$rq->part_4b_compe,
-                    'outst'=>$rq->part_4b_outst,
-                ]
-            ];
-            $evaluation->part4c = [
-                'p4c' => [
-                    'basic'=>$rq->part_4c_basic,
-                    'appro'=>$rq->part_4c_appro,
-                    'compe'=>$rq->part_4c_compe,
-                    'outst'=>$rq->part_4c_outst,
-                ]
-            ];
+        $evaluation->part1 = [
+            // 'part_1_1'=>$rq->part_1_1,
+            // 'part_1_2'=>$rq->part_1_2,
+            
+            'p1a1' => [
+                'basic'=>$rq->p1a1_basic,
+                'appro'=>$rq->p1a1_appro,
+                'compe'=>$rq->p1a1_compe,
+                'outst'=>$rq->p1a1_outst,
+            ],
+            'p1a2' => [
+                'basic_1'=>$rq->p1a2_1_basic,
+                'appro_1'=>$rq->p1a2_1_appro,
+                'compe_1'=>$rq->p1a2_1_compe,
+                'outst_1'=>$rq->p1a2_1_outst,
+                'basic_2'=>$rq->p1a2_2_basic,
+                'appro_2'=>$rq->p1a2_2_appro,
+                'compe_2'=>$rq->p1a2_2_compe,
+                'outst_2'=>$rq->p1a2_2_outst,
+            ],
+            'p1a3' => [
+                'basic'=>$rq->p1a3_basic,
+                'appro'=>$rq->p1a3_appro,
+                'compe'=>$rq->p1a3_compe,
+                'outst'=>$rq->p1a3_outst,
+            ],
+            'p1b1' => [
+                'basic'=>$rq->p1b1_basic,
+                'appro'=>$rq->p1b1_appro,
+                'compe'=>$rq->p1b1_compe,
+                'outst'=>$rq->p1b1_outst,
+            ],
+            'p1b2' => [
+                'basic_1'=>$rq->p1b2_1_basic,
+                'appro_1'=>$rq->p1b2_1_appro,
+                'compe_1'=>$rq->p1b2_1_compe,
+                'outst_1'=>$rq->p1b2_1_outst,
+                'basic_2'=>$rq->p1b2_2_basic,
+                'appro_2'=>$rq->p1b2_2_appro,
+                'compe_2'=>$rq->p1b2_2_compe,
+                'outst_2'=>$rq->p1b2_2_outst,
+            ],
+            'p1b3' => [
+                'basic'=>$rq->p1b3_basic,
+                'appro'=>$rq->p1b3_appro,
+                'compe'=>$rq->p1b3_compe,
+                'outst'=>$rq->p1b3_outst,
+            ],
+        ];
+        $evaluation->part2 = [
+            'p2a1' => [
+                'basic'=>$rq->p2a1_basic,
+                'appro'=>$rq->p2a1_appro,
+                'compe'=>$rq->p2a1_compe,
+                'outst'=>$rq->p2a1_outst,
+            ],
+            'p2a2' => [
+                'basic'=>$rq->p2a2_basic,
+                'appro'=>$rq->p2a2_appro,
+                'compe'=>$rq->p2a2_compe,
+                'outst'=>$rq->p2a2_outst,
+            ],
+            'p2a3' => [
+                'basic'=>$rq->p2a3_basic,
+                'appro'=>$rq->p2a3_appro,
+                'compe'=>$rq->p2a3_compe,
+                'outst'=>$rq->p2a3_outst,
+            ],
+            'p2b1' => [
+                'basic'=>$rq->p2b1_basic,
+                'appro'=>$rq->p2b1_appro,
+                'compe'=>$rq->p2b1_compe,
+                'outst'=>$rq->p2b1_outst,
+            ],
+            'p2b2' => [
+                'basic'=>$rq->p2b2_basic,
+                'appro'=>$rq->p2b2_appro,
+                'compe'=>$rq->p2b2_compe,
+                'outst'=>$rq->p2b2_outst,
+            ],
+            'p2c1' => [
+                'basic'=>$rq->p2c1_basic,
+                'appro'=>$rq->p2c1_appro,
+                'compe'=>$rq->p2c1_compe,
+                'outst'=>$rq->p2c1_outst,
+            ],
+            'p2c2' => [
+                'basic_1'=>$rq->p2c2_1_basic,
+                'appro_1'=>$rq->p2c2_1_appro,
+                'compe_1'=>$rq->p2c2_1_compe,
+                'outst_1'=>$rq->p2c2_1_outst,
+                'basic_2'=>$rq->p2c2_2_basic,
+                'appro_2'=>$rq->p2c2_2_appro,
+                'compe_2'=>$rq->p2c2_2_compe,
+                'outst_2'=>$rq->p2c2_2_outst,
+            ],
+            'p2c3' => [
+                'basic'=>$rq->p2c3_basic,
+                'appro'=>$rq->p2c3_appro,
+                'compe'=>$rq->p2c3_compe,
+                'outst'=>$rq->p2c3_outst,
+            ]
+        ];
+        $evaluation->part3 = [
+            'p3a1' => [
+                'basic'=>$rq->p3a1_basic,
+                'appro'=>$rq->p3a1_appro,
+                'compe'=>$rq->p3a1_compe,
+                'outst'=>$rq->p3a1_outst,
+            ],
+            'p3a2' => [
+                'basic'=>$rq->p3a2_basic,
+                'appro'=>$rq->p3a2_appro,
+                'compe'=>$rq->p3a2_compe,
+                'outst'=>$rq->p3a2_outst,
+            ],
+            'p3a3' => [
+                'basic'=>$rq->p3a3_basic,
+                'appro'=>$rq->p3a3_appro,
+                'compe'=>$rq->p3a3_compe,
+                'outst'=>$rq->p3a3_outst,
+            ],
+            'p3b1' => [
+                'basic_1'=>$rq->p3b1_1_basic,
+                'appro_1'=>$rq->p3b1_1_appro,
+                'compe_1'=>$rq->p3b1_1_compe,
+                'outst_1'=>$rq->p3b1_1_outst,
+                'basic_2'=>$rq->p3b1_2_basic,
+                'appro_2'=>$rq->p3b1_2_appro,
+                'compe_2'=>$rq->p3b1_2_compe,
+                'outst_2'=>$rq->p3b1_2_outst,
+                'basic_3'=>$rq->p3b1_3_basic,
+                'appro_3'=>$rq->p3b1_3_appro,
+                'compe_3'=>$rq->p3b1_3_compe,
+                'outst_3'=>$rq->p3b1_3_outst,
+            ],
+            'p3b2' => [
+                'basic'=>$rq->p3b2_basic,
+                'appro'=>$rq->p3b2_appro,
+                'compe'=>$rq->p3b2_compe,
+                'outst'=>$rq->p3b2_outst,
+            ],
+            'p3b3' => [
+                'basic'=>$rq->p3b3_basic,
+                'appro'=>$rq->p3b3_appro,
+                'compe'=>$rq->p3b3_compe,
+                'outst'=>$rq->p3b3_outst,
+            ],
+            'p3c1' => [
+                'basic_1'=>$rq->p3c1_1_basic,
+                'appro_1'=>$rq->p3c1_1_appro,
+                'compe_1'=>$rq->p3c1_1_compe,
+                'outst_1'=>$rq->p3c1_1_outst,
+                'basic_2'=>$rq->p3c1_2_basic,
+                'appro_2'=>$rq->p3c1_2_appro,
+                'compe_2'=>$rq->p3c1_2_compe,
+                'outst_2'=>$rq->p3c1_2_outst,
+            ],
+            'p3c2' => [
+                'basic'=>$rq->p3c2_basic,
+                'appro'=>$rq->p3c2_appro,
+                'compe'=>$rq->p3c2_compe,
+                'outst'=>$rq->p3c2_outst,
+            ],
+            'p3d1' => [
+                'basic'=>$rq->p3d1_basic,
+                'appro'=>$rq->p3d1_appro,
+                'compe'=>$rq->p3d1_compe,
+                'outst'=>$rq->p3d1_outst,
+            ],
+            'p3d2' => [
+                'basic_1'=>$rq->p3d2_1_basic,
+                'appro_1'=>$rq->p3d2_1_appro,
+                'compe_1'=>$rq->p3d2_1_compe,
+                'outst_1'=>$rq->p3d2_1_outst,
+                'basic_2'=>$rq->p3d2_2_basic,
+                'appro_2'=>$rq->p3d2_2_appro,
+                'compe_2'=>$rq->p3d2_2_compe,
+                'outst_2'=>$rq->p3d2_2_outst,
+            ],
+            'p3e1' => [
+                'basic_1'=>$rq->p3e1_1_basic,
+                'appro_1'=>$rq->p3e1_1_appro,
+                'compe_1'=>$rq->p3e1_1_compe,
+                'outst_1'=>$rq->p3e1_1_outst,
+                'basic_2'=>$rq->p3e1_2_basic,
+                'appro_2'=>$rq->p3e1_2_appro,
+                'compe_2'=>$rq->p3e1_2_compe,
+                'outst_2'=>$rq->p3e1_2_outst,
+            ],
+        ];
+        $evaluation->part4 = [
+            'p4a' => [
+                'basic_1'=>$rq->p4a_1_basic,
+                'appro_1'=>$rq->p4a_1_appro,
+                'compe_1'=>$rq->p4a_1_compe,
+                'outst_1'=>$rq->p4a_1_outst,
+                'basic_2'=>$rq->p4a_2_basic,
+                'appro_2'=>$rq->p4a_2_appro,
+                'compe_2'=>$rq->p4a_2_compe,
+                'outst_2'=>$rq->p4a_2_outst,
+            ],
+            'p4b' => [
+                'basic_1'=>$rq->p4b_1_basic,
+                'appro_1'=>$rq->p4b_1_appro,
+                'compe_1'=>$rq->p4b_1_compe,
+                'outst_1'=>$rq->p4b_1_outst,
+                'basic_2'=>$rq->p4b_2_basic,
+                'appro_2'=>$rq->p4b_2_appro,
+                'compe_2'=>$rq->p4b_2_compe,
+                'outst_2'=>$rq->p4b_2_outst,
+            ],
+            'p4c' => [
+                'basic'=>$rq->p4c_basic,
+                'appro'=>$rq->p4c_appro,
+                'compe'=>$rq->p4c_compe,
+                'outst'=>$rq->p4c_outst,
+            ],
+            'p4d1' => [
+                'basic_1'=>$rq->p4d1_1_basic,
+                'appro_1'=>$rq->p4d1_1_appro,
+                'compe_1'=>$rq->p4d1_1_compe,
+                'outst_1'=>$rq->p4d1_1_outst,
+                'basic_2'=>$rq->p4d1_2_basic,
+                'appro_2'=>$rq->p4d1_2_appro,
+                'compe_2'=>$rq->p4d1_2_compe,
+                'outst_2'=>$rq->p4d1_2_outst,
+            ],
+            'p4d2' => [
+                'basic_1'=>$rq->p4d2_1_basic,
+                'appro_1'=>$rq->p4d2_1_appro,
+                'compe_1'=>$rq->p4d2_1_compe,
+                'outst_1'=>$rq->p4d2_1_outst,
+                'basic_2'=>$rq->p4d2_2_basic,
+                'appro_2'=>$rq->p4d2_2_appro,
+                'compe_2'=>$rq->p4d2_2_compe,
+                'outst_2'=>$rq->p4d2_2_outst,
+            ],
+        ];
+        $evaluation->part5 = [
+            'p5a' => [
+                'basic_1'=>$rq->p5a_1_basic,
+                'appro_1'=>$rq->p5a_1_appro,
+                'compe_1'=>$rq->p5a_1_compe,
+                'outst_1'=>$rq->p5a_1_outst,
+                'basic_2'=>$rq->p5a_2_basic,
+                'appro_2'=>$rq->p5a_2_appro,
+                'compe_2'=>$rq->p5a_2_compe,
+                'outst_2'=>$rq->p5a_2_outst,
+            ],
+            'p5b' => [
+                'basic_1'=>$rq->p5b_1_basic,
+                'appro_1'=>$rq->p5b_1_appro,
+                'compe_1'=>$rq->p5b_1_compe,
+                'outst_1'=>$rq->p5b_1_outst,
+                'basic_2'=>$rq->p5b_2_basic,
+                'appro_2'=>$rq->p5b_2_appro,
+                'compe_2'=>$rq->p5b_2_compe,
+                'outst_2'=>$rq->p5b_2_outst,
+            ],
+            'p5c' => [
+                'basic'=>$rq->p5c_basic,
+                'appro'=>$rq->p5c_appro,
+                'compe'=>$rq->p5c_compe,
+                'outst'=>$rq->p5c_outst,
+            ],
+        ];
             $evaluation->author = Auth::user()->id;
             // dd($evaluation);
             $schedule = Schedule::find($rq->schedule);
@@ -330,12 +381,13 @@ class EvaluationController extends Controller
             $evaluation = new Evaluation();
             $evaluation->id_schedules = $rq->schedule;
             $evaluation->id_teacher = $rq->teacher;
-            $evaluation->id_location = $rq->location;
+            $evaluation->id_subject = $rq->subject;
             $evaluation->content = $rq->content;
             $evaluation->objective = $rq->objective;
             $evaluation->lesson_flow = $rq->lesson_flow;
             $evaluation->strengths = $rq->strengths;
             $evaluation->improvement = $rq->improvement;
+            $evaluation->criteria = $rq->criteria;
             $evaluation->test = $rq->time;
         //     dd(date('Y-m-d',strtotime($rq->time)));
 
@@ -343,227 +395,278 @@ class EvaluationController extends Controller
             // 'part_1_1'=>$rq->part_1_1,
             // 'part_1_2'=>$rq->part_1_2,
             
-            'p1_1' => [
-                'basic'=>$rq->part_1_1_basic,
-                'appro'=>$rq->part_1_1_appro,
-                'compe'=>$rq->part_1_1_compe,
-                'outst'=>$rq->part_1_1_outst,
+            'p1a1' => [
+                'basic'=>$rq->p1a1_basic,
+                'appro'=>$rq->p1a1_appro,
+                'compe'=>$rq->p1a1_compe,
+                'outst'=>$rq->p1a1_outst,
             ],
-            'p1_2' => [
-                'basic_1'=>$rq->part_1_2_1_basic,
-                'appro_1'=>$rq->part_1_2_1_appro,
-                'compe_1'=>$rq->part_1_2_1_compe,
-                'outst_1'=>$rq->part_1_2_1_outst,
-                'basic_2'=>$rq->part_1_2_2_basic,
-                'appro_2'=>$rq->part_1_2_2_appro,
-                'compe_2'=>$rq->part_1_2_2_compe,
-                'outst_2'=>$rq->part_1_2_2_outst,
-            ]
+            'p1a2' => [
+                'basic_1'=>$rq->p1a2_1_basic,
+                'appro_1'=>$rq->p1a2_1_appro,
+                'compe_1'=>$rq->p1a2_1_compe,
+                'outst_1'=>$rq->p1a2_1_outst,
+                'basic_2'=>$rq->p1a2_2_basic,
+                'appro_2'=>$rq->p1a2_2_appro,
+                'compe_2'=>$rq->p1a2_2_compe,
+                'outst_2'=>$rq->p1a2_2_outst,
+            ],
+            'p1a3' => [
+                'basic'=>$rq->p1a3_basic,
+                'appro'=>$rq->p1a3_appro,
+                'compe'=>$rq->p1a3_compe,
+                'outst'=>$rq->p1a3_outst,
+            ],
+            'p1b1' => [
+                'basic'=>$rq->p1b1_basic,
+                'appro'=>$rq->p1b1_appro,
+                'compe'=>$rq->p1b1_compe,
+                'outst'=>$rq->p1b1_outst,
+            ],
+            'p1b2' => [
+                'basic_1'=>$rq->p1b2_1_basic,
+                'appro_1'=>$rq->p1b2_1_appro,
+                'compe_1'=>$rq->p1b2_1_compe,
+                'outst_1'=>$rq->p1b2_1_outst,
+                'basic_2'=>$rq->p1b2_2_basic,
+                'appro_2'=>$rq->p1b2_2_appro,
+                'compe_2'=>$rq->p1b2_2_compe,
+                'outst_2'=>$rq->p1b2_2_outst,
+            ],
+            'p1b3' => [
+                'basic'=>$rq->p1b3_basic,
+                'appro'=>$rq->p1b3_appro,
+                'compe'=>$rq->p1b3_compe,
+                'outst'=>$rq->p1b3_outst,
+            ],
         ];
-        $evaluation->part2a = [
+        $evaluation->part2 = [
             'p2a1' => [
-                'basic'=>$rq->part_2a1_basic,
-                'appro'=>$rq->part_2a1_appro,
-                'compe'=>$rq->part_2a1_compe,
-                'outst'=>$rq->part_2a1_outst,
+                'basic'=>$rq->p2a1_basic,
+                'appro'=>$rq->p2a1_appro,
+                'compe'=>$rq->p2a1_compe,
+                'outst'=>$rq->p2a1_outst,
             ],
             'p2a2' => [
-                'basic'=>$rq->part_2a2_basic,
-                'appro'=>$rq->part_2a2_appro,
-                'compe'=>$rq->part_2a2_compe,
-                'outst'=>$rq->part_2a2_outst,
+                'basic'=>$rq->p2a2_basic,
+                'appro'=>$rq->p2a2_appro,
+                'compe'=>$rq->p2a2_compe,
+                'outst'=>$rq->p2a2_outst,
             ],
             'p2a3' => [
-                'basic'=>$rq->part_2a3_basic,
-                'appro'=>$rq->part_2a3_appro,
-                'compe'=>$rq->part_2a3_compe,
-                'outst'=>$rq->part_2a3_outst,
-            ]
-            
-        ];
-        $evaluation->part2b = [
+                'basic'=>$rq->p2a3_basic,
+                'appro'=>$rq->p2a3_appro,
+                'compe'=>$rq->p2a3_compe,
+                'outst'=>$rq->p2a3_outst,
+            ],
             'p2b1' => [
-                'basic'=>$rq->part_2b1_basic,
-                'appro'=>$rq->part_2b1_appro,
-                'compe'=>$rq->part_2b1_compe,
-                'outst'=>$rq->part_2b1_outst,
+                'basic'=>$rq->p2b1_basic,
+                'appro'=>$rq->p2b1_appro,
+                'compe'=>$rq->p2b1_compe,
+                'outst'=>$rq->p2b1_outst,
             ],
             'p2b2' => [
-                'basic'=>$rq->part_2b2_basic,
-                'appro'=>$rq->part_2b2_appro,
-                'compe'=>$rq->part_2b2_compe,
-                'outst'=>$rq->part_2b2_outst,
-            ]
-        ];
-        $evaluation->part2c = [
+                'basic'=>$rq->p2b2_basic,
+                'appro'=>$rq->p2b2_appro,
+                'compe'=>$rq->p2b2_compe,
+                'outst'=>$rq->p2b2_outst,
+            ],
             'p2c1' => [
-                'basic'=>$rq->part_2c1_basic,
-                'appro'=>$rq->part_2c1_appro,
-                'compe'=>$rq->part_2c1_compe,
-                'outst'=>$rq->part_2c1_outst,
+                'basic'=>$rq->p2c1_basic,
+                'appro'=>$rq->p2c1_appro,
+                'compe'=>$rq->p2c1_compe,
+                'outst'=>$rq->p2c1_outst,
             ],
             'p2c2' => [
-                'basic_1'=>$rq->part_2c2_1_basic,
-                'appro_1'=>$rq->part_2c2_1_appro,
-                'compe_1'=>$rq->part_2c2_1_compe,
-                'outst_1'=>$rq->part_2c2_1_outst,
-                'basic_2'=>$rq->part_2c2_2_basic,
-                'appro_2'=>$rq->part_2c2_2_appro,
-                'compe_2'=>$rq->part_2c2_2_compe,
-                'outst_2'=>$rq->part_2c2_2_outst,
+                'basic_1'=>$rq->p2c2_1_basic,
+                'appro_1'=>$rq->p2c2_1_appro,
+                'compe_1'=>$rq->p2c2_1_compe,
+                'outst_1'=>$rq->p2c2_1_outst,
+                'basic_2'=>$rq->p2c2_2_basic,
+                'appro_2'=>$rq->p2c2_2_appro,
+                'compe_2'=>$rq->p2c2_2_compe,
+                'outst_2'=>$rq->p2c2_2_outst,
             ],
             'p2c3' => [
-                'basic'=>$rq->part_2c3_basic,
-                'appro'=>$rq->part_2c3_appro,
-                'compe'=>$rq->part_2c3_compe,
-                'outst'=>$rq->part_2c3_outst,
-            ],
-        ];
-        $evaluation->part2d = [
-            'p2d1' => [
-                'basic'=>$rq->part_2d1_basic,
-                'appro'=>$rq->part_2d1_appro,
-                'compe'=>$rq->part_2d1_compe,
-                'outst'=>$rq->part_2d1_outst,
-            ],
-            'p2d2' => [
-                'basic'=>$rq->part_2d2_basic,
-                'appro'=>$rq->part_2d2_appro,
-                'compe'=>$rq->part_2d2_compe,
-                'outst'=>$rq->part_2d2_outst,
+                'basic'=>$rq->p2c3_basic,
+                'appro'=>$rq->p2c3_appro,
+                'compe'=>$rq->p2c3_compe,
+                'outst'=>$rq->p2c3_outst,
             ]
         ];
-        $evaluation->part3a = [
+        $evaluation->part3 = [
             'p3a1' => [
-                'basic'=>$rq->part_3a1_basic,
-                'appro'=>$rq->part_3a1_appro,
-                'compe'=>$rq->part_3a1_compe,
-                'outst'=>$rq->part_3a1_outst,
+                'basic'=>$rq->p3a1_basic,
+                'appro'=>$rq->p3a1_appro,
+                'compe'=>$rq->p3a1_compe,
+                'outst'=>$rq->p3a1_outst,
             ],
             'p3a2' => [
-                'basic'=>$rq->part_3a2_basic,
-                'appro'=>$rq->part_3a2_appro,
-                'compe'=>$rq->part_3a2_compe,
-                'outst'=>$rq->part_3a2_outst,
+                'basic'=>$rq->p3a2_basic,
+                'appro'=>$rq->p3a2_appro,
+                'compe'=>$rq->p3a2_compe,
+                'outst'=>$rq->p3a2_outst,
             ],
             'p3a3' => [
-                'basic'=>$rq->part_3a3_basic,
-                'appro'=>$rq->part_3a3_appro,
-                'compe'=>$rq->part_3a3_compe,
-                'outst'=>$rq->part_3a3_outst,
+                'basic'=>$rq->p3a3_basic,
+                'appro'=>$rq->p3a3_appro,
+                'compe'=>$rq->p3a3_compe,
+                'outst'=>$rq->p3a3_outst,
             ],
-            'p3a4' => [
-                'basic_1'=>$rq->part_3a4_1_basic,
-                'appro_1'=>$rq->part_3a4_1_appro,
-                'compe_1'=>$rq->part_3a4_1_compe,
-                'outst_1'=>$rq->part_3a4_1_outst,
-                'basic_2'=>$rq->part_3a4_2_basic,
-                'appro_2'=>$rq->part_3a4_2_appro,
-                'compe_2'=>$rq->part_3a4_2_compe,
-                'outst_2'=>$rq->part_3a4_2_outst,
-            ]
-        ];
-        $evaluation->part3b = [
             'p3b1' => [
-                'basic_1'=>$rq->part_3b1_1_basic,
-                'appro_1'=>$rq->part_3b1_1_appro,
-                'compe_1'=>$rq->part_3b1_1_compe,
-                'outst_1'=>$rq->part_3b1_1_outst,
-                'basic_2'=>$rq->part_3b1_2_basic,
-                'appro_2'=>$rq->part_3b1_2_appro,
-                'compe_2'=>$rq->part_3b1_2_compe,
-                'outst_2'=>$rq->part_3b1_2_outst,
+                'basic_1'=>$rq->p3b1_1_basic,
+                'appro_1'=>$rq->p3b1_1_appro,
+                'compe_1'=>$rq->p3b1_1_compe,
+                'outst_1'=>$rq->p3b1_1_outst,
+                'basic_2'=>$rq->p3b1_2_basic,
+                'appro_2'=>$rq->p3b1_2_appro,
+                'compe_2'=>$rq->p3b1_2_compe,
+                'outst_2'=>$rq->p3b1_2_outst,
+                'basic_3'=>$rq->p3b1_3_basic,
+                'appro_3'=>$rq->p3b1_3_appro,
+                'compe_3'=>$rq->p3b1_3_compe,
+                'outst_3'=>$rq->p3b1_3_outst,
             ],
             'p3b2' => [
-                'basic'=>$rq->part_3b2_basic,
-                'appro'=>$rq->part_3b2_appro,
-                'compe'=>$rq->part_3b2_compe,
-                'outst'=>$rq->part_3b2_outst,
-            ]
-        ];
-        $evaluation->part3c = [
+                'basic'=>$rq->p3b2_basic,
+                'appro'=>$rq->p3b2_appro,
+                'compe'=>$rq->p3b2_compe,
+                'outst'=>$rq->p3b2_outst,
+            ],
+            'p3b3' => [
+                'basic'=>$rq->p3b3_basic,
+                'appro'=>$rq->p3b3_appro,
+                'compe'=>$rq->p3b3_compe,
+                'outst'=>$rq->p3b3_outst,
+            ],
             'p3c1' => [
-                'basic_1'=>$rq->part_3c1_1_basic,
-                'appro_1'=>$rq->part_3c1_1_appro,
-                'compe_1'=>$rq->part_3c1_1_compe,
-                'outst_1'=>$rq->part_3c1_1_outst,
-                'basic_2'=>$rq->part_3c1_2_basic,
-                'appro_2'=>$rq->part_3c1_2_appro,
-                'compe_2'=>$rq->part_3c1_2_compe,
-                'outst_2'=>$rq->part_3c1_2_outst,
+                'basic_1'=>$rq->p3c1_1_basic,
+                'appro_1'=>$rq->p3c1_1_appro,
+                'compe_1'=>$rq->p3c1_1_compe,
+                'outst_1'=>$rq->p3c1_1_outst,
+                'basic_2'=>$rq->p3c1_2_basic,
+                'appro_2'=>$rq->p3c1_2_appro,
+                'compe_2'=>$rq->p3c1_2_compe,
+                'outst_2'=>$rq->p3c1_2_outst,
             ],
             'p3c2' => [
-                'basic'=>$rq->part_3c2_basic,
-                'appro'=>$rq->part_3c2_appro,
-                'compe'=>$rq->part_3c2_compe,
-                'outst'=>$rq->part_3c2_outst,
-            ]
-        ];
-        $evaluation->part3d = [
+                'basic'=>$rq->p3c2_basic,
+                'appro'=>$rq->p3c2_appro,
+                'compe'=>$rq->p3c2_compe,
+                'outst'=>$rq->p3c2_outst,
+            ],
             'p3d1' => [
-                'basic'=>$rq->part_3d1_basic,
-                'appro'=>$rq->part_3d1_appro,
-                'compe'=>$rq->part_3d1_compe,
-                'outst'=>$rq->part_3d1_outst,
+                'basic'=>$rq->p3d1_basic,
+                'appro'=>$rq->p3d1_appro,
+                'compe'=>$rq->p3d1_compe,
+                'outst'=>$rq->p3d1_outst,
             ],
             'p3d2' => [
-                'basic_1'=>$rq->part_3d2_1_basic,
-                'appro_1'=>$rq->part_3d2_1_appro,
-                'compe_1'=>$rq->part_3d2_1_compe,
-                'outst_1'=>$rq->part_3d2_1_outst,
-                'basic_2'=>$rq->part_3d2_2_basic,
-                'appro_2'=>$rq->part_3d2_2_appro,
-                'compe_2'=>$rq->part_3d2_2_compe,
-                'outst_2'=>$rq->part_3d2_2_outst,
-                'basic_3'=>$rq->part_3d2_3_basic,
-                'appro_3'=>$rq->part_3d2_3_appro,
-                'compe_3'=>$rq->part_3d2_3_compe,
-                'outst_3'=>$rq->part_3d2_3_outst,
-            ]
-        ];
-        $evaluation->part4a = [
-            'p4a1' => [
-                'basic'=>$rq->part_4a1_basic,
-                'appro'=>$rq->part_4a1_appro,
-                'compe'=>$rq->part_4a1_compe,
-                'outst'=>$rq->part_4a1_outst,
+                'basic_1'=>$rq->p3d2_1_basic,
+                'appro_1'=>$rq->p3d2_1_appro,
+                'compe_1'=>$rq->p3d2_1_compe,
+                'outst_1'=>$rq->p3d2_1_outst,
+                'basic_2'=>$rq->p3d2_2_basic,
+                'appro_2'=>$rq->p3d2_2_appro,
+                'compe_2'=>$rq->p3d2_2_compe,
+                'outst_2'=>$rq->p3d2_2_outst,
             ],
-            'p4a2' => [
-                'basic_1'=>$rq->part_4a2_1_basic,
-                'appro_1'=>$rq->part_4a2_1_appro,
-                'compe_1'=>$rq->part_4a2_1_compe,
-                'outst_1'=>$rq->part_4a2_1_outst,
-                'basic_2'=>$rq->part_4a2_2_basic,
-                'appro_2'=>$rq->part_4a2_2_appro,
-                'compe_2'=>$rq->part_4a2_2_compe,
-                'outst_2'=>$rq->part_4a2_2_outst,
-            ]
-
+            'p3e1' => [
+                'basic_1'=>$rq->p3e1_1_basic,
+                'appro_1'=>$rq->p3e1_1_appro,
+                'compe_1'=>$rq->p3e1_1_compe,
+                'outst_1'=>$rq->p3e1_1_outst,
+                'basic_2'=>$rq->p3e1_2_basic,
+                'appro_2'=>$rq->p3e1_2_appro,
+                'compe_2'=>$rq->p3e1_2_compe,
+                'outst_2'=>$rq->p3e1_2_outst,
+            ],
         ];
-        $evaluation->part4b = [
+        $evaluation->part4 = [
+            'p4a' => [
+                'basic_1'=>$rq->p4a_1_basic,
+                'appro_1'=>$rq->p4a_1_appro,
+                'compe_1'=>$rq->p4a_1_compe,
+                'outst_1'=>$rq->p4a_1_outst,
+                'basic_2'=>$rq->p4a_2_basic,
+                'appro_2'=>$rq->p4a_2_appro,
+                'compe_2'=>$rq->p4a_2_compe,
+                'outst_2'=>$rq->p4a_2_outst,
+            ],
             'p4b' => [
-                'basic'=>$rq->part_4b_basic,
-                'appro'=>$rq->part_4b_appro,
-                'compe'=>$rq->part_4b_compe,
-                'outst'=>$rq->part_4b_outst,
-            ]
-        ];
-        $evaluation->part4c = [
+                'basic_1'=>$rq->p4b_1_basic,
+                'appro_1'=>$rq->p4b_1_appro,
+                'compe_1'=>$rq->p4b_1_compe,
+                'outst_1'=>$rq->p4b_1_outst,
+                'basic_2'=>$rq->p4b_2_basic,
+                'appro_2'=>$rq->p4b_2_appro,
+                'compe_2'=>$rq->p4b_2_compe,
+                'outst_2'=>$rq->p4b_2_outst,
+            ],
             'p4c' => [
-                'basic'=>$rq->part_4c_basic,
-                'appro'=>$rq->part_4c_appro,
-                'compe'=>$rq->part_4c_compe,
-                'outst'=>$rq->part_4c_outst,
-            ]
+                'basic'=>$rq->p4c_basic,
+                'appro'=>$rq->p4c_appro,
+                'compe'=>$rq->p4c_compe,
+                'outst'=>$rq->p4c_outst,
+            ],
+            'p4d1' => [
+                'basic_1'=>$rq->p4d1_1_basic,
+                'appro_1'=>$rq->p4d1_1_appro,
+                'compe_1'=>$rq->p4d1_1_compe,
+                'outst_1'=>$rq->p4d1_1_outst,
+                'basic_2'=>$rq->p4d1_2_basic,
+                'appro_2'=>$rq->p4d1_2_appro,
+                'compe_2'=>$rq->p4d1_2_compe,
+                'outst_2'=>$rq->p4d1_2_outst,
+            ],
+            'p4d2' => [
+                'basic_1'=>$rq->p4d2_1_basic,
+                'appro_1'=>$rq->p4d2_1_appro,
+                'compe_1'=>$rq->p4d2_1_compe,
+                'outst_1'=>$rq->p4d2_1_outst,
+                'basic_2'=>$rq->p4d2_2_basic,
+                'appro_2'=>$rq->p4d2_2_appro,
+                'compe_2'=>$rq->p4d2_2_compe,
+                'outst_2'=>$rq->p4d2_2_outst,
+            ],
+        ];
+        $evaluation->part5 = [
+            'p5a' => [
+                'basic_1'=>$rq->p5a_1_basic,
+                'appro_1'=>$rq->p5a_1_appro,
+                'compe_1'=>$rq->p5a_1_compe,
+                'outst_1'=>$rq->p5a_1_outst,
+                'basic_2'=>$rq->p5a_2_basic,
+                'appro_2'=>$rq->p5a_2_appro,
+                'compe_2'=>$rq->p5a_2_compe,
+                'outst_2'=>$rq->p5a_2_outst,
+            ],
+            'p5b' => [
+                'basic_1'=>$rq->p5b_1_basic,
+                'appro_1'=>$rq->p5b_1_appro,
+                'compe_1'=>$rq->p5b_1_compe,
+                'outst_1'=>$rq->p5b_1_outst,
+                'basic_2'=>$rq->p5b_2_basic,
+                'appro_2'=>$rq->p5b_2_appro,
+                'compe_2'=>$rq->p5b_2_compe,
+                'outst_2'=>$rq->p5b_2_outst,
+            ],
+            'p5c' => [
+                'basic'=>$rq->p5c_basic,
+                'appro'=>$rq->p5c_appro,
+                'compe'=>$rq->p5c_compe,
+                'outst'=>$rq->p5c_outst,
+            ],
         ];
             $evaluation->author = Auth::user()->id;
             $evaluation->editor = Auth::user()->id;
             $evaluation->status = "1";
             $schedule = Schedule::find($rq->schedule);
             $schedule->booking = Auth::user()->id;
-            $schedule->save();
+            // dd($schedule);
             // dd($evaluation);
-        Mail::to($evaluation->teacher->email)->send(new SendmailTeacher($evaluation));
+            $schedule->save();
+        // Mail::to($evaluation->teacher->email)->send(new SendmailTeacher($evaluation));
             $evaluation->save();
             $schedule = Schedule::find($rq->schedule);
             // dd($schedule);
@@ -581,7 +684,7 @@ class EvaluationController extends Controller
         $evaluation->status = "1";
         $evaluation->editor = Auth::user()->id;
         // dd($evaluation->teacher->email);
-        Mail::to($evaluation->teacher->email)->send(new SendmailTeacher($evaluation));
+        // Mail::to($evaluation->teacher->email)->send(new SendmailTeacher($evaluation));
         $evaluation->save();
         return redirect('admin/evaluation/completed')->with('msg','oklah');
     }
@@ -595,7 +698,9 @@ class EvaluationController extends Controller
     public function show($id)
     {
         $schedule = Schedule::find($id);
-        return view('be/schedules/evaluation', compact('schedule'));
+        $criteria = $schedule->subject->criteria;
+            return view('be/schedules/evaluation1', compact('schedule'));
+        
     }
     public function view($id)
 {
@@ -612,6 +717,23 @@ class EvaluationController extends Controller
     public function edit($id)
     {
         $evalu = Evaluation::find($id);
+        $criteria = $evalu->subject->criteria;
+        // dd($criteria);
+        // if ($criteria == 1) {
+        //     return view('be/schedules/evaluation1', compact('schedule'));
+        // }
+        // elseif($criteria == 2){
+        //     return view('be/schedules/evaluation2', compact('schedule'));
+        // }
+        // elseif($criteria == 3){
+        //     return view('be/schedules/evaluation3', compact('schedule'));
+        // }
+        // elseif($criteria == 4){
+        //     return view('be/schedules/evaluation4', compact('schedule'));
+        // }
+        // elseif($criteria == 5){
+        //     return view('be/schedules/evaluation5', compact('schedule'));
+        // }
         return view('be/evaluation/edit', compact('evalu'));
     }
 
@@ -636,218 +758,268 @@ class EvaluationController extends Controller
             // 'part_1_1'=>$rq->part_1_1,
             // 'part_1_2'=>$rq->part_1_2,
             
-            'p1_1' => [
-                'basic'=>$rq->part_1_1_basic,
-                'appro'=>$rq->part_1_1_appro,
-                'compe'=>$rq->part_1_1_compe,
-                'outst'=>$rq->part_1_1_outst,
+            'p1a1' => [
+                'basic'=>$rq->p1a1_basic,
+                'appro'=>$rq->p1a1_appro,
+                'compe'=>$rq->p1a1_compe,
+                'outst'=>$rq->p1a1_outst,
             ],
-            'p1_2' => [
-                'basic_1'=>$rq->part_1_2_1_basic,
-                'appro_1'=>$rq->part_1_2_1_appro,
-                'compe_1'=>$rq->part_1_2_1_compe,
-                'outst_1'=>$rq->part_1_2_1_outst,
-                'basic_2'=>$rq->part_1_2_2_basic,
-                'appro_2'=>$rq->part_1_2_2_appro,
-                'compe_2'=>$rq->part_1_2_2_compe,
-                'outst_2'=>$rq->part_1_2_2_outst,
-            ]
+            'p1a2' => [
+                'basic_1'=>$rq->p1a2_1_basic,
+                'appro_1'=>$rq->p1a2_1_appro,
+                'compe_1'=>$rq->p1a2_1_compe,
+                'outst_1'=>$rq->p1a2_1_outst,
+                'basic_2'=>$rq->p1a2_2_basic,
+                'appro_2'=>$rq->p1a2_2_appro,
+                'compe_2'=>$rq->p1a2_2_compe,
+                'outst_2'=>$rq->p1a2_2_outst,
+            ],
+            'p1a3' => [
+                'basic'=>$rq->p1a3_basic,
+                'appro'=>$rq->p1a3_appro,
+                'compe'=>$rq->p1a3_compe,
+                'outst'=>$rq->p1a3_outst,
+            ],
+            'p1b1' => [
+                'basic'=>$rq->p1b1_basic,
+                'appro'=>$rq->p1b1_appro,
+                'compe'=>$rq->p1b1_compe,
+                'outst'=>$rq->p1b1_outst,
+            ],
+            'p1b2' => [
+                'basic_1'=>$rq->p1b2_1_basic,
+                'appro_1'=>$rq->p1b2_1_appro,
+                'compe_1'=>$rq->p1b2_1_compe,
+                'outst_1'=>$rq->p1b2_1_outst,
+                'basic_2'=>$rq->p1b2_2_basic,
+                'appro_2'=>$rq->p1b2_2_appro,
+                'compe_2'=>$rq->p1b2_2_compe,
+                'outst_2'=>$rq->p1b2_2_outst,
+            ],
+            'p1b3' => [
+                'basic'=>$rq->p1b3_basic,
+                'appro'=>$rq->p1b3_appro,
+                'compe'=>$rq->p1b3_compe,
+                'outst'=>$rq->p1b3_outst,
+            ],
         ];
-        $evaluation->part2a = [
+        $evaluation->part2 = [
             'p2a1' => [
-                'basic'=>$rq->part_2a1_basic,
-                'appro'=>$rq->part_2a1_appro,
-                'compe'=>$rq->part_2a1_compe,
-                'outst'=>$rq->part_2a1_outst,
+                'basic'=>$rq->p2a1_basic,
+                'appro'=>$rq->p2a1_appro,
+                'compe'=>$rq->p2a1_compe,
+                'outst'=>$rq->p2a1_outst,
             ],
             'p2a2' => [
-                'basic'=>$rq->part_2a2_basic,
-                'appro'=>$rq->part_2a2_appro,
-                'compe'=>$rq->part_2a2_compe,
-                'outst'=>$rq->part_2a2_outst,
+                'basic'=>$rq->p2a2_basic,
+                'appro'=>$rq->p2a2_appro,
+                'compe'=>$rq->p2a2_compe,
+                'outst'=>$rq->p2a2_outst,
             ],
             'p2a3' => [
-                'basic'=>$rq->part_2a3_basic,
-                'appro'=>$rq->part_2a3_appro,
-                'compe'=>$rq->part_2a3_compe,
-                'outst'=>$rq->part_2a3_outst,
-            ]
-            
-        ];
-        $evaluation->part2b = [
+                'basic'=>$rq->p2a3_basic,
+                'appro'=>$rq->p2a3_appro,
+                'compe'=>$rq->p2a3_compe,
+                'outst'=>$rq->p2a3_outst,
+            ],
             'p2b1' => [
-                'basic'=>$rq->part_2b1_basic,
-                'appro'=>$rq->part_2b1_appro,
-                'compe'=>$rq->part_2b1_compe,
-                'outst'=>$rq->part_2b1_outst,
+                'basic'=>$rq->p2b1_basic,
+                'appro'=>$rq->p2b1_appro,
+                'compe'=>$rq->p2b1_compe,
+                'outst'=>$rq->p2b1_outst,
             ],
             'p2b2' => [
-                'basic'=>$rq->part_2b2_basic,
-                'appro'=>$rq->part_2b2_appro,
-                'compe'=>$rq->part_2b2_compe,
-                'outst'=>$rq->part_2b2_outst,
-            ]
-        ];
-        $evaluation->part2c = [
+                'basic'=>$rq->p2b2_basic,
+                'appro'=>$rq->p2b2_appro,
+                'compe'=>$rq->p2b2_compe,
+                'outst'=>$rq->p2b2_outst,
+            ],
             'p2c1' => [
-                'basic'=>$rq->part_2c1_basic,
-                'appro'=>$rq->part_2c1_appro,
-                'compe'=>$rq->part_2c1_compe,
-                'outst'=>$rq->part_2c1_outst,
+                'basic'=>$rq->p2c1_basic,
+                'appro'=>$rq->p2c1_appro,
+                'compe'=>$rq->p2c1_compe,
+                'outst'=>$rq->p2c1_outst,
             ],
             'p2c2' => [
-                'basic_1'=>$rq->part_2c2_1_basic,
-                'appro_1'=>$rq->part_2c2_1_appro,
-                'compe_1'=>$rq->part_2c2_1_compe,
-                'outst_1'=>$rq->part_2c2_1_outst,
-                'basic_2'=>$rq->part_2c2_2_basic,
-                'appro_2'=>$rq->part_2c2_2_appro,
-                'compe_2'=>$rq->part_2c2_2_compe,
-                'outst_2'=>$rq->part_2c2_2_outst,
+                'basic_1'=>$rq->p2c2_1_basic,
+                'appro_1'=>$rq->p2c2_1_appro,
+                'compe_1'=>$rq->p2c2_1_compe,
+                'outst_1'=>$rq->p2c2_1_outst,
+                'basic_2'=>$rq->p2c2_2_basic,
+                'appro_2'=>$rq->p2c2_2_appro,
+                'compe_2'=>$rq->p2c2_2_compe,
+                'outst_2'=>$rq->p2c2_2_outst,
             ],
             'p2c3' => [
-                'basic'=>$rq->part_2c3_basic,
-                'appro'=>$rq->part_2c3_appro,
-                'compe'=>$rq->part_2c3_compe,
-                'outst'=>$rq->part_2c3_outst,
-            ],
-        ];
-        $evaluation->part2d = [
-            'p2d1' => [
-                'basic'=>$rq->part_2d1_basic,
-                'appro'=>$rq->part_2d1_appro,
-                'compe'=>$rq->part_2d1_compe,
-                'outst'=>$rq->part_2d1_outst,
-            ],
-            'p2d2' => [
-                'basic'=>$rq->part_2d2_basic,
-                'appro'=>$rq->part_2d2_appro,
-                'compe'=>$rq->part_2d2_compe,
-                'outst'=>$rq->part_2d2_outst,
+                'basic'=>$rq->p2c3_basic,
+                'appro'=>$rq->p2c3_appro,
+                'compe'=>$rq->p2c3_compe,
+                'outst'=>$rq->p2c3_outst,
             ]
         ];
-        $evaluation->part3a = [
+        $evaluation->part3 = [
             'p3a1' => [
-                'basic'=>$rq->part_3a1_basic,
-                'appro'=>$rq->part_3a1_appro,
-                'compe'=>$rq->part_3a1_compe,
-                'outst'=>$rq->part_3a1_outst,
+                'basic'=>$rq->p3a1_basic,
+                'appro'=>$rq->p3a1_appro,
+                'compe'=>$rq->p3a1_compe,
+                'outst'=>$rq->p3a1_outst,
             ],
             'p3a2' => [
-                'basic'=>$rq->part_3a2_basic,
-                'appro'=>$rq->part_3a2_appro,
-                'compe'=>$rq->part_3a2_compe,
-                'outst'=>$rq->part_3a2_outst,
+                'basic'=>$rq->p3a2_basic,
+                'appro'=>$rq->p3a2_appro,
+                'compe'=>$rq->p3a2_compe,
+                'outst'=>$rq->p3a2_outst,
             ],
             'p3a3' => [
-                'basic'=>$rq->part_3a3_basic,
-                'appro'=>$rq->part_3a3_appro,
-                'compe'=>$rq->part_3a3_compe,
-                'outst'=>$rq->part_3a3_outst,
+                'basic'=>$rq->p3a3_basic,
+                'appro'=>$rq->p3a3_appro,
+                'compe'=>$rq->p3a3_compe,
+                'outst'=>$rq->p3a3_outst,
             ],
-            'p3a4' => [
-                'basic_1'=>$rq->part_3a4_1_basic,
-                'appro_1'=>$rq->part_3a4_1_appro,
-                'compe_1'=>$rq->part_3a4_1_compe,
-                'outst_1'=>$rq->part_3a4_1_outst,
-                'basic_2'=>$rq->part_3a4_2_basic,
-                'appro_2'=>$rq->part_3a4_2_appro,
-                'compe_2'=>$rq->part_3a4_2_compe,
-                'outst_2'=>$rq->part_3a4_2_outst,
-            ]
-        ];
-        $evaluation->part3b = [
             'p3b1' => [
-                'basic_1'=>$rq->part_3b1_1_basic,
-                'appro_1'=>$rq->part_3b1_1_appro,
-                'compe_1'=>$rq->part_3b1_1_compe,
-                'outst_1'=>$rq->part_3b1_1_outst,
-                'basic_2'=>$rq->part_3b1_2_basic,
-                'appro_2'=>$rq->part_3b1_2_appro,
-                'compe_2'=>$rq->part_3b1_2_compe,
-                'outst_2'=>$rq->part_3b1_2_outst,
+                'basic_1'=>$rq->p3b1_1_basic,
+                'appro_1'=>$rq->p3b1_1_appro,
+                'compe_1'=>$rq->p3b1_1_compe,
+                'outst_1'=>$rq->p3b1_1_outst,
+                'basic_2'=>$rq->p3b1_2_basic,
+                'appro_2'=>$rq->p3b1_2_appro,
+                'compe_2'=>$rq->p3b1_2_compe,
+                'outst_2'=>$rq->p3b1_2_outst,
+                'basic_3'=>$rq->p3b1_3_basic,
+                'appro_3'=>$rq->p3b1_3_appro,
+                'compe_3'=>$rq->p3b1_3_compe,
+                'outst_3'=>$rq->p3b1_3_outst,
             ],
             'p3b2' => [
-                'basic'=>$rq->part_3b2_basic,
-                'appro'=>$rq->part_3b2_appro,
-                'compe'=>$rq->part_3b2_compe,
-                'outst'=>$rq->part_3b2_outst,
-            ]
-        ];
-        $evaluation->part3c = [
+                'basic'=>$rq->p3b2_basic,
+                'appro'=>$rq->p3b2_appro,
+                'compe'=>$rq->p3b2_compe,
+                'outst'=>$rq->p3b2_outst,
+            ],
+            'p3b3' => [
+                'basic'=>$rq->p3b3_basic,
+                'appro'=>$rq->p3b3_appro,
+                'compe'=>$rq->p3b3_compe,
+                'outst'=>$rq->p3b3_outst,
+            ],
             'p3c1' => [
-                'basic_1'=>$rq->part_3c1_1_basic,
-                'appro_1'=>$rq->part_3c1_1_appro,
-                'compe_1'=>$rq->part_3c1_1_compe,
-                'outst_1'=>$rq->part_3c1_1_outst,
-                'basic_2'=>$rq->part_3c1_2_basic,
-                'appro_2'=>$rq->part_3c1_2_appro,
-                'compe_2'=>$rq->part_3c1_2_compe,
-                'outst_2'=>$rq->part_3c1_2_outst,
+                'basic_1'=>$rq->p3c1_1_basic,
+                'appro_1'=>$rq->p3c1_1_appro,
+                'compe_1'=>$rq->p3c1_1_compe,
+                'outst_1'=>$rq->p3c1_1_outst,
+                'basic_2'=>$rq->p3c1_2_basic,
+                'appro_2'=>$rq->p3c1_2_appro,
+                'compe_2'=>$rq->p3c1_2_compe,
+                'outst_2'=>$rq->p3c1_2_outst,
             ],
             'p3c2' => [
-                'basic'=>$rq->part_3c2_basic,
-                'appro'=>$rq->part_3c2_appro,
-                'compe'=>$rq->part_3c2_compe,
-                'outst'=>$rq->part_3c2_outst,
-            ]
-        ];
-        $evaluation->part3d = [
+                'basic'=>$rq->p3c2_basic,
+                'appro'=>$rq->p3c2_appro,
+                'compe'=>$rq->p3c2_compe,
+                'outst'=>$rq->p3c2_outst,
+            ],
             'p3d1' => [
-                'basic'=>$rq->part_3d1_basic,
-                'appro'=>$rq->part_3d1_appro,
-                'compe'=>$rq->part_3d1_compe,
-                'outst'=>$rq->part_3d1_outst,
+                'basic'=>$rq->p3d1_basic,
+                'appro'=>$rq->p3d1_appro,
+                'compe'=>$rq->p3d1_compe,
+                'outst'=>$rq->p3d1_outst,
             ],
             'p3d2' => [
-                'basic_1'=>$rq->part_3d2_1_basic,
-                'appro_1'=>$rq->part_3d2_1_appro,
-                'compe_1'=>$rq->part_3d2_1_compe,
-                'outst_1'=>$rq->part_3d2_1_outst,
-                'basic_2'=>$rq->part_3d2_2_basic,
-                'appro_2'=>$rq->part_3d2_2_appro,
-                'compe_2'=>$rq->part_3d2_2_compe,
-                'outst_2'=>$rq->part_3d2_2_outst,
-                'basic_3'=>$rq->part_3d2_3_basic,
-                'appro_3'=>$rq->part_3d2_3_appro,
-                'compe_3'=>$rq->part_3d2_3_compe,
-                'outst_3'=>$rq->part_3d2_3_outst,
-            ]
-        ];
-        $evaluation->part4a = [
-            'p4a1' => [
-                'basic'=>$rq->part_4a1_basic,
-                'appro'=>$rq->part_4a1_appro,
-                'compe'=>$rq->part_4a1_compe,
-                'outst'=>$rq->part_4a1_outst,
+                'basic_1'=>$rq->p3d2_1_basic,
+                'appro_1'=>$rq->p3d2_1_appro,
+                'compe_1'=>$rq->p3d2_1_compe,
+                'outst_1'=>$rq->p3d2_1_outst,
+                'basic_2'=>$rq->p3d2_2_basic,
+                'appro_2'=>$rq->p3d2_2_appro,
+                'compe_2'=>$rq->p3d2_2_compe,
+                'outst_2'=>$rq->p3d2_2_outst,
             ],
-            'p4a2' => [
-                'basic_1'=>$rq->part_4a2_1_basic,
-                'appro_1'=>$rq->part_4a2_1_appro,
-                'compe_1'=>$rq->part_4a2_1_compe,
-                'outst_1'=>$rq->part_4a2_1_outst,
-                'basic_2'=>$rq->part_4a2_2_basic,
-                'appro_2'=>$rq->part_4a2_2_appro,
-                'compe_2'=>$rq->part_4a2_2_compe,
-                'outst_2'=>$rq->part_4a2_2_outst,
-            ]
-
+            'p3e1' => [
+                'basic_1'=>$rq->p3e1_1_basic,
+                'appro_1'=>$rq->p3e1_1_appro,
+                'compe_1'=>$rq->p3e1_1_compe,
+                'outst_1'=>$rq->p3e1_1_outst,
+                'basic_2'=>$rq->p3e1_2_basic,
+                'appro_2'=>$rq->p3e1_2_appro,
+                'compe_2'=>$rq->p3e1_2_compe,
+                'outst_2'=>$rq->p3e1_2_outst,
+            ],
         ];
-        $evaluation->part4b = [
+        $evaluation->part4 = [
+            'p4a' => [
+                'basic_1'=>$rq->p4a_1_basic,
+                'appro_1'=>$rq->p4a_1_appro,
+                'compe_1'=>$rq->p4a_1_compe,
+                'outst_1'=>$rq->p4a_1_outst,
+                'basic_2'=>$rq->p4a_2_basic,
+                'appro_2'=>$rq->p4a_2_appro,
+                'compe_2'=>$rq->p4a_2_compe,
+                'outst_2'=>$rq->p4a_2_outst,
+            ],
             'p4b' => [
-                'basic'=>$rq->part_4b_basic,
-                'appro'=>$rq->part_4b_appro,
-                'compe'=>$rq->part_4b_compe,
-                'outst'=>$rq->part_4b_outst,
-            ]
-        ];
-        $evaluation->part4c = [
+                'basic_1'=>$rq->p4b_1_basic,
+                'appro_1'=>$rq->p4b_1_appro,
+                'compe_1'=>$rq->p4b_1_compe,
+                'outst_1'=>$rq->p4b_1_outst,
+                'basic_2'=>$rq->p4b_2_basic,
+                'appro_2'=>$rq->p4b_2_appro,
+                'compe_2'=>$rq->p4b_2_compe,
+                'outst_2'=>$rq->p4b_2_outst,
+            ],
             'p4c' => [
-                'basic'=>$rq->part_4c_basic,
-                'appro'=>$rq->part_4c_appro,
-                'compe'=>$rq->part_4c_compe,
-                'outst'=>$rq->part_4c_outst,
-            ]
+                'basic'=>$rq->p4c_basic,
+                'appro'=>$rq->p4c_appro,
+                'compe'=>$rq->p4c_compe,
+                'outst'=>$rq->p4c_outst,
+            ],
+            'p4d1' => [
+                'basic_1'=>$rq->p4d1_1_basic,
+                'appro_1'=>$rq->p4d1_1_appro,
+                'compe_1'=>$rq->p4d1_1_compe,
+                'outst_1'=>$rq->p4d1_1_outst,
+                'basic_2'=>$rq->p4d1_2_basic,
+                'appro_2'=>$rq->p4d1_2_appro,
+                'compe_2'=>$rq->p4d1_2_compe,
+                'outst_2'=>$rq->p4d1_2_outst,
+            ],
+            'p4d2' => [
+                'basic_1'=>$rq->p4d2_1_basic,
+                'appro_1'=>$rq->p4d2_1_appro,
+                'compe_1'=>$rq->p4d2_1_compe,
+                'outst_1'=>$rq->p4d2_1_outst,
+                'basic_2'=>$rq->p4d2_2_basic,
+                'appro_2'=>$rq->p4d2_2_appro,
+                'compe_2'=>$rq->p4d2_2_compe,
+                'outst_2'=>$rq->p4d2_2_outst,
+            ],
+        ];
+        $evaluation->part5 = [
+            'p5a' => [
+                'basic_1'=>$rq->p5a_1_basic,
+                'appro_1'=>$rq->p5a_1_appro,
+                'compe_1'=>$rq->p5a_1_compe,
+                'outst_1'=>$rq->p5a_1_outst,
+                'basic_2'=>$rq->p5a_2_basic,
+                'appro_2'=>$rq->p5a_2_appro,
+                'compe_2'=>$rq->p5a_2_compe,
+                'outst_2'=>$rq->p5a_2_outst,
+            ],
+            'p5b' => [
+                'basic_1'=>$rq->p5b_1_basic,
+                'appro_1'=>$rq->p5b_1_appro,
+                'compe_1'=>$rq->p5b_1_compe,
+                'outst_1'=>$rq->p5b_1_outst,
+                'basic_2'=>$rq->p5b_2_basic,
+                'appro_2'=>$rq->p5b_2_appro,
+                'compe_2'=>$rq->p5b_2_compe,
+                'outst_2'=>$rq->p5b_2_outst,
+            ],
+            'p5c' => [
+                'basic'=>$rq->p5c_basic,
+                'appro'=>$rq->p5c_appro,
+                'compe'=>$rq->p5c_compe,
+                'outst'=>$rq->p5c_outst,
+            ],
         ];
         $evaluation->editor = Auth::user()->id;
         $evaluation->status = "1";
@@ -855,9 +1027,10 @@ class EvaluationController extends Controller
         $schedule = Schedule::find($evaluation->schedule->id);
         $schedule->booking = Auth::user()->id;
         $schedule->save();
+        // edit
         // dd($evaluation);
         // dd($evaluation->schedule->teacher->email);
-        Mail::to($evaluation->schedule->teacher->email)->send(new SendmailTeacher($evaluation));
+        // Mail::to($evaluation->schedule->teacher->email)->send(new SendmailTeacher($evaluation));
         $evaluation->save();
         return redirect('admin/evaluation/completed')->with('msg','check mail ddi !!!');
     }

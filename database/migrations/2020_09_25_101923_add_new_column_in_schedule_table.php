@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNewColumnInEvaluationsTable extends Migration
+class AddNewColumnInScheduleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddNewColumnInEvaluationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table->json('part2a')->nullable();
+        Schema::table('schedules', function (Blueprint $table) {
+            
+            $table->integer('id_session')->unsigned()->nullable();
+            $table->foreign('id_session')->references('id')->on('sessions')->onDelete('cascade');
         });
     }
 
@@ -25,8 +27,8 @@ class AddNewColumnInEvaluationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table->dropColumn('part2a');
+        Schema::table('schedules', function (Blueprint $table) {
+            //
         });
     }
 }

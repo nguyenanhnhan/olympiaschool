@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Schedule;
+use App\Session;
 use App\Address;
 use App\Teacher;
+use App\Subject;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -28,9 +30,10 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $addresses = Address::all();
+        $sessions = Session::all();
+        $subjects = Subject::all();
         $teachers = Teacher::all();
-        return view('be/schedules/add', compact('addresses', 'teachers'));
+        return view('be/schedules/add', compact('sessions', 'teachers', 'subjects'));
     }
 
     /**
@@ -42,22 +45,25 @@ class ScheduleController extends Controller
     public function store(Request $rq)
     {
         $this->validate($rq,[
-            'class' => 'required|max:500',
+            'id_session' => 'required',
+            'id_teacher' => 'required',
+            'id_subject' => 'required',
         ],[
-            'class.required' =>'please insert class',
+            'id_session.required' =>'please select session',
+            'id_teacher.required' =>'please select teacher',
+            'id_subject.required' =>'please select subject',
         ]);
         // try {
             $schedule = new Schedule();
-            $schedule->id_location = $rq->id_location;
+            $schedule->id_session = $rq->id_session;
             $schedule->id_teacher = $rq->id_teacher;
-            $schedule->class = $rq->class;
-            // $schedule->time = $rq->time;
+            $schedule->id_subject = $rq->id_subject;
+            $schedule->time = $rq->time;
             $schedule->time1 = date('Y-m-d', strtotime($rq->time1));
-            $schedule->day = date('D', strtotime($rq->time1));
             $schedule->author = Auth::user()->id;
-            // dd(date('Y-m-d', strtotime($rq->time1)));
+            // dd($schedule);
             $schedule->save();
-            return redirect('admin/schedules/list')->with('msg','oklah');
+            return redirect()->route('waiting_list')->with('msg','add new schedule success!');
         // } catch (\Exception  $ex) {
         //     return back()->withErrors($ex->getMessage());
         // }
@@ -180,6 +186,7 @@ class ScheduleController extends Controller
     public function schedules()
     {
         $schedules = Schedule::where('author', Auth::user()->id)->get();
+        // dd($schedules[0]->subject->name);
         return view('be/schedules/schedules', compact('schedules'));
     }
     

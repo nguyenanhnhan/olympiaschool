@@ -42,6 +42,33 @@
                     <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
                 </form>
             </div>
+            <div class="card-body">
+                import user
+                <form action="{{ route('userimport') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button class="btn btn-success">Import User Data</button>
+                </form>
+            </div>
+            <div class="card-body">
+                import subject
+                <form action="{{ route('subjectimport') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button class="btn btn-success">Import subject Data</button>
+                </form>
+            </div>
+            <div class="card-body">
+                import teachers
+                <form action="{{ route('teacherimport') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button class="btn btn-success">Import subject Data</button>
+                </form>
+            </div>
         </div>
     </div>
 

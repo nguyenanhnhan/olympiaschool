@@ -11,7 +11,7 @@ class Teacher extends Authenticatable
 {
     
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'fullname', 'fullname_eng', 'last_name', 'first_name', 'email', 'department', 'position'
     ];
 
     public function coso()

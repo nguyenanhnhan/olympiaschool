@@ -108,7 +108,7 @@ Evaluation Completed
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Location</th>
+                                                    <th>Subject</th>
                                                     <th>Teacher</th>
                                                     <th>Class</th>
                                                     <th>Total</th>
@@ -120,21 +120,25 @@ Evaluation Completed
                                                 {{-- @if ($evaluation->status == 1) --}}
                                                 <tr>
                                                     <td>{{$evaluation->id}}</td>
-                                                    <td>{{$evaluation->location->name}}</td>
+                                                    <td>{{$evaluation->schedule->subject->name}}</td>
                                                     <td>{{$evaluation->teacher->fullname}}</td>
                                                     <td>{{$evaluation->schedule->class}}</td>
                                                     <td>
                                                         {{$total =  
-                                                        array_sum($evaluation->part1['p1_1']) + array_sum($evaluation->part1['p1_2'])+
-                                                        array_sum($evaluation->part2a['p2a1'])+array_sum($evaluation->part2a['p2a2'])+array_sum($evaluation->part2a['p2a3'])+
-                                                        array_sum($evaluation->part2b['p2b1'])+array_sum($evaluation->part2b['p2b2'])+
-                                                        array_sum($evaluation->part2c['p2c1'])+array_sum($evaluation->part2c['p2c2'])+array_sum($evaluation->part2c['p2c3'])+
-                                                        array_sum($evaluation->part2d['p2d1'])+array_sum($evaluation->part2d['p2d2'])+
-                                                        array_sum($evaluation->part3a['p3a1'])+array_sum($evaluation->part3a['p3a2'])+array_sum($evaluation->part3a['p3a3'])+array_sum($evaluation->part3a['p3a4'])+
-                                                        array_sum($evaluation->part3b['p3b1'])+array_sum($evaluation->part3b['p3b2'])+
-                                                        array_sum($evaluation->part3c['p3c1'])+array_sum($evaluation->part3c['p3c2'])+
-                                                        array_sum($evaluation->part3d['p3d1'])+array_sum($evaluation->part3d['p3d2'])+
-                                                        array_sum($evaluation->part4a['p4a1'])+array_sum($evaluation->part4a['p4a2'])
+                                                        array_sum($evaluation->part1['p1a1']) + array_sum($evaluation->part1['p1a2']) + array_sum($evaluation->part1['p1a3']) +
+                                                        array_sum($evaluation->part1['p1b1']) + array_sum($evaluation->part1['p1b2']) + array_sum($evaluation->part1['p1b3']) +
+                                                        array_sum($evaluation->part2['p2a1']) + array_sum($evaluation->part2['p2a2']) + array_sum($evaluation->part2['p2a3']) +
+                                                        array_sum($evaluation->part2['p2b1']) + array_sum($evaluation->part2['p2b2']) + 
+                                                        array_sum($evaluation->part2['p2c1']) + array_sum($evaluation->part2['p2c2']) + array_sum($evaluation->part2['p2c3']) +
+                                                        
+                                                        array_sum($evaluation->part3['p3a1']) + array_sum($evaluation->part3['p3a2']) + array_sum($evaluation->part3['p3a3']) +
+                                                        array_sum($evaluation->part3['p3b1']) + array_sum($evaluation->part3['p3b2']) + array_sum($evaluation->part3['p3b3']) +
+                                                        array_sum($evaluation->part3['p3c1']) + array_sum($evaluation->part3['p3c2']) + 
+                                                        array_sum($evaluation->part3['p3d1']) + array_sum($evaluation->part3['p3d2']) + 
+                                                        array_sum($evaluation->part3['p3e1']) +
+                                                        array_sum($evaluation->part4['p4a']) + array_sum($evaluation->part4['p4b']) + array_sum($evaluation->part4['p4c']) + 
+                                                        array_sum($evaluation->part4['p4d1']) + array_sum($evaluation->part4['p4d2']) + 
+                                                        array_sum($evaluation->part5['p5a']) + array_sum($evaluation->part5['p5b']) + array_sum($evaluation->part5['p5c'])
                                                                     }}
 
                                                         {{-- {{$total =  array_sum($evaluation->part2a['p2a1']) + array_sum($evaluation->part2a['p2a2'])+
@@ -153,7 +157,7 @@ Evaluation Completed
                                                                     }} --}}
                                                     </td>
                                                     <td>
-                                                        <a href="/admin/evaluation/view/{{$evaluation->id}}"
+                                                        <a href="{{route('evaluation_view',$evaluation->id)}}"
                                                             data-toggle="tooltip" title="Draft" class="pd-setting-ed"><i
                                                                 class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             info</a>

@@ -16,7 +16,13 @@ class TeachersImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new Teacher([
-            //
+            'fullname'  => $row['fullname'],
+            'fullname_eng'  => $row['fullname_eng'],
+            'last_name'  => $row['last_name'],
+            'first_name'  => $row['first_name'],
+            'email' => $row['email'],
+            'department' => $row['department'],
+            'position' => $row['position'],
         ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Address;
 use App\Teacher;
 use App\Session;
 use App\Schedule;
+use App\Subject;
 use Illuminate\Http\Request;
 
 class DefaultScheduleController extends Controller
@@ -32,9 +33,10 @@ class DefaultScheduleController extends Controller
     {
         $days = Day::all();
         $sessions = Session::all();
-        $addresses = Address::all();
+        $subjects = Subject::all();
         $teachers = Teacher::all();
-        return view('be/default_schedules/add', compact('days', 'sessions', 'teachers', 'addresses'));
+        // dd($teachers);
+        return view('be/default_schedules/add', compact('days', 'sessions', 'teachers', 'subjects'));
     }
 
     /**

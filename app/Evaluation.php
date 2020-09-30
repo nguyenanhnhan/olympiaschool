@@ -8,6 +8,10 @@ class Evaluation extends Model
 {
     protected $casts = [
         'part1' => 'array',
+        'part2' => 'array',
+        'part3' => 'array',
+        'part4' => 'array',
+        'part5' => 'array',
         'part2a' => 'array',
         'part2b' => 'array',
         'part2c' => 'array',
@@ -22,6 +26,10 @@ class Evaluation extends Model
     ];
     protected $fillable = [
         'part1',
+        'part2',
+        'part3',
+        'part4',
+        'part5',
         'part2a',
         'part2b',
         'part2c',
@@ -50,6 +58,10 @@ class Evaluation extends Model
     public function location()
     {
         return $this->belongsto('App\Address', 'id_location', 'id');
+    }
+    public function subject()
+    {
+        return $this->belongsto('App\Subject', 'id_subject', 'id');
     }
     public function user()
     {

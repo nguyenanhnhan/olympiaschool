@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnInSchedulesTable extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddColumnInSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::table('schedules', function (Blueprint $table) {
-            $table->integer('author')->unsigned()->nullable();
-            $table->foreign('author')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('subjects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->nullable();
+            $table->string('code_name')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ class AddColumnInSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::table('schedules', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('subjects');
     }
 }

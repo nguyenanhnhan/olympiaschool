@@ -81,6 +81,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::group(['prefix' => 'pages'], function () {
         
     });
+
+    
+    
+    Route::group(['prefix' => 'subject'], function () {
+        Route::get('list', 'SubjectController@index')->name('subject_show');
+        Route::get('add', 'SubjectController@create')->name('subject_create');
+        Route::post('add', 'SubjectController@store')->name('subject_add');
+        Route::get('edit/{id}', 'SubjectController@edit')->name('subject_edit');
+        Route::post('edit/{id}', 'SubjectController@update')->name('subject_update');
+        Route::get('delete/{id}', 'SubjectController@destroy')->name('subject_destroy');
+    });
+
     
     Route::group(['prefix' => 'teachers'], function () {
         Route::get('list', 'TeacherController@index');
@@ -117,15 +129,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
     Route::group(['prefix' => 'schedules'], function () {
         Route::get('list', 'ScheduleController@index');
-        Route::get('add', 'ScheduleController@create');
-        Route::post('add', 'ScheduleController@store')->name('schedule_add');
+        Route::get('add', 'ScheduleController@create')->name('schedule_create');
+        Route::post('add', 'ScheduleController@store')->name('schedule_store');
         Route::get('edit/{id}', 'ScheduleController@edit');
         Route::post('edit/{id}', 'ScheduleController@update')->name('schedule_edit');
         Route::get('delete/{id}', 'ScheduleController@destroy')->name('schedule_destroy');
         Route::get('booking', 'ScheduleController@booking');
         Route::post('booking_result', 'DefaultScheduleController@result_booking')->name('default_booking_result');
         Route::post('add_booking', 'ScheduleController@add_booking')->name('add_booking');
-        Route::get('schedules', 'ScheduleController@schedules')->name('list_booking');
+        Route::get('schedules', 'ScheduleController@schedules')->name('waiting_list');
         Route::post('schedule_booking', 'ScheduleController@schedule_booking')->name('schedule_booking');
         Route::post('cancel_booking', 'ScheduleController@cancel_booking')->name('cancel_booking');
         
@@ -149,12 +161,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
         Route::post('completed_evaluation', 'EvaluationController@completed_evaluation')->name('completed_evaluation');
         Route::get('completed', 'EvaluationController@completed')->name('list_completed');
         Route::get('show/{id}', 'EvaluationController@show')->name('evaluation_show');
-        Route::get('view/{id}', 'EvaluationController@view');
+        Route::get('view/{id}', 'EvaluationController@view')->name('evaluation_view');
         Route::post('save_evaluation', 'EvaluationController@store')->name('evaluation_save');
         Route::post('complete_evaluation', 'EvaluationController@complete')->name('evaluation_complete');
         Route::get('add', 'EvaluationController@create');
         Route::post('add', 'EvaluationController@store')->name('evaluation_add');
-        Route::get('edit/{id}', 'EvaluationController@edit');
+        Route::get('edit/{id}', 'EvaluationController@edit')->name('evaluation_edit');
         Route::post('edit/{id}', 'EvaluationController@update')->name('evaluation_update');
         Route::get('delete/{id}', 'EvaluationController@destroy')->name('evaluation_destroy');
         
@@ -171,4 +183,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
     Route::get('excel', 'ExcelController@importExportView');
     Route::post('schedulesimport', 'ExcelController@schedulesimport')->name('schedulesimport');
     Route::post('sessionimport', 'ExcelController@sessionimport')->name('sessionimport');
+    Route::post('userimport', 'ExcelController@userimport')->name('userimport');
+    Route::post('subjectimport', 'ExcelController@subjectimport')->name('subjectimport');
+    Route::post('teacherimport', 'ExcelController@teacherimport')->name('teacherimport');
 });

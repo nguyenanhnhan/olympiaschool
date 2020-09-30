@@ -21,7 +21,7 @@ add new teacher
                             <ul class="breadcome-menu">
                                 <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Add Professor</span>
+                                <li><span class="bread-blod">Add Schedule</span>
                                 </li>
                             </ul>
                         </div>
@@ -40,7 +40,7 @@ add new teacher
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <ul id="myTabedu1" class="tab-review-design">
-                        <li class="active"><a href="#description">Basic Information</a></li>
+                        <li class="active"><a href="#description">Add new Schedule</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -48,22 +48,34 @@ add new teacher
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
-                                            <form action="{{route('schedule_add')}}" method="POST"
+                                            <form action="{{route('schedule_store')}}" method="POST"
                                                 enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        
+                                                        <div class="form-group data-custon-pick" id="data_1">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i></span>
+                                                                <input type="text" class="form-control" name="time1"
+                                                                    value="{{date('m/d/Y')}}">
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group">
-                                                            <select name="id_location" class="form-control">
+                                                            <select name="id_session" class="form-control">
                                                                 <option value="none" selected="" hidden disabled="">
-                                                                    Select
-                                                                    Address</option>
-                                                                @foreach ($addresses as $address)
-                                                                <option value="{{$address->id}}">{{$address->name}}
+                                                                    Select Session
+                                                                </option>
+                                                                @foreach ($sessions as $session)
+                                                                <option value="{{$session->id}}">
+                                                                    {{$session->name}}
                                                                 </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
                                                             <select name="id_teacher" class="form-control">
                                                                 <option value="none" selected="" hidden disabled="">
@@ -76,21 +88,15 @@ add new teacher
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <input name="class" type="text" class="form-control"
-                                                                placeholder="Class *">
+                                                            <select name="id_subject" class="form-control">
+                                                                <option value="none" selected="" hidden disabled="">
+                                                                    Select Subject</option>
+                                                                @foreach ($subjects as $subject)
+                                                                <option value="{{$subject->id}}">{{$subject->name}}/{{$subject->criteria}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <div class="form-group data-custon-pick" id="data_1">
-                                                            <label>Time (mm/dd/yyyy)</label>
-                                                            <div class="input-group date">
-                                                                <span class="input-group-addon"><i
-                                                                        class="fa fa-calendar"></i></span>
-                                                                <input type="text" class="form-control" name="time1"
-                                                                    value="{{date('m/d/Y, D')}}">
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div class="form-group">
-                                                            <input name="time1" id="datepicker">
-                                                        </div> --}}
                                                     </div>
                                                 </div>
                                                 <div class="row">

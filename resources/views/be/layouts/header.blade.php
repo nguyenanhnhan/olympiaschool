@@ -18,8 +18,8 @@
                             <div class="header-top-menu tabl-d-n">
                                 <ul class="nav navbar-nav mai-top-nav">
                                     <li
-                                        class="nav-item {{ request()->route()->named('default_booking*') ? 'current' : '' }}">
-                                        <a href="{{route('default_booking')}}" class="nav-link">Schedule</a>
+                                        class="nav-item {{ request()->route()->named('schedule_create*') ? 'current' : '' }}">
+                                        <a href="{{route('schedule_create')}}" class="nav-link">Schedule</a>
                                     </li>
                                     {{-- <li
                                         class="nav-item {{ request()->is('admin/schedules/booking*') ? 'current' : '' }}">

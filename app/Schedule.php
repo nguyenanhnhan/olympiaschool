@@ -15,6 +15,14 @@ class Schedule extends Model
     {
         return $this->belongsTo('App\Teacher', 'id_teacher', 'id');
     }
+    public function session()
+    {
+        return $this->belongsTo('App\Session', 'id_session', 'id');
+    }
+    public function subject()
+    {
+        return $this->belongsTo('App\Subject', 'id_subject', 'id');
+    }
     public function user()
     {
         return $this->belongsTo('App\User', 'author', 'id');

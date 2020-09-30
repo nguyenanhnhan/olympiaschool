@@ -10,8 +10,8 @@
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li>
-                        <a title="Landing Page" href="/admin/dashboard" aria-expanded="false"><span
-                                class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                        <a title="Landing Page" href="/admin/dashboard" aria-expanded="false">
+                            <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
                             <span class="mini-click-non">Dashboard</span></a>
                     </li>
                     <li class="{{ request()->is('admin/teachers*') ? 'active' : '' }}">
@@ -36,17 +36,24 @@
                                         Admin</span></a></li>
                         </ul>
                     </li>
-                    {{-- <li class="{{ request()->is('admin/schedules*') ? 'active' : '' }}">
-                        <a class="has-arrow" href="all-students.html" aria-expanded="false"><span
-                                class="educate-icon educate-student icon-wrap"></span> <span
-                                class="mini-click-non">Schedules</span></a>
+                    <li class="{{ request()->route()->named('Subject*') ? 'active' : '' }}">
+                        <a class="has-arrow" href="all-students.html" aria-expanded="false">
+                            <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <span class="mini-click-non">Subject</span>
+                        </a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All Students" href="admin/schedules/list"><span class="mini-sub-pro">All
-                                        Schedules</span></a></li>
-                            <li><a title="Add Students" href="admin/schedules/add"><span class="mini-sub-pro">Add
-                                        Schedules</span></a></li>
+                            <li>
+                                <a title="All schedule" href="{{route('subject_show')}}">
+                                    <span class="mini-sub-pro">All Subject</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a title="Add schedule" href="{{route('subject_create')}}">
+                                    <span class="minFi-sub-pro">Add Subject</span>
+                                </a>
+                            </li>
                         </ul>
-                    </li> --}}
+                    </li>
                     <li class="{{ request()->route()->named('default*') ? 'active' : '' }}">
                         <a class="has-arrow" href="all-students.html" aria-expanded="false"><span
                                 class="educate-icon educate-student icon-wrap"></span> <span

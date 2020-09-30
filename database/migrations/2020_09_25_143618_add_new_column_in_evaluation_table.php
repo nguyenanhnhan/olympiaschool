@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNewColumnInEvaluationsTable extends Migration
+class AddNewColumnInEvaluationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class AddNewColumnInEvaluationsTable extends Migration
     {
         Schema::table('evaluations', function (Blueprint $table) {
             
-            $table->integer('id_location')->unsigned()->nullable();
-            $table->foreign('id_location')->references('id')->on('addresses')->onDelete('cascade');
+            $table->integer('id_subject')->unsigned()->nullable();
+            $table->foreign('id_subject')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 
