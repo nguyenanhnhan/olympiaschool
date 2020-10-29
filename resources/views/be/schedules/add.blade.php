@@ -1,6 +1,6 @@
 @extends('be/layouts/index')
 @section('title')
-add new teacher
+add new Schedule
 @endsection
 @section('content')
 <div class="breadcome-area">
@@ -11,10 +11,6 @@ add new teacher
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcome-heading">
-                                <form role="search" class="sr-input-func">
-                                    <input type="text" placeholder="Search..." class="search-int form-control">
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </form>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -53,7 +49,7 @@ add new teacher
                                                 {{ csrf_field() }}
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                        
+
                                                         <div class="form-group data-custon-pick" id="data_1">
                                                             <div class="input-group date">
                                                                 <span class="input-group-addon">
@@ -77,22 +73,27 @@ add new teacher
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
-                                                            <select name="id_teacher" class="form-control">
+                                                            <select name="id_teacher" class="chosen-select"
+                                                                tabindex="-1">
                                                                 <option value="none" selected="" hidden disabled="">
                                                                     Select
                                                                     Teacher</option>
                                                                 @foreach ($teachers as $teacher)
-                                                                <option value="{{$teacher->id}}">{{$teacher->fullname}}
+                                                                <option value="{{$teacher->id}}">
+                                                                    {{$teacher->first_name}} |
+                                                                    {{$teacher->fullname}}({{$teacher->email}})
                                                                 </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <select name="id_subject" class="form-control">
+                                                            <select name="id_subject"
+                                                                class="form-control chosen-select">
                                                                 <option value="none" selected="" hidden disabled="">
                                                                     Select Subject</option>
                                                                 @foreach ($subjects as $subject)
-                                                                <option value="{{$subject->id}}">{{$subject->name}}/{{$subject->criteria}}
+                                                                <option value="{{$subject->id}}">
+                                                                    {{$subject->name}}/{{$subject->criteria->name}}
                                                                 </option>
                                                                 @endforeach
                                                             </select>

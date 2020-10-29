@@ -18,12 +18,18 @@ class ExcelController extends Controller
     {
         return view('excel.excel');
     }
+    
+    public function export_cot()
+    {
+        return view('excel.export_cot');
+    }
 
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function export() 
+    public function export(Request $rq) 
     {
+        // dd($rq->all() ) ;
         return Excel::download(new COTExport, 'cot.xlsx');
     }
 

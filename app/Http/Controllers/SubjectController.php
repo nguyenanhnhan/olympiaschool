@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
+use App\Criteria;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -25,7 +26,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('be/subjects/add');
+        $criterias = Criteria::all();
+        return view('be/subjects/add', compact('criterias'));
     }
 
     /**
@@ -45,7 +47,7 @@ class SubjectController extends Controller
             $subject = new Subject();
             $subject->name = $rq->name;
             $subject->code_name = $rq->code_name;
-            $subject->criteria = $rq->criteria;
+            $subject->criteria_id = $rq->criteria_id;
             $subject->save();
             return redirect()->route('subject_show')->with('msg','oklah');
         // } catch (\Exception  $ex) {
@@ -73,7 +75,8 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $subject = Subject::find($id);
-        return view('be/subjects/edit',['subject'=>$subject]);
+        $criterias = Criteria::all();
+        return view('be/subjects/edit',compact('subject', 'criterias'));
     }
 
     /**
@@ -93,7 +96,7 @@ class SubjectController extends Controller
             $subject = Subject::find($id);
             $subject->name = $rq->name;
             $subject->code_name = $rq->code_name;
-            $subject->criteria = $rq->criteria;
+            $subject->criteria_id = $rq->criteria_id;
             $subject->save();
             return redirect()->route('subject_show')->with('msg','oklah');
     }

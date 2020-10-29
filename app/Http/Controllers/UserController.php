@@ -132,7 +132,7 @@ class UserController extends Controller
         ]);
         // dd($rq->pwd);
         if (Auth::attempt(['email' => $rq->email, 'password' => $rq->pwd])) {
-            return redirect()->route('select_school');
+            return redirect()->route('schedule_create');
         } else {
             return redirect('admin/login')->with('msg','The account or password you entered was invalid!');
         }

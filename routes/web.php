@@ -95,8 +95,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
 
     
     Route::group(['prefix' => 'teachers'], function () {
-        Route::get('list', 'TeacherController@index');
-        Route::get('add', 'TeacherController@create');
+        Route::get('list', 'TeacherController@index')->name('teacher_show');
+        Route::get('add', 'TeacherController@create')->name('teacher_create');
         Route::post('add', 'TeacherController@store')->name('teacher_add');
         Route::get('edit/{id}', 'TeacherController@edit');
         Route::get('lesson-plans/{id}', 'TeacherController@teacher_lps')->name('teacher_lps');
@@ -173,13 +173,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
         Route::get('ranking', 'EvaluationController@ranking')->name('ranking');
         Route::post('ranking_result', 'EvaluationController@ranking_result')->name('ranking_result');
         Route::get('chart_search', 'EvaluationController@chart_search')->name('chart_search');
-        Route::post('chart_location_result', 'EvaluationController@chart')->name('chart_location_result');
+        Route::post('chart_location_result', 'EvaluationController@chart_location_result')->name('chart_location_result');
 
         // Route::get('chart', 'EvaluationController@chart')->name('chart');
         Route::get('chart_location', 'EvaluationController@chart_location')->name('chart_location');
     });
 
     Route::get('export', 'ExcelController@export')->name('export');
+    Route::get('export_cot', 'ExcelController@export_cot')->name('export_cot');
     Route::get('excel', 'ExcelController@importExportView');
     Route::post('schedulesimport', 'ExcelController@schedulesimport')->name('schedulesimport');
     Route::post('sessionimport', 'ExcelController@sessionimport')->name('sessionimport');

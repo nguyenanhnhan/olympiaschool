@@ -18,8 +18,17 @@ class COTExport implements FromView
     // }
     public function view(): View
     {
+        $date_start = date("Y-m-d H:i:s",strtotime(request()->input('start')));
+        $date_end = date("Y-m-d 23:59:59",strtotime(request()->input('end')));
+        // $evaluations = Evaluation::where('status', 1)->whereBetween('created_at', [ $date_start, $date_end ] )
+        //     ->get();
+        // dd($evaluations);
         return view('excel.exportcot', [
-            'evaluations' => Evaluation::all()
+            // 'evaluations' => Evaluation::all();
+            'evaluations' => Evaluation::where('status', 1)
+            ->whereBetween('created_at', [ $date_start, $date_end ] )
+            ->get()
+            
         ]);
     }
 }

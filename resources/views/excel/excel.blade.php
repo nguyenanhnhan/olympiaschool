@@ -21,6 +21,29 @@
     {{ session('msg') }}
 </div>
 @endif
+<form action="{{route('export')}}" method="get"
+    enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-md-offset-2 col-sm-8 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group "
+                    id="data_5">
+                    <label>Range select (mm/dd/yyyy)</label>
+                    <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="form-control" name="start"
+                            value="{{date('m/d/Y')}}" />
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="form-control" name="end"
+                            value="{{date('m/d/Y')}}" />
+                    </div>
+                </div>
+            </div>
+            <button type="submit"
+                class="btn btn-primary waves-effect waves-light">Submit</button>
+        </div>
+    </div>
+</form>
             <div class="card-body">
                 import schedules
                 <form action="{{ route('schedulesimport') }}" method="POST" enctype="multipart/form-data">

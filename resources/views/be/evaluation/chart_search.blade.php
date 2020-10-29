@@ -30,27 +30,11 @@ add new teacher
                                                 enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 <div class="row">
-                                                    <div class="col-lg-8 col-md-8 col-md-offset-2 col-sm-8 col-xs-12">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="form-group">
-                                                                
-                                                                <label>Location</label>
-                                                                <select name="id_location" class="form-control">
-                                                                    <option value="none" selected="" hidden disabled="">
-                                                                        Select Location</option>
-                                                                    @foreach ($addresses as $address)
-                                                                    <option value="{{$address->id}}">
-                                                                        {{$address->name}}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="col-lg-6 col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
                                                             <div class="form-group "
                                                                 id="data_5">
                                                                 <label>Range select (mm/dd/yyyy)</label>
-                                                                <div class="input-daterange input-group" id="datepicker">
+                                                                <div class="input-daterange input-group" id="datepicker" style="width: 100%">
                                                                     <input type="text" class="form-control" name="start"
                                                                         value="{{date('m/d/Y')}}" />
                                                                     <span class="input-group-addon">to</span>
@@ -58,7 +42,6 @@ add new teacher
                                                                         value="{{date('m/d/Y')}}" />
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">

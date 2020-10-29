@@ -1,6 +1,6 @@
 @extends('be/layouts/index')
 @section('title')
-add new teacher
+Search
 @endsection
 @section('content')
 <!-- Single pro tab review Start-->
@@ -11,7 +11,7 @@ add new teacher
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-payment-inner-st">
                     <ul id="myTabedu1" class="tab-review-design">
-                        <li class="active"><a href="#description">Trungbinhf</a></li>
+                        <li class="active"><a href="#description">Trungbinh</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -195,26 +195,19 @@ add new teacher
                                                     </div>
                                                     @else
                                                     <div class="row">
-                                                        <table id="table" data-toggle="table" data-pagination="true"
-                                                            data-search="true" data-show-columns="true"
-                                                            data-show-pagination-switch="true" data-show-refresh="true"
-                                                            data-key-events="true" data-show-toggle="true"
-                                                            data-resizable="true" data-cookie="true"
-                                                            data-cookie-id-table="saveId" data-show-export="false"
-                                                            data-click-to-select="true" data-toolbar="#toolbar">
+                                                        <table id="example" class="table table-striped table-bordered"
+                                                            style="width:100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th data-field="state" data-checkbox="true"></th>
-                                                                    <th data-field="id">ID</th>
-                                                                    <th data-field="fullname" data-editable="true">
-                                                                        Location</th>
-                                                                    <th data-field="image" data-editable="false">Teacher
+                                                                    <th></th>
+                                                                    <th>ID</th>
+                                                                    <th>Teacher
                                                                     </th>
-                                                                    <th data-field="info" data-editable="false">Class
+                                                                    <th>Class
                                                                     </th>
-                                                                    <th data-field="email" data-editable="true">
+                                                                    <th>
                                                                         Date/Time</th>
-                                                                    <th data-field="action">Action</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -222,7 +215,6 @@ add new teacher
                                                                 <tr>
                                                                     <td></td>
                                                                     <td>{{$schedule->id}}</td>
-                                                                    <td>{{$schedule->location->name}}</td>
                                                                     <td>{{$schedule->teacher->fullname}}</td>
                                                                     <td>{{$schedule->class}}</td>
                                                                     <td>{{date('D', strtotime($schedule->time1))}}/{{$schedule->time1}}
@@ -243,6 +235,11 @@ add new teacher
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
+                                                        <script>
+                                                            $(document).ready(function() {
+                                                                    $('#example').DataTable();
+                                                                } );
+                                                        </script>
                                                     </div>
                                                     @endif
                                                 </div>

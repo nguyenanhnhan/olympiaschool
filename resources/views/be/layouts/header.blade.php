@@ -1,4 +1,4 @@
-<div class="header-top-area"  @if (Auth::user()->role == 2)
+<div class="header-top-area" @if (Auth::user()->role == 2)
     style="left: 0px;"
     @endif >
     <div class="container-fluid">
@@ -23,7 +23,7 @@
                                     </li>
                                     {{-- <li
                                         class="nav-item {{ request()->is('admin/schedules/booking*') ? 'current' : '' }}">
-                                        <a href="admin/schedules/booking" class="nav-link">Schedule</a>
+                                    <a href="admin/schedules/booking" class="nav-link">Schedule</a>
                                     </li> --}}
                                     <li
                                         class="nav-item {{ request()->is('admin/schedules/schedules*') ? 'current' : '' }}">
@@ -42,9 +42,13 @@
                                             class="nav-link dropdown-toggle">Project
                                             <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
                                         <div role="menu" class="dropdown-menu animated zoomIn">
+                                            <a href="{{route('export_cot')}}" class="dropdown-item">Export
+                                                evaluation</a>
                                             <a href="{{route('ranking')}}" class="dropdown-item">Ranking</a>
-                                            <a href="{{route('chart_search')}}" class="dropdown-item">Search Chart Teacher</a>
-                                            <a href="{{route('chart_location')}}" class="dropdown-item">Chart All Location</a>
+                                            <a href="{{route('chart_search')}}" class="dropdown-item">Search Chart
+                                                Teacher</a>
+                                            {{-- <a href="{{route('chart_location')}}" class="dropdown-item">Chart All
+                                            Location</a> --}}
                                             {{-- <a href="#" class="dropdown-item">Contact Support</a> --}}
                                         </div>
                                     </li>
@@ -54,7 +58,6 @@
                         <div class="col-lg-3 col-md-4 col-sm-3 col-xs-12">
                             <div class="header-right-info">
                                 <ul class="nav navbar-nav mai-top-nav header-right-menu">
-
                                     <li class="nav-item">
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
                                             class="nav-link dropdown-toggle">

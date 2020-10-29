@@ -84,7 +84,7 @@ class EvaluationController extends Controller
             $evaluation->lesson_flow = $rq->lesson_flow;
             $evaluation->strengths = $rq->strengths;
             $evaluation->improvement = $rq->improvement;
-            $evaluation->criteria = $rq->criteria;
+            $evaluation->criteria_id = $rq->criteria;
             $evaluation->test = $rq->time;
         //     dd(date('Y-m-d',strtotime($rq->time)));
 
@@ -121,20 +121,16 @@ class EvaluationController extends Controller
                 'outst'=>$rq->p1b1_outst,
             ],
             'p1b2' => [
-                'basic_1'=>$rq->p1b2_1_basic,
-                'appro_1'=>$rq->p1b2_1_appro,
-                'compe_1'=>$rq->p1b2_1_compe,
-                'outst_1'=>$rq->p1b2_1_outst,
-                'basic_2'=>$rq->p1b2_2_basic,
-                'appro_2'=>$rq->p1b2_2_appro,
-                'compe_2'=>$rq->p1b2_2_compe,
-                'outst_2'=>$rq->p1b2_2_outst,
+                'basic'=>$rq->p1b2_basic,
+                'appro'=>$rq->p1b2_appro,
+                'compe'=>$rq->p1b2_compe,
+                'outst'=>$rq->p1b2_outst,
             ],
-            'p1b3' => [
-                'basic'=>$rq->p1b3_basic,
-                'appro'=>$rq->p1b3_appro,
-                'compe'=>$rq->p1b3_compe,
-                'outst'=>$rq->p1b3_outst,
+            'p1c' => [
+                'basic'=>$rq->p1c_basic,
+                'appro'=>$rq->p1c_appro,
+                'compe'=>$rq->p1c_compe,
+                'outst'=>$rq->p1c_outst,
             ],
         ];
         $evaluation->part2 = [
@@ -387,7 +383,7 @@ class EvaluationController extends Controller
             $evaluation->lesson_flow = $rq->lesson_flow;
             $evaluation->strengths = $rq->strengths;
             $evaluation->improvement = $rq->improvement;
-            $evaluation->criteria = $rq->criteria;
+            $evaluation->criteria_id = $rq->criteria;
             $evaluation->test = $rq->time;
         //     dd(date('Y-m-d',strtotime($rq->time)));
 
@@ -424,20 +420,16 @@ class EvaluationController extends Controller
                 'outst'=>$rq->p1b1_outst,
             ],
             'p1b2' => [
-                'basic_1'=>$rq->p1b2_1_basic,
-                'appro_1'=>$rq->p1b2_1_appro,
-                'compe_1'=>$rq->p1b2_1_compe,
-                'outst_1'=>$rq->p1b2_1_outst,
-                'basic_2'=>$rq->p1b2_2_basic,
-                'appro_2'=>$rq->p1b2_2_appro,
-                'compe_2'=>$rq->p1b2_2_compe,
-                'outst_2'=>$rq->p1b2_2_outst,
+                'basic'=>$rq->p1b2_basic,
+                'appro'=>$rq->p1b2_appro,
+                'compe'=>$rq->p1b2_compe,
+                'outst'=>$rq->p1b2_outst,
             ],
-            'p1b3' => [
-                'basic'=>$rq->p1b3_basic,
-                'appro'=>$rq->p1b3_appro,
-                'compe'=>$rq->p1b3_compe,
-                'outst'=>$rq->p1b3_outst,
+            'p1c' => [
+                'basic'=>$rq->p1c_basic,
+                'appro'=>$rq->p1c_appro,
+                'compe'=>$rq->p1c_compe,
+                'outst'=>$rq->p1c_outst,
             ],
         ];
         $evaluation->part2 = [
@@ -787,20 +779,16 @@ class EvaluationController extends Controller
                 'outst'=>$rq->p1b1_outst,
             ],
             'p1b2' => [
-                'basic_1'=>$rq->p1b2_1_basic,
-                'appro_1'=>$rq->p1b2_1_appro,
-                'compe_1'=>$rq->p1b2_1_compe,
-                'outst_1'=>$rq->p1b2_1_outst,
-                'basic_2'=>$rq->p1b2_2_basic,
-                'appro_2'=>$rq->p1b2_2_appro,
-                'compe_2'=>$rq->p1b2_2_compe,
-                'outst_2'=>$rq->p1b2_2_outst,
+                'basic'=>$rq->p1b2_basic,
+                'appro'=>$rq->p1b2_appro,
+                'compe'=>$rq->p1b2_compe,
+                'outst'=>$rq->p1b2_outst,
             ],
-            'p1b3' => [
-                'basic'=>$rq->p1b3_basic,
-                'appro'=>$rq->p1b3_appro,
-                'compe'=>$rq->p1b3_compe,
-                'outst'=>$rq->p1b3_outst,
+            'p1c' => [
+                'basic'=>$rq->p1c_basic,
+                'appro'=>$rq->p1c_appro,
+                'compe'=>$rq->p1c_compe,
+                'outst'=>$rq->p1c_outst,
             ],
         ];
         $evaluation->part2 = [
@@ -1062,170 +1050,230 @@ class EvaluationController extends Controller
     }
     public function ranking_result(Request $rq)
     {
-        $addresses = Address::all();
-        $teachers = Teacher::all();
         $teacher = $rq->id_teacher;
-        $ranking = Evaluation::where('id_teacher','like', "%{$teacher}%")->get();
+        $teachers = Teacher::all();
+        $ranking = Evaluation::where('id_teacher', $teacher)->get();
+        $p1a1 = $p1b1  = $p1c1 = 0;
         $p2a1 = $p2a2 = $p2a3 = 0;
         $p2b1 = $p2b2 = $p2c = 0;
+        $p2c1 = $p2c2 = $p2c3 = 0;
         $p2d1 = $p2d2 = 0;
         $p3a1 = $p3a2 = $p3a3 = $p3a4 = 0;
-        $p3b1 = $p3b2 = $p3c1 = $p3c2 = 0;
-        $p3d1 = $p3d2 = 0;
-        $p4a1 = $p4a2 = 0;
+        $p3b1 = $p3b2= $p3b3 = $p3c1 = $p3c2 = 0;
+        $p3d1 = $p3d2 = $p3e1 = 0;
+        $p4a1 = $p4b1 = $p4c1 = $p4d1 = $p4d2 = 0;
+        $p5a1 = $p5b1 = $p5c1 = $p5d1 = $p5d2 = 0;
         $p4b = $p4c =0;
         // dd(count($ranking));
         if (count($ranking)>0) {
         
             foreach($ranking as $evaluation)
             {
-                $p2a1+= array_sum($evaluation->part2a['p2a1']);
-                $p2a2+= array_sum($evaluation->part2a['p2a2']);
-                $p2a3+= array_sum($evaluation->part2a['p2a3']);
+                $p1a1+= array_sum($evaluation->part1['p1a1']) + array_sum($evaluation->part1['p1a2']) + array_sum($evaluation->part1['p1a3']);
+                // $p1b1+= array_sum($evaluation->part1['p1b1']);
+                $total_p1a = $p1a1;
+                $p1b1+= array_sum($evaluation->part1['p1b1']) + array_sum($evaluation->part1['p1b2']);
+                // $p1b1+= array_sum($evaluation->part1['p1b1']);
+                $total_p1b = $p1b1;
+                $p1c1+= array_sum($evaluation->part1['p1c']);
+                $total_p1c = $p1c1;
+                $p2a1+= array_sum($evaluation->part2['p2a1']);
+                $p2a2+= array_sum($evaluation->part2['p2a2']);
+                $p2a3+= array_sum($evaluation->part2['p2a3']);
                 $total_p2a = $p2a1+$p2a2+$p2a3;
-                $p2b1+= array_sum($evaluation->part2b['p2b1']);
-                $p2b2+= array_sum($evaluation->part2b['p2b2']);
+                $p2b1+= array_sum($evaluation->part2['p2b1']);
+                $p2b2+= array_sum($evaluation->part2['p2b2']);
                 $total_p2b = $p2b1+$p2b2;
-                $p2d1+= array_sum($evaluation->part2d['p2d1']);
-                $p2d2+= array_sum($evaluation->part2d['p2d2']);
-                $total_p2d = $p2d1+$p2d2;
-                $p3a1+= array_sum($evaluation->part3a['p3a1']);
-                $p3a2+= array_sum($evaluation->part3a['p3a2']);
-                $p3a3+= array_sum($evaluation->part3a['p3a3']);
-                $p3a4+= array_sum($evaluation->part3a['p3a4']);
-                $total_p3a = $p3a1+$p3a2+$p3a3+$p3a4;
-                $p3b1+= array_sum($evaluation->part3b['p3b1']);
-                $p3b2+= array_sum($evaluation->part3b['p3b2']);
-                $total_p3b = $p3b1+$p3b2;
-                $p3c1+= array_sum($evaluation->part3c['p3c1']);
-                $p3c2+= array_sum($evaluation->part3c['p3c2']);
+                $p2c1+= array_sum($evaluation->part2['p2c1']);
+                $p2c2+= array_sum($evaluation->part2['p2c2']);
+                $p2c3+= array_sum($evaluation->part2['p2c3']);
+                $total_p2c = $p2c1+$p2c2+$p2c3;
+                $p3a1+= array_sum($evaluation->part3['p3a1']);
+                $p3a2+= array_sum($evaluation->part3['p3a2']);
+                $p3a3+= array_sum($evaluation->part3['p3a3']);
+                $total_p3a = $p3a1+$p3a2+$p3a3;
+                $p3b1+= array_sum($evaluation->part3['p3b1']);
+                $p3b2+= array_sum($evaluation->part3['p3b2']);
+                $p3b3+= array_sum($evaluation->part3['p3b3']);
+                $total_p3b = $p3b1+$p3b2+$p3b3;
+                $p3c1+= array_sum($evaluation->part3['p3c1']);
+                $p3c2+= array_sum($evaluation->part3['p3c2']);
                 $total_p3c = $p3c1+$p3c2;
-                $p3d1+= array_sum($evaluation->part3d['p3d1']);
-                $p3d2+= array_sum($evaluation->part3d['p3d2']);
+                $p3d1+= array_sum($evaluation->part3['p3d1']);
+                $p3d2+= array_sum($evaluation->part3['p3d2']);
                 $total_p3d = $p3d1+$p3d2;
-                $p4a1+= array_sum($evaluation->part4a['p4a1']);
-                $p4a2+= array_sum($evaluation->part4a['p4a2']);
-                $total_p4a = $p4a1+$p4a2;
-                $p2c+= array_sum($evaluation->part2c['p2c']);
-                $total_p2c = $p2c;
-                $p4b+= array_sum($evaluation->part4b['p4b']);
-                $total_p4b = $p4b;
-                $p4c+= array_sum($evaluation->part4c['p4c']);
-                $total_p4c = $p4c;
+                $p3e1+= array_sum($evaluation->part3['p3e1']);
+                $total_p3e = $p3e1;
+                $p4a1+= array_sum($evaluation->part4['p4a']);
+                $total_p4a = $p4a1;
+                $p4b1+= array_sum($evaluation->part4['p4b']);
+                $total_p4b = $p4b1;
+                $p4c1+= array_sum($evaluation->part4['p4c']);
+                $total_p4c = $p4c1;
+                $p4d1+= array_sum($evaluation->part4['p4d1']);
+                $p4d2+= array_sum($evaluation->part4['p4d2']);
+                $total_p4d = $p4d1+$p4d2;
+                $p5a1+= array_sum($evaluation->part5['p5a']);
+                $total_p5a = $p5a1;
+                $p5b1+= array_sum($evaluation->part5['p5b']);
+                $total_p5b = $p5b1;
+                $p5c1+= array_sum($evaluation->part5['p5c']);
+                $total_p5c = $p5c1;
     
-                $total = $total_p2a + $total_p2b + $total_p2c + $total_p2d
-                        + $total_p3a + $total_p3b + $total_p3c + $total_p3d
-                        +  $total_p4a + $total_p4b + $total_p4c ;
+                $total = $total_p1a + $total_p1b + $total_p1c
+                        + $total_p2a + $total_p2b + $total_p2c
+                        + $total_p3a + $total_p3b + $total_p3c + $total_p3d + $total_p3e
+                        +  $total_p4a + $total_p4b + $total_p4c + $total_p4d
+                        +  $total_p5a + $total_p5b + $total_p5c ;
                 // $total+= array_sum($evaluation->part2a['p2a1']) + array_sum($evaluation->part2a['p2a2']);
+        // echo $p1_1 .'<br>';
             };
+            // dd($total_p5b);
             return view('be/evaluation/ranking_result',
-            compact('ranking', 'addresses','total', 'total_p2a', 'total_p2b', 'total_p2c',
-                    'total_p2d', 'total_p3a', 'total_p3b', 'total_p3c', 'total_p3d', 'total_p4a',
-                    'total_p4b','total_p2c', 'p2c', 'p4b','total_p4c', 'p4c', 'p2a1', 'p2a2', 'p2a3', 'p2b1', 'p2b2', 'p2d1',
-                    'p2d2', 'p3a1', 'p3a2', 'p3a3', 'p3a4', 'p3b1', 'p3b2', 'p3c1', 'p3c2', 'p3d1', 'p3d2', 'p4a1', 'p4a2', 'teachers'));
+            compact('ranking','total', 'teachers',
+            'total_p1a', 'total_p1b', 'total_p1c', 
+            'total_p2a', 'total_p2b', 'total_p2c',
+            'total_p3a', 'total_p3b', 'total_p3c', 'total_p3d', 'total_p3e',
+            'total_p4a', 'total_p4b','total_p4c', 'total_p4d',
+            'total_p5a', 'total_p5b', 'total_p5c'));
         
         } else {
             return redirect()->route('ranking')->with('msg', 'khongco');
         }
             }
-    public function chart(Request $rq)
+    public function chart_location_result(Request $rq)
     {
         $evaluations = Evaluation::all();
         $date_start = date("Y-m-d H:i:s",strtotime($rq->start));
         $date_end = date("Y-m-d H:i:s",strtotime($rq->end));
         $teachers = Teacher::whereDate('created_at', '>=', $date_start)->whereDate('created_at', '<=', $date_end)->get();
-        $rq_location = $rq->id_location;
-        $location = Address::find($rq_location);
+        
         // dd($teachers);
-        $teacher = Evaluation::where('id_location', $rq_location)
-                                ->whereDate('updated_at', '>=', $date_start)
+        $teacher = Evaluation::where('status', 1)->whereDate('updated_at', '>=', $date_start)
                                 ->whereDate('updated_at', '<=', $date_end)
                                 ->groupBy('id_teacher')
                                 ->select('id_teacher')->get();
         // dd($teacher);
         if (count($teacher)>0) {
-                foreach ($teacher as $value) {
-                    $evaluations = Evaluation::where('id_location', $rq_location)->where('id_teacher', $value->id_teacher)->get();
+            foreach ($teacher as $value) 
+            {
+                    $evaluations = Evaluation::where('status', 1)->where('id_teacher', $value->id_teacher)->get();
                     // dd($evaluations);
                     // $evaluations = array();
                     // echo $evaluations .'<br>';
+                    $p1a1 = $p1b1  = $p1c1 = 0;
                     $p2a1 = $p2a2 = $p2a3 = 0;
                     $p2b1 = $p2b2 = $p2c = 0;
+                    $p2c1 = $p2c2 = $p2c3 = 0;
                     $p2d1 = $p2d2 = 0;
                     $p3a1 = $p3a2 = $p3a3 = $p3a4 = 0;
-                    $p3b1 = $p3b2 = $p3c1 = $p3c2 = 0;
-                    $p3d1 = $p3d2 = 0;
-                    $p4a1 = $p4a2 = 0;
+                    $p3b1 = $p3b2= $p3b3 = $p3c1 = $p3c2 = 0;
+                    $p3d1 = $p3d2 = $p3e1 = 0;
+                    $p4a1 = $p4b1 = $p4c1 = $p4d1 = $p4d2 = 0;
+                    $p5a1 = $p5b1 = $p5c1 = $p5d1 = $p5d2 = 0;
                     $p4b = $p4c =0;
-                    foreach ($evaluations as $evaluation) {
-                        // dd($evaluation);
-                        $p2a1+= array_sum($evaluation->part2a['p2a1']);
-                        $p2a2+= array_sum($evaluation->part2a['p2a2']);
-                        $p2a3+= array_sum($evaluation->part2a['p2a3']);
-                        $total_p2a = $p2a1+$p2a2+$p2a3;
-                        $p2b1+= array_sum($evaluation->part2b['p2b1']);
-                        $p2b2+= array_sum($evaluation->part2b['p2b2']);
-                        $total_p2b = $p2b1+$p2b2;
-                        $p2d1+= array_sum($evaluation->part2d['p2d1']);
-                        $p2d2+= array_sum($evaluation->part2d['p2d2']);
-                        $total_p2d = $p2d1+$p2d2;
-                        $p3a1+= array_sum($evaluation->part3a['p3a1']);
-                        $p3a2+= array_sum($evaluation->part3a['p3a2']);
-                        $p3a3+= array_sum($evaluation->part3a['p3a3']);
-                        $p3a4+= array_sum($evaluation->part3a['p3a4']);
-                        $total_p3a = $p3a1+$p3a2+$p3a3+$p3a4;
-                        $p3b1+= array_sum($evaluation->part3b['p3b1']);
-                        $p3b2+= array_sum($evaluation->part3b['p3b2']);
-                        $total_p3b = $p3b1+$p3b2;
-                        $p3c1+= array_sum($evaluation->part3c['p3c1']);
-                        $p3c2+= array_sum($evaluation->part3c['p3c2']);
-                        $total_p3c = $p3c1+$p3c2;
-                        $p3d1+= array_sum($evaluation->part3d['p3d1']);
-                        $p3d2+= array_sum($evaluation->part3d['p3d2']);
-                        $total_p3d = $p3d1+$p3d2;
-                        $p4a1+= array_sum($evaluation->part4a['p4a1']);
-                        $p4a2+= array_sum($evaluation->part4a['p4a2']);
-                        $total_p4a = $p4a1+$p4a2;
-                        $p2c+= array_sum($evaluation->part2c['p2c']);
-                        $total_p2c = $p2c;
-                        $p4b+= array_sum($evaluation->part4b['p4b']);
-                        $total_p4b = $p4b;
-                        $p4c+= array_sum($evaluation->part4c['p4c']);
-                        $total_p4c = $p4c;
-                        $total = $total_p2a + $total_p2b + $total_p2c + $total_p2d
-                                + $total_p3a + $total_p3b + $total_p3c + $total_p3d
-                                +  $total_p4a + $total_p4b + $total_p4c ;
-                                // echo $total .'<br>';
-                                $tb = $total/count($evaluations);
-                    }
+                foreach ($evaluations as $evaluation) {
+                            // dd($evaluation);
+                    $p1a1+= array_sum($evaluation->part1['p1a1']) + array_sum($evaluation->part1['p1a2']) + array_sum($evaluation->part1['p1a3']);
+                    // $p1b1+= array_sum($evaluation->part1['p1b1']);
+                    $total_p1a = $p1a1;
+                    $p1b1+= array_sum($evaluation->part1['p1b1']) + array_sum($evaluation->part1['p1b2']);
+                    // $p1b1+= array_sum($evaluation->part1['p1b1']);
+                    $total_p1b = $p1b1;
+                    $p1c1+= array_sum($evaluation->part1['p1c']);
+                    $total_p1c = $p1c1;
+                    $p2a1+= array_sum($evaluation->part2['p2a1']);
+                    $p2a2+= array_sum($evaluation->part2['p2a2']);
+                    $p2a3+= array_sum($evaluation->part2['p2a3']);
+                    $total_p2a = $p2a1+$p2a2+$p2a3;
+                    $p2b1+= array_sum($evaluation->part2['p2b1']);
+                    $p2b2+= array_sum($evaluation->part2['p2b2']);
+                    $total_p2b = $p2b1+$p2b2;
+                    $p2c1+= array_sum($evaluation->part2['p2c1']);
+                    $p2c2+= array_sum($evaluation->part2['p2c2']);
+                    $p2c3+= array_sum($evaluation->part2['p2c3']);
+                    $total_p2c = $p2c1+$p2c2+$p2c3;
+                    $p3a1+= array_sum($evaluation->part3['p3a1']);
+                    $p3a2+= array_sum($evaluation->part3['p3a2']);
+                    $p3a3+= array_sum($evaluation->part3['p3a3']);
+                    $total_p3a = $p3a1+$p3a2+$p3a3;
+                    $p3b1+= array_sum($evaluation->part3['p3b1']);
+                    $p3b2+= array_sum($evaluation->part3['p3b2']);
+                    $p3b3+= array_sum($evaluation->part3['p3b3']);
+                    $total_p3b = $p3b1+$p3b2+$p3b3;
+                    $p3c1+= array_sum($evaluation->part3['p3c1']);
+                    $p3c2+= array_sum($evaluation->part3['p3c2']);
+                    $total_p3c = $p3c1+$p3c2;
+                    $p3d1+= array_sum($evaluation->part3['p3d1']);
+                    $p3d2+= array_sum($evaluation->part3['p3d2']);
+                    $total_p3d = $p3d1+$p3d2;
+                    $p3e1+= array_sum($evaluation->part3['p3e1']);
+                    $total_p3e = $p3e1;
+                    $p4a1+= array_sum($evaluation->part4['p4a']);
+                    $total_p4a = $p4a1;
+                    $p4b1+= array_sum($evaluation->part4['p4b']);
+                    $total_p4b = $p4b1;
+                    $p4c1+= array_sum($evaluation->part4['p4c']);
+                    $total_p4c = $p4c1;
+                    $p4d1+= array_sum($evaluation->part4['p4d1']);
+                    $p4d2+= array_sum($evaluation->part4['p4d2']);
+                    $total_p4d = $p4d1+$p4d2;
+                    $p5a1+= array_sum($evaluation->part5['p5a']);
+                    $total_p5a = $p5a1;
+                    $p5b1+= array_sum($evaluation->part5['p5b']);
+                    $total_p5b = $p5b1;
+                    $p5c1+= array_sum($evaluation->part5['p5c']);
+                    $total_p5c = $p5c1;
+                    $total = $total_p1a + $total_p1b + $total_p1c
+                            + $total_p2a + $total_p2b + $total_p2c
+                            + $total_p3a + $total_p3b + $total_p3c + $total_p3d + $total_p3e
+                            +  $total_p4a + $total_p4b + $total_p4c + $total_p4d
+                            +  $total_p5a + $total_p5b + $total_p5c ;
+                                    // echo $total .'<br>';
+                                    $tb = $total/count($evaluations);
+                }
                     $chart_teacher[] = array('label' => $evaluation->teacher->fullname, 'y' => 0);
+                    $chart_p1a[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p1a/count($evaluations), 2)), 'toolTipContent'=> '1a: {y}');
+                    $chart_p1b[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p1b/count($evaluations), 2)), 'toolTipContent'=> '1b: {y}');
+                    $chart_p1c[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p1c/count($evaluations), 2)), 'toolTipContent'=> '1c: {y}');
                     $chart_p2a[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p2a/count($evaluations), 2)), 'toolTipContent'=> '2a: {y}');
                     $chart_p2b[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p2b/count($evaluations), 2)), 'toolTipContent'=> '2b: {y}');
                     $chart_p2c[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p2c/count($evaluations), 2)), 'toolTipContent'=> '2c: {y}');
-                    $chart_p2d[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p2d/count($evaluations), 2)), 'toolTipContent'=> '2d: {y}');
                     $chart_p3a[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p3a/count($evaluations), 2)), 'toolTipContent'=> '3a: {y}');
                     $chart_p3b[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p2b/count($evaluations), 2)), 'toolTipContent'=> '3b: {y}');
                     $chart_p3c[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p3c/count($evaluations), 2)), 'toolTipContent'=> '3c: {y}');
                     $chart_p3d[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p3d/count($evaluations), 2)), 'toolTipContent'=> '3d: {y}');
+                    $chart_p3e[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p3e/count($evaluations), 2)), 'toolTipContent'=> '3e: {y}');
                     $chart_p4a[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p4a/count($evaluations), 2)), 'toolTipContent'=> '4a: {y}');
                     $chart_p4b[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p4b/count($evaluations), 2)), 'toolTipContent'=> '4b: {y}');
                     $chart_p4c[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p4c/count($evaluations), 2)), 'toolTipContent'=> '4c: {y}');
+                    $chart_p4d[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p4d/count($evaluations), 2)), 'toolTipContent'=> '4d: {y}');
+                    $chart_p5a[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p5a/count($evaluations), 2)), 'toolTipContent'=> '5a: {y}');
+                    $chart_p5b[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p5b/count($evaluations), 2)), 'toolTipContent'=> '5b: {y}');
+                    $chart_p5c[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($total_p5c/count($evaluations), 2)), 'toolTipContent'=> '5c: {y}');
                     $new_evaluations[] = array('label' => $evaluation->teacher->fullname, 'y' => floatval(number_format($tb, 2)));
                     // echo $new_evaluations .'<br>';
                     // dd($new_evaluations);
                 };
                 $new_evaluations = json_encode($new_evaluations);
+                $chart_p1a = json_encode($chart_p1a);
+                $chart_p1b = json_encode($chart_p1b);
+                $chart_p1c = json_encode($chart_p1c);
                 $chart_p2a = json_encode($chart_p2a);
                 $chart_p2b = json_encode($chart_p2b);
                 $chart_p2c = json_encode($chart_p2c);
-                $chart_p2d = json_encode($chart_p2d);
                 $chart_p3a = json_encode($chart_p3a);
                 $chart_p3b = json_encode($chart_p3b);
                 $chart_p3c = json_encode($chart_p3c);
                 $chart_p3d = json_encode($chart_p3d);
+                $chart_p3e = json_encode($chart_p3e);
                 $chart_p4a = json_encode($chart_p4a);
                 $chart_p4b = json_encode($chart_p4b);
                 $chart_p4c = json_encode($chart_p4c);
+                $chart_p4d = json_encode($chart_p4d);
+                $chart_p5a = json_encode($chart_p5a);
+                $chart_p5b = json_encode($chart_p5b);
+                $chart_p5c = json_encode($chart_p5c);
                 $chart_teacher = json_encode($chart_teacher);
                 // dd($chart_p2a);
         
@@ -1249,10 +1297,12 @@ class EvaluationController extends Controller
             // dd($new_evaluations);
             // $json_managers = json_encode($data_manager_points,JSON_NUMERIC_CHECK);
                 return view('be.charts.chart_total',
-                compact('new_evaluations', 'chart_teacher', 'teacher', 'location',
-                'chart_p2a', 'chart_p2b', 'chart_p2c', 'chart_p2d',
-                'chart_p3a', 'chart_p3b', 'chart_p3c', 'chart_p3d',
-                'chart_p4a', 'chart_p4b', 'chart_p4c'
+                compact('new_evaluations', 'chart_teacher', 'teacher',
+                'chart_p1a', 'chart_p1b', 'chart_p1c',
+                'chart_p2a', 'chart_p2b', 'chart_p2c',
+                'chart_p3a', 'chart_p3b', 'chart_p3c', 'chart_p3d', 'chart_p3e',
+                'chart_p4a', 'chart_p4b', 'chart_p4c', 'chart_p4d',
+                'chart_p5a', 'chart_p5b', 'chart_p5c'
             ));
         } else {
             return redirect()->back()->with('msg', 'not found data!');

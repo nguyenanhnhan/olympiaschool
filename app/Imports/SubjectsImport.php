@@ -18,7 +18,7 @@ class SubjectsImport implements ToModel, WithHeadingRow
         return new Subject([
             'code_name'  => $row['code_name'],
             'name' => $row['name'],
-            'criteria' => $row['criteria'],
+            'criteria_id' => $row['criteria'],
         ]);
     }
 }

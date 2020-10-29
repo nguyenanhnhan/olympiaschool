@@ -54,14 +54,12 @@ add new subject
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
-                                                            <select name="criteria" class="form-control">
+                                                            <select name="criteria_id" class="form-control">
                                                                 <option value="none" selected="" hidden disabled="">
                                                                     Select criteria</option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
+                                                                    @foreach ($criterias as $criteria)
+                                                                    <option value="{{$criteria->id}}">{{$criteria->name}}</option>
+                                                                    @endforeach
                                                             </select>
                                                         </div>
                                                     </div>

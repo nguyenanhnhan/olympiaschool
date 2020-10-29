@@ -49,7 +49,7 @@ Schedules
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
                                             <div class="row">
-                                                <div class="row" style="padding-top:50px;">
+                                                <div class="row" style="padding-top:50px; overflow-x:auto;">
                                                     <div>
                                                         <table class="table table-striped table-bordered table-hover"
                                                             id="example-table" cellspacing="0" width="100%">
@@ -68,7 +68,7 @@ Schedules
                                                             <tbody style="text-align:center; line-height: 120px">
                                                                 @foreach ($schedules as $book)
                                                                 <tr>
-                                                                    <td>{{$book->subject->name}}/{{$book->subject->criteria}}</td>
+                                                                    <td>{{$book->subject->name}}/{{$book->subject->criteria->name}}</td>
                                                                     <td>{{$book->teacher->fullname}}</td>
                                                                     <td>{{$book->time1}}</td>
                                                                     <td>{{$book->session->name}}</td>

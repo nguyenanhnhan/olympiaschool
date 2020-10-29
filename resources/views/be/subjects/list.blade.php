@@ -64,7 +64,7 @@ list subjects
                             @foreach ($subjects as $subject)
                             <tr>
                                 <td>{{$subject->id}}</td>
-                                <td>{{$subject->criteria}}</td>
+                                <td>{{$subject->criteria->name}}</td>
                                 <td>{{$subject->name}}</td>
                                 <td>{{$subject->code_name}}</td>
                                 <td>

@@ -3,7 +3,6 @@
     <thead>
         <tr>
             <th style="background-color: #b6d7a8;">id</th>
-            <th style="background-color: #b6d7a8;">Ten_co_so</th>
             <th style="background-color: #b6d7a8;">Ma_lop</th>
             <th style="background-color: #b6d7a8;">Ngay_giang</th>
             <th style="background-color: #b6d7a8;">nguoi danh gia</th>
@@ -21,9 +20,452 @@
         @foreach($evaluations as $evaluation)
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.1</td>
+            @if ($evaluation->part1['p1a1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.1</td>
+            @if ($evaluation->part1['p1a1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['appro_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['appro_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['compe_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['compe_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.2</td>
+            @if ($evaluation->part1['p1a2']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a2']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.3</td>
+            @if ($evaluation->part1['p1a3']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a3']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.3</td>
+            @if ($evaluation->part1['p1a3']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a3']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1A.3</td>
+            @if ($evaluation->part1['p1a3']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1a3']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.1</td>
+            @if ($evaluation->part1['p1b1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.1</td>
+            @if ($evaluation->part1['p1b1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.1</td>
+            @if ($evaluation->part1['p1b1']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b1']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.2</td>
+            @if ($evaluation->part1['p1b2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.2</td>
+            @if ($evaluation->part1['p1b2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.2</td>
+            @if ($evaluation->part1['p1b2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1B.2</td>
+            @if ($evaluation->part1['p1b2']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1b2']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1C</td>
+            @if ($evaluation->part1['p1c']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1c']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1C</td>
+            @if ($evaluation->part1['p1c']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1c']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1C</td>
+            @if ($evaluation->part1['p1c']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1c']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>1C</td>
+            @if ($evaluation->part1['p1c']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part1['p1c']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -31,18 +473,18 @@
             <td></td>
             <td></td>
             <td>2A.1</td>
-            <td>{{ $evaluation->part2a['p2a1']['basic'] }}</td>
-            <td> @if ($evaluation->part2a['p2a1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -50,18 +492,18 @@
             <td></td>
             <td></td>
             <td>2A.1</td>
-            <td>{{ $evaluation->part2a['p2a1']['appro'] }}</td>
-            <td> @if ($evaluation->part2a['p2a1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -69,18 +511,18 @@
             <td></td>
             <td></td>
             <td>2A.1</td>
-            <td>{{ $evaluation->part2a['p2a1']['compe'] }}</td>
-            <td> @if ($evaluation->part2a['p2a1']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a1']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a1']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -88,20 +530,19 @@
             <td></td>
             <td></td>
             <td>2A.1</td>
-            <td>{{ $evaluation->part2a['p2a1']['outst'] }}</td>
-            <td> @if ($evaluation->part2a['p2a1']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a1']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a1']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -109,18 +550,18 @@
             <td></td>
             <td></td>
             <td>2A.2</td>
-            <td>{{ $evaluation->part2a['p2a2']['basic'] }}</td>
-            <td> @if ($evaluation->part2a['p2a2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -128,18 +569,18 @@
             <td></td>
             <td></td>
             <td>2A.2</td>
-            <td>{{ $evaluation->part2a['p2a2']['appro'] }}</td>
-            <td> @if ($evaluation->part2a['p2a2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -147,39 +588,19 @@
             <td></td>
             <td></td>
             <td>2A.2</td>
-            <td>{{ $evaluation->part2a['p2a2']['compe'] }}</td>
-            <td> @if ($evaluation->part2a['p2a2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>2A.2</td>
-            <td>{{ $evaluation->part2a['p2a2']['outst'] }}</td>
-            <td> @if ($evaluation->part2a['p2a2']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-
-
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -187,18 +608,18 @@
             <td></td>
             <td></td>
             <td>2A.3</td>
-            <td>{{ $evaluation->part2a['p2a3']['basic'] }}</td>
-            <td> @if ($evaluation->part2a['p2a3']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a3']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a3']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -206,18 +627,18 @@
             <td></td>
             <td></td>
             <td>2A.3</td>
-            <td>{{ $evaluation->part2a['p2a3']['appro'] }}</td>
-            <td> @if ($evaluation->part2a['p2a3']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a3']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a3']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -225,19 +646,38 @@
             <td></td>
             <td></td>
             <td>2A.3</td>
-            <td>{{ $evaluation->part2a['p2a3']['compe'] }}</td>
-            <td> @if ($evaluation->part2a['p2a3']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2a3']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a3']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>2A.3</td>
+            @if ($evaluation->part2['p2a3']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2a3']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -245,18 +685,18 @@
             <td></td>
             <td></td>
             <td>2B.1</td>
-            <td>{{ $evaluation->part2b['p2b1']['basic'] }}</td>
-            <td> @if ($evaluation->part2b['p2b1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2b1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -264,309 +704,328 @@
             <td></td>
             <td></td>
             <td>2B.1</td>
-            <td>{{ $evaluation->part2b['p2b1']['appro'] }}</td>
-            <td> @if ($evaluation->part2b['p2b1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part2['p2b1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2B.2</td>
-            <td>{{ $evaluation->part2b['p2b2']['basic'] }}</td>
-            <td> @if ($evaluation->part2b['p2b2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2B2</td>
+            @if ($evaluation->part2['p2b2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2B.2</td>
-            <td>{{ $evaluation->part2b['p2b2']['appro'] }}</td>
-            <td> @if ($evaluation->part2b['p2b2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2B2</td>
+            @if ($evaluation->part2['p2b2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2B.2</td>
-            <td>{{ $evaluation->part2b['p2b2']['compe'] }}</td>
-            <td> @if ($evaluation->part2b['p2b2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2B2</td>
+            @if ($evaluation->part2['p2b2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2B.2</td>
-            <td>{{ $evaluation->part2b['p2b2']['outst'] }}</td>
-            <td> @if ($evaluation->part2b['p2b2']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2B2</td>
+            @if ($evaluation->part2['p2b2']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2b2']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2C</td>
-            <td>{{ $evaluation->part2c['p2c']['basic'] }}</td>
-            <td> @if ($evaluation->part2c['p2c']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.1</td>
+            @if ($evaluation->part2['p2c1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2C</td>
-            <td>{{ $evaluation->part2c['p2c']['appro'] }}</td>
-            <td> @if ($evaluation->part2c['p2c']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.1</td>
+            @if ($evaluation->part2['p2c1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2C</td>
-            <td>{{ $evaluation->part2c['p2c']['compe'] }}</td>
-            <td> @if ($evaluation->part2c['p2c']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.1</td>
+            @if ($evaluation->part2['p2c1']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c1']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2C</td>
-            <td>{{ $evaluation->part2c['p2c']['outst'] }}</td>
-            <td> @if ($evaluation->part2c['p2c']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.1</td>
+            @if ($evaluation->part2['p2c1']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c1']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.1</td>
-            <td>{{ $evaluation->part2d['p2d1']['basic'] }}</td>
-            <td> @if ($evaluation->part2d['p2d1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.2</td>
+            @if ($evaluation->part2['p2c2']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c2']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.1</td>
-            <td>{{ $evaluation->part2d['p2d1']['appro'] }}</td>
-            <td> @if ($evaluation->part2d['p2d1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.2</td>
+            @if ($evaluation->part2['p2c2']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c2']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.1</td>
-            <td>{{ $evaluation->part2d['p2d1']['compe'] }}</td>
-            <td> @if ($evaluation->part2d['p2d1']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.2</td>
+            @if ($evaluation->part2['p2c2']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c2']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.1</td>
-            <td>{{ $evaluation->part2d['p2d1']['outst'] }}</td>
-            <td> @if ($evaluation->part2d['p2d1']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.2</td>
+            @if ($evaluation->part2['p2c2']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c2']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.2</td>
-            <td>{{ $evaluation->part2d['p2d2']['basic'] }}</td>
-            <td> @if ($evaluation->part2d['p2d2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.2</td>
+            @if ($evaluation->part2['p2c2']['basic_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c2']['basic_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.2</td>
-            <td>{{ $evaluation->part2d['p2d2']['appro'] }}</td>
-            <td> @if ($evaluation->part2d['p2d2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.3</td>
+            @if ($evaluation->part2['p2c3']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c3']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>2D.2</td>
-            <td>{{ $evaluation->part2d['p2d2']['compe'] }}</td>
-            <td> @if ($evaluation->part2d['p2d2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>2C.3</td>
+            @if ($evaluation->part2['p2c3']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c3']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>2C.3</td>
+            @if ($evaluation->part2['p2c3']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part2['p2c3']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -574,18 +1033,18 @@
             <td></td>
             <td></td>
             <td>3A.1</td>
-            <td>{{ $evaluation->part3a['p3a1']['basic'] }}</td>
-            <td> @if ($evaluation->part3a['p3a1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -593,21 +1052,38 @@
             <td></td>
             <td></td>
             <td>3A.1</td>
-            <td>{{ $evaluation->part3a['p3a1']['appro'] }}</td>
-            <td> @if ($evaluation->part3a['p3a1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
-
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3A.1</td>
+            @if ($evaluation->part3['p3a1']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a1']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -615,18 +1091,18 @@
             <td></td>
             <td></td>
             <td>3A.2</td>
-            <td>{{ $evaluation->part3a['p3a2']['basic'] }}</td>
-            <td> @if ($evaluation->part3a['p3a2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -634,18 +1110,18 @@
             <td></td>
             <td></td>
             <td>3A.2</td>
-            <td>{{ $evaluation->part3a['p3a2']['appro'] }}</td>
-            <td> @if ($evaluation->part3a['p3a2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -653,18 +1129,18 @@
             <td></td>
             <td></td>
             <td>3A.2</td>
-            <td>{{ $evaluation->part3a['p3a2']['compe'] }}</td>
-            <td> @if ($evaluation->part3a['p3a2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -672,20 +1148,19 @@
             <td></td>
             <td></td>
             <td>3A.2</td>
-            <td>{{ $evaluation->part3a['p3a2']['outst'] }}</td>
-            <td> @if ($evaluation->part3a['p3a2']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a2']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a2']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -693,18 +1168,18 @@
             <td></td>
             <td></td>
             <td>3A.3</td>
-            <td>{{ $evaluation->part3a['p3a3']['basic'] }}</td>
-            <td> @if ($evaluation->part3a['p3a3']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a3']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a3']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -712,18 +1187,18 @@
             <td></td>
             <td></td>
             <td>3A.3</td>
-            <td>{{ $evaluation->part3a['p3a3']['appro'] }}</td>
-            <td> @if ($evaluation->part3a['p3a3']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a3']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a3']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -731,18 +1206,18 @@
             <td></td>
             <td></td>
             <td>3A.3</td>
-            <td>{{ $evaluation->part3a['p3a3']['compe'] }}</td>
-            <td> @if ($evaluation->part3a['p3a3']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a3']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a3']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -750,173 +1225,19 @@
             <td></td>
             <td></td>
             <td>3A.3</td>
-            <td>{{ $evaluation->part3a['p3a3']['outst'] }}</td>
-            <td> @if ($evaluation->part3a['p3a3']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3a3']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3a3']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['basic_1'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['basic_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['appro_1'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['appro_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['compe_1'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['compe_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['outst_1'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['outst_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['basic_2'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['basic_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['appro_2'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['appro_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['compe_2'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['compe_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3A.4</td>
-            <td>{{ $evaluation->part3a['p3a4']['outst_2'] }}</td>
-            <td> @if ($evaluation->part3a['p3a4']['outst_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-
-
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -924,18 +1245,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['basic_1'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['basic_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -943,18 +1264,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['appro_1'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['appro_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -962,18 +1283,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['compe_1'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['compe_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -981,18 +1302,19 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['outst_1'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['outst_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1000,18 +1322,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['basic_2'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['basic_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['basic_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['basic_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1019,18 +1341,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['appro_2'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['appro_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['appro_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['appro_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1038,18 +1360,18 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['compe_2'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['compe_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['compe_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['compe_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1057,20 +1379,96 @@
             <td></td>
             <td></td>
             <td>3B.1</td>
-            <td>{{ $evaluation->part3b['p3b1']['outst_2'] }}</td>
-            <td> @if ($evaluation->part3b['p3b1']['outst_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b1']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.1</td>
+            @if ($evaluation->part3['p3b1']['basic_3'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['basic_3'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.1</td>
+            @if ($evaluation->part3['p3b1']['appro_3'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['appro_3'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.1</td>
+            @if ($evaluation->part3['p3b1']['compe_3'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['compe_3'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.1</td>
+            @if ($evaluation->part3['p3b1']['outst_3'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b1']['outst_3'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1078,18 +1476,18 @@
             <td></td>
             <td></td>
             <td>3B.2</td>
-            <td>{{ $evaluation->part3b['p3b2']['basic'] }}</td>
-            <td> @if ($evaluation->part3b['p3b2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1097,18 +1495,18 @@
             <td></td>
             <td></td>
             <td>3B.2</td>
-            <td>{{ $evaluation->part3b['p3b2']['appro'] }}</td>
-            <td> @if ($evaluation->part3b['p3b2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1116,18 +1514,18 @@
             <td></td>
             <td></td>
             <td>3B.2</td>
-            <td>{{ $evaluation->part3b['p3b2']['compe'] }}</td>
-            <td> @if ($evaluation->part3b['p3b2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1135,20 +1533,96 @@
             <td></td>
             <td></td>
             <td>3B.2</td>
-            <td>{{ $evaluation->part3b['p3b2']['outst'] }}</td>
-            <td> @if ($evaluation->part3b['p3b2']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3b2']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b2']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.3</td>
+            @if ($evaluation->part3['p3b3']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b3']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.3</td>
+            @if ($evaluation->part3['p3b3']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b3']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.3</td>
+            @if ($evaluation->part3['p3b3']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b3']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3B.3</td>
+            @if ($evaluation->part3['p3b3']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3b3']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1156,18 +1630,18 @@
             <td></td>
             <td></td>
             <td>3C.1</td>
-            <td>{{ $evaluation->part3c['p3c1']['basic_1'] }}</td>
-            <td> @if ($evaluation->part3c['p3c1']['basic_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c1']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1175,18 +1649,18 @@
             <td></td>
             <td></td>
             <td>3C.1</td>
-            <td>{{ $evaluation->part3c['p3c1']['appro_1'] }}</td>
-            <td> @if ($evaluation->part3c['p3c1']['appro_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c1']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1194,18 +1668,18 @@
             <td></td>
             <td></td>
             <td>3C.1</td>
-            <td>{{ $evaluation->part3c['p3c1']['compe_1'] }}</td>
-            <td> @if ($evaluation->part3c['p3c1']['compe_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c1']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1213,18 +1687,19 @@
             <td></td>
             <td></td>
             <td>3C.1</td>
-            <td>{{ $evaluation->part3c['p3c1']['outst_1'] }}</td>
-            <td> @if ($evaluation->part3c['p3c1']['outst_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c1']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1232,21 +1707,38 @@
             <td></td>
             <td></td>
             <td>3C.1</td>
-            <td>{{ $evaluation->part3c['p3c1']['basic_2'] }}</td>
-            <td> @if ($evaluation->part3c['p3c1']['basic_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c1']['basic_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['basic_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
-
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>3C.1</td>
+            @if ($evaluation->part3['p3c1']['appro_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c1']['appro_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1254,18 +1746,18 @@
             <td></td>
             <td></td>
             <td>3C.2</td>
-            <td>{{ $evaluation->part3c['p3c2']['basic'] }}</td>
-            <td> @if ($evaluation->part3c['p3c2']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c2']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c2']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1273,18 +1765,18 @@
             <td></td>
             <td></td>
             <td>3C.2</td>
-            <td>{{ $evaluation->part3c['p3c2']['appro'] }}</td>
-            <td> @if ($evaluation->part3c['p3c2']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c2']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c2']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1292,18 +1784,18 @@
             <td></td>
             <td></td>
             <td>3C.2</td>
-            <td>{{ $evaluation->part3c['p3c2']['compe'] }}</td>
-            <td> @if ($evaluation->part3c['p3c2']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c2']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c2']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1311,20 +1803,19 @@
             <td></td>
             <td></td>
             <td>3C.2</td>
-            <td>{{ $evaluation->part3c['p3c2']['outst'] }}</td>
-            <td> @if ($evaluation->part3c['p3c2']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3c2']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3c2']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1332,18 +1823,18 @@
             <td></td>
             <td></td>
             <td>3D.1</td>
-            <td>{{ $evaluation->part3d['p3d1']['basic'] }}</td>
-            <td> @if ($evaluation->part3d['p3d1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d1']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d1']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1351,18 +1842,18 @@
             <td></td>
             <td></td>
             <td>3D.1</td>
-            <td>{{ $evaluation->part3d['p3d1']['appro'] }}</td>
-            <td> @if ($evaluation->part3d['p3d1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d1']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d1']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1370,40 +1861,19 @@
             <td></td>
             <td></td>
             <td>3D.1</td>
-            <td>{{ $evaluation->part3d['p3d1']['compe'] }}</td>
-            <td> @if ($evaluation->part3d['p3d1']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d1']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d1']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>3D.1</td>
-            <td>{{ $evaluation->part3d['p3d1']['outst'] }}</td>
-            <td> @if ($evaluation->part3d['p3d1']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-
-
-
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1411,18 +1881,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['basic_1'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['basic_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1430,18 +1900,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['appro_1'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['appro_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1449,18 +1919,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['compe_1'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['compe_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1468,18 +1938,19 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['outst_1'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['outst_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1487,18 +1958,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['basic_2'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['basic_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['basic_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['basic_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1506,18 +1977,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['appro_2'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['appro_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['appro_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['appro_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1525,18 +1996,18 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['compe_2'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['compe_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['compe_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['compe_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1544,269 +2015,252 @@
             <td></td>
             <td></td>
             <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['outst_2'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['outst_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part3['p3d2']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3d2']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['basic_3'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['basic_3'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['appro_3'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['appro_3'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>3D.2</td>
-            <td>{{ $evaluation->part3d['p3d2']['compe_3'] }}</td>
-            <td> @if ($evaluation->part3d['p3d2']['compe_3'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.1</td>
-            <td>{{ $evaluation->part4a['p4a1']['basic'] }}</td>
-            <td> @if ($evaluation->part4a['p4a1']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.1</td>
-            <td>{{ $evaluation->part4a['p4a1']['appro'] }}</td>
-            <td> @if ($evaluation->part4a['p4a1']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['appro_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['appro_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.1</td>
-            <td>{{ $evaluation->part4a['p4a1']['compe'] }}</td>
-            <td> @if ($evaluation->part4a['p4a1']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>3E</td>
+            @if ($evaluation->part3['p3e1']['compe_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part3['p3e1']['compe_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
-
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['basic_1'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['basic_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['appro_1'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['appro_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['compe_1'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['compe_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['outst_1'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['outst_1'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['appro_2'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['appro_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['compe_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['compe_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
             <td>{{ $evaluation->teacher->email }}</td>
             <td></td>
             <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['compe_2'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['compe_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            <td>4A</td>
+            @if ($evaluation->part4['p4a']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4a']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
+        
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
-            <td>{{ $evaluation->user->name }}</td>
-            <td>{{ $evaluation->user->email }}</td>
-            <td>{{ $evaluation->teacher->fullname }}</td>
-            <td>{{ $evaluation->teacher->email }}</td>
-            <td></td>
-            <td></td>
-            <td>4A.2</td>
-            <td>{{ $evaluation->part4a['p4a2']['outst_2'] }}</td>
-            <td> @if ($evaluation->part4a['p4a2']['outst_2'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
-        </tr>
-
-        <tr>
-            <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
-            <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1814,18 +2268,18 @@
             <td></td>
             <td></td>
             <td>4B</td>
-            <td>{{ $evaluation->part4b['p4b']['basic'] }}</td>
-            <td> @if ($evaluation->part4b['p4b']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4b']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4b']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1833,18 +2287,18 @@
             <td></td>
             <td></td>
             <td>4B</td>
-            <td>{{ $evaluation->part4b['p4b']['appro'] }}</td>
-            <td> @if ($evaluation->part4b['p4b']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4b']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4b']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1852,18 +2306,18 @@
             <td></td>
             <td></td>
             <td>4B</td>
-            <td>{{ $evaluation->part4b['p4b']['compe'] }}</td>
-            <td> @if ($evaluation->part4b['p4b']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4b']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4b']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1871,19 +2325,40 @@
             <td></td>
             <td></td>
             <td>4B</td>
-            <td>{{ $evaluation->part4b['p4b']['outst'] }}</td>
-            <td> @if ($evaluation->part4b['p4b']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4b']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4b']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
+        
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4B</td>
+            @if ($evaluation->part4['p4b']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4b']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1891,18 +2366,18 @@
             <td></td>
             <td></td>
             <td>4C</td>
-            <td>{{ $evaluation->part4c['p4c']['basic'] }}</td>
-            <td> @if ($evaluation->part4c['p4c']['basic'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4c']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4c']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1910,18 +2385,18 @@
             <td></td>
             <td></td>
             <td>4C</td>
-            <td>{{ $evaluation->part4c['p4c']['appro'] }}</td>
-            <td> @if ($evaluation->part4c['p4c']['appro'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4c']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4c']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1929,18 +2404,18 @@
             <td></td>
             <td></td>
             <td>4C</td>
-            <td>{{ $evaluation->part4c['p4c']['compe'] }}</td>
-            <td> @if ($evaluation->part4c['p4c']['compe'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4c']['compe'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4c']['compe'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
         <tr>
             <td>{{ $evaluation->id }}</td>
-            <td>{{ $evaluation->location->name }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
             <td>{{ $evaluation->schedule->class }}</td>
-            <td>{{ $evaluation->schedule->time1 }}</td>
             <td>{{ $evaluation->user->name }}</td>
             <td>{{ $evaluation->user->email }}</td>
             <td>{{ $evaluation->teacher->fullname }}</td>
@@ -1948,14 +2423,440 @@
             <td></td>
             <td></td>
             <td>4C</td>
-            <td>{{ $evaluation->part4c['p4c']['outst'] }}</td>
-            <td> @if ($evaluation->part4c['p4c']['outst'] == null)
-                FALSE
-                @else
-                TRUE
-                @endif </td>
+            @if ($evaluation->part4['p4c']['outst'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4c']['outst'] }}</td>
+            <td>TRUE</td>
+            @endif
         </tr>
-
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.1</td>
+            @if ($evaluation->part4['p4d1']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d1']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.1</td>
+            @if ($evaluation->part4['p4d1']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d1']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.1</td>
+            @if ($evaluation->part4['p4d1']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d1']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.1</td>
+            @if ($evaluation->part4['p4d1']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d1']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.1</td>
+            @if ($evaluation->part4['p4d1']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d1']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.2</td>
+            @if ($evaluation->part4['p4d2']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d2']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.2</td>
+            @if ($evaluation->part4['p4d2']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d2']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.2</td>
+            @if ($evaluation->part4['p4d2']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d2']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.2</td>
+            @if ($evaluation->part4['p4d2']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d2']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>4D.2</td>
+            @if ($evaluation->part4['p4d2']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part4['p4d2']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5A</td>
+            @if ($evaluation->part5['p5a']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5a']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5A</td>
+            @if ($evaluation->part5['p5a']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5a']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5A</td>
+            @if ($evaluation->part5['p5a']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5a']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5A</td>
+            @if ($evaluation->part5['p5a']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5a']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5A</td>
+            @if ($evaluation->part5['p5a']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5a']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5B</td>
+            @if ($evaluation->part5['p5b']['basic_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5b']['basic_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5B</td>
+            @if ($evaluation->part5['p5b']['appro_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5b']['appro_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5B</td>
+            @if ($evaluation->part5['p5b']['compe_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5b']['compe_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5B</td>
+            @if ($evaluation->part5['p5b']['outst_1'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5b']['outst_1'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5B</td>
+            @if ($evaluation->part5['p5b']['outst_2'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5b']['outst_2'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5C</td>
+            @if ($evaluation->part5['p5c']['basic'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5c']['basic'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
+        <tr>
+            <td>{{ $evaluation->id }}</td>
+            <td>{{ $evaluation->subject->name }}</td>
+            <td>{{ $evaluation->schedule->class }}</td>
+            <td>{{ $evaluation->user->name }}</td>
+            <td>{{ $evaluation->user->email }}</td>
+            <td>{{ $evaluation->teacher->fullname }}</td>
+            <td>{{ $evaluation->teacher->email }}</td>
+            <td></td>
+            <td></td>
+            <td>5C</td>
+            @if ($evaluation->part5['p5c']['appro'] == null)
+            <td>0</td>
+            <td>FALSE</td>
+            @else
+            <td>{{ $evaluation->part5['p5c']['appro'] }}</td>
+            <td>TRUE</td>
+            @endif
+        </tr>
         @endforeach
     </tbody>
 </table>

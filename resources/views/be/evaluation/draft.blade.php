@@ -103,7 +103,7 @@ Evaluation Draft
                             </div>
                             <div id="collapse1" class="panel-collapse panel-ic collapse in">
                                 <div class="panel-body admin-panel-content animated bounce">
-                                    <div class="row">
+                                    <div class="row"  style="overflow-x:auto;">
                                         <table id="customers">
                                             <thead>
                                                 <tr>

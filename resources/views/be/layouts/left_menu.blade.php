@@ -54,19 +54,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="{{ request()->route()->named('default*') ? 'active' : '' }}">
-                        <a class="has-arrow" href="all-students.html" aria-expanded="false"><span
-                                class="educate-icon educate-student icon-wrap"></span> <span
-                                class="mini-click-non">Default Schedules</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="All schedule" href="{{route('default_schedule_show')}}"><span
-                                        class="mini-sub-pro">All
-                                        Default Schedules</span></a></li>
-                            <li><a title="Add schedule" href="{{route('default_schedule_create')}}"><span
-                                        class="mini-sub-pro">Add
-                                        Default Schedules</span></a></li>
-                        </ul>
-                    </li>
                     {{-- <li>
                         <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span
                                 class="educate-icon educate-library icon-wrap"></span> <span

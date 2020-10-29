@@ -73,7 +73,7 @@ list teachers
                         <tbody>
                             @foreach ($teachers as $teacher)
                             <tr>
-                                <td>{{$teacher->id}} {{$teacher->coso->name}}</td>
+                                <td>{{$teacher->id}}</td>
                                 <td>{{$teacher->fullname}}</td>
                                 <td><img width="100px" src="upload/teachers/{{$teacher->image}}" alt=""></td>
                                 <td>{{$teacher->address}} <br>{{$teacher->mobile}}</td>

@@ -1,6 +1,6 @@
 @extends('be/layouts/index')
 @section('title')
-Chart {{$location->name}}
+Chart
 @endsection
 @section('style')
 
@@ -251,7 +251,7 @@ Chart {{$location->name}}
                 window.onload = function () {
                     var chart_total = new CanvasJS.Chart("dingdong", {
                     title:{
-                        text: "'.$location->name.'",
+                        text: "Olympia",
                         padding: 5,
                         borderThickness: 2,
                     },
@@ -264,9 +264,55 @@ Chart {{$location->name}}
                         }
                         ]
                     });
+                    
+                    var chart1a = new CanvasJS.Chart("p1a", {
+                    title:{
+                        text: "1a",
+                        padding: 5,
+                        borderThickness: 2,
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p1a.'
+                        }
+                        ]
+                    });
+                    
+                    var chart1b = new CanvasJS.Chart("p1b", {
+                    title:{
+                        text: "1b",
+                        padding: 5,
+                        borderThickness: 2,
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p1b.'
+                        }
+                        ]
+                    });
+                    
+                    var chart1c = new CanvasJS.Chart("p1c", {
+                    title:{
+                        text: "1c",
+                        padding: 5,
+                        borderThickness: 2,
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p1c.'
+                        }
+                        ]
+                    });
+
                     var chart2a = new CanvasJS.Chart("p2a", {
                     title:{
-                        text: "'.$location->name.' - 2A",
+                        text: "2A",
                         padding: 5,
                         borderThickness: 2,
                     },
@@ -281,7 +327,7 @@ Chart {{$location->name}}
                     
                     var chart2b = new CanvasJS.Chart("p2b", {
                     title:{
-                        text: "'.$location->name.' - 2B",
+                        text: "2B",
                         padding: 5,
                         borderThickness: 2,             
                     },
@@ -303,19 +349,6 @@ Chart {{$location->name}}
                             indexLabel: "{y}",
                             type: "column",
                             dataPoints: '.$chart_p2c.'
-                        }
-                        ]
-                    });
-                    
-                    var chart2d = new CanvasJS.Chart("p2d", {
-                    title:{
-                        text: "2D"              
-                    },
-                    data: [              
-                        {
-                            indexLabel: "{y}",
-                            type: "column",
-                            dataPoints: '.$chart_p2d.'
                         }
                         ]
                     });
@@ -372,6 +405,19 @@ Chart {{$location->name}}
                         ]
                     });
                     
+                    var chart3e = new CanvasJS.Chart("p3e", {
+                    title:{
+                        text: "3e"              
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p3e.'
+                        }
+                        ]
+                    });
+                    
                     var chart4a = new CanvasJS.Chart("p4a", {
                     title:{
                         text: "4A"              
@@ -416,17 +462,94 @@ Chart {{$location->name}}
                     }
                     });
                     
+                    var chart4d = new CanvasJS.Chart("p4d", {
+                    title:{
+                        text: "4d"              
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p4d.'
+                        }
+                    ],
+                    option: {
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }
+                    });
+                    
+                    var chart5a = new CanvasJS.Chart("p5a", {
+                    title:{
+                        text: "5A"              
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p5a.'
+                        }
+                        ]
+                    });
+                    
+                    var chart5b = new CanvasJS.Chart("p5b", {
+                    title:{
+                        text: "5B"              
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p5b.'
+                        }
+                        ]
+                    });
+                    
+                    var chart5c = new CanvasJS.Chart("p5c", {
+                    title:{
+                        text: "5C"              
+                    },
+                    data: [              
+                        {
+                            indexLabel: "{y}",
+                            type: "column",
+                            dataPoints: '.$chart_p5c.'
+                        }
+                    ],
+                    option: {
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }
+                    });
+                    
     var total_detail = new CanvasJS.Chart("chartContainer2",
     {
         title:{
         text: "Breakdown"
         },
             data: [
-        {
-        name: "2a",
-        showInLegend: true,
-        type: "stackedColumn",
-        dataPoints: '.$chart_p2a.'
+                {
+            name: "1a",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p1a.'
+        },  {
+            name: "1b",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p1b.'
+        },  {
+            name: "1c",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p1c.'
+        }, {
+            name: "2a",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p2a.'
         },  {
             name: "2b",
             showInLegend: true,
@@ -437,32 +560,66 @@ Chart {{$location->name}}
             showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p2c.'
-        },  {
-            name: "2d",
+        }, {
+            name: "3a",
             showInLegend: true,
-            type: "stackedColumn",
-            dataPoints: '.$chart_p2d.'
-        },{
             type: "stackedColumn",
             dataPoints: '.$chart_p3a.'
         },  {
+            name: "3b",
+            showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p3b.'
         },  {
+            name: "3c",
+            showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p3c.'
         },  {
+            name: "3d",
+            showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p3d.'
-        },{
-        type: "stackedColumn",
-        dataPoints: '.$chart_p4a.'
+        }, {
+            name: "3e",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p3e.'
+        }, {
+            name: "4a",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p4a.'
         },  {
+            name: "4b",
+            showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p4b.'
         },  {
+            name: "4c",
+            showInLegend: true,
             type: "stackedColumn",
             dataPoints: '.$chart_p4c.'
+        },  {
+            name: "4d",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p4d.'
+        }, {
+            name: "5a",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p5a.'
+        },  {
+            name: "5b",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p5b.'
+        },  {
+            name: "5c",
+            showInLegend: true,
+            type: "stackedColumn",
+            dataPoints: '.$chart_p5c.'
         },
         {
         type: "stackedColumn",
@@ -473,17 +630,24 @@ Chart {{$location->name}}
 
                     chart_total.render();
                     total_detail.render();
+                    chart1a.render();
+                    chart1b.render();
+                    chart1c.render();
                     chart2a.render();
                     chart2b.render();
                     chart2c.render();
-                    chart2d.render();
                     chart3a.render();
                     chart3b.render();
                     chart3c.render();
                     chart3d.render();
+                    chart3e.render();
                     chart4a.render();
                     chart4b.render();
                     chart4c.render();
+                    chart4d.render();
+                    chart5a.render();
+                    chart5b.render();
+                    chart5c.render();
                 }
             </script>          
             ';
@@ -491,140 +655,141 @@ Chart {{$location->name}}
 
             <div id="dingdong" style="height: 300px; width: 100%;"></div>
 
-            
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="row" style="padding-top:50px;">
                         <div style="overflow-x:auto;">
-                            <table
-                                class="table table-striped table-bordered table-hover"
-                                id="example-table" cellspacing="0" width="100%">
+                            <table class="table table-striped table-bordered table-hover" id="example-table"
+                                cellspacing="0" width="100%">
                                 <thead>
-                                    <tr
-                                        style="color: #fff; text-align: center; background-color: #114275;">
+                                    <tr style="color: #fff; text-align: center; background-color: #114275;">
                                         <th>Teacher</th>
+                                        <th>1a</th>
+                                        <th>1b</th>
+                                        <th>1c</th>
                                         <th>2a</th>
                                         <th>2b</th>
                                         <th>2c</th>
-                                        <th>2d</th>
                                         <th>3a</th>
                                         <th>3b</th>
                                         <th>3c</th>
                                         <th>3d</th>
+                                        <th>3e</th>
                                         <th>4a</th>
                                         <th>4b</th>
                                         <th>4c</th>
+                                        <th>4d</th>
+                                        <th>5a</th>
+                                        <th>5b</th>
+                                        <th>5c</th>
                                         <th>total</th>
                                     </tr>
                                 </thead>
                                 <tbody style="text-align:center; line-height: 120px">
                                     @foreach ($teacher as $value)
                                     @php
-                                        
-                    $evaluations = App\Evaluation::where('id_location', $location->id)->where('id_teacher', $value->id_teacher)->get();
-                    // dd($evaluations);
-                    
-                    $p2a1 = $p2a2 = $p2a3 = 0;
-                    $p2b1 = $p2b2 = $p2c = 0;
-                    $p2d1 = $p2d2 = 0;
-                    $p3a1 = $p3a2 = $p3a3 = $p3a4 = 0;
-                    $p3b1 = $p3b2 = $p3c1 = $p3c2 = 0;
-                    $p3d1 = $p3d2 = 0;
-                    $p4a1 = $p4a2 = 0;
-                    $p4b = $p4c =0;
+
+                                    $evaluations = App\Evaluation::where('id_teacher', $value->id_teacher)->get();
+                                    // dd($evaluations);
+
+                                    $p1a = $p1b = $p1c = 0;
+                                    $p2a = $p2b = $p2c = 0;
+                                    $p3a = $p3b = $p3c = $p3d = $p3e = 0;
+                                    $p4a = $p4b = $p4c = $p4d = 0;
+                                    $p5a = $p5b = $p5c = 0;
                                     @endphp
                                     <tr>
-                                    <td>{{$value->teacher->fullname}}</td>
-                                    @foreach ($evaluations as $item)
-                                            @php
-                                                
-                        $p2a1+= array_sum($item->part2a['p2a1']);
-                        $p2a2+= array_sum($item->part2a['p2a2']);
-                        $p2a3+= array_sum($item->part2a['p2a3']);
-                        $total_p2a = $p2a1+$p2a2+$p2a3;
-                        $p2b1+= array_sum($item->part2b['p2b1']);
-                        $p2b2+= array_sum($item->part2b['p2b2']);
-                        $total_p2b = $p2b1+$p2b2;
-                        $p2d1+= array_sum($item->part2d['p2d1']);
-                        $p2d2+= array_sum($item->part2d['p2d2']);
-                        $total_p2d = $p2d1+$p2d2;
-                        $p3a1+= array_sum($item->part3a['p3a1']);
-                        $p3a2+= array_sum($item->part3a['p3a2']);
-                        $p3a3+= array_sum($item->part3a['p3a3']);
-                        $p3a4+= array_sum($item->part3a['p3a4']);
-                        $total_p3a = $p3a1+$p3a2+$p3a3+$p3a4;
-                        $p3b1+= array_sum($item->part3b['p3b1']);
-                        $p3b2+= array_sum($item->part3b['p3b2']);
-                        $total_p3b = $p3b1+$p3b2;
-                        $p3c1+= array_sum($item->part3c['p3c1']);
-                        $p3c2+= array_sum($item->part3c['p3c2']);
-                        $total_p3c = $p3c1+$p3c2;
-                        $p3d1+= array_sum($item->part3d['p3d1']);
-                        $p3d2+= array_sum($item->part3d['p3d2']);
-                        $total_p3d = $p3d1+$p3d2;
-                        $p4a1+= array_sum($item->part4a['p4a1']);
-                        $p4a2+= array_sum($item->part4a['p4a2']);
-                        $total_p4a = $p4a1+$p4a2;
-                        $p2c+= array_sum($item->part2c['p2c']);
-                        $total_p2c = $p2c;
-                        $p4b+= array_sum($item->part4b['p4b']);
-                        $total_p4b = $p4b;
-                        $p4c+= array_sum($item->part4c['p4c']);
-                        $total_p4c = $p4c;
-                        $total = $total_p2a + $total_p2b + $total_p2c + $total_p2d
-                                + $total_p3a + $total_p3b + $total_p3c + $total_p3d
-                                +  $total_p4a + $total_p4b + $total_p4c ;
-                                            @endphp
-                                    @endforeach
-                                    <td>
-                                        
-                                        {{number_format($total_p2a/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p2b/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p2c/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p2d/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p3a/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p3b/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p3c/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p3d/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p4a/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p4b/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total_p4c/count($evaluations),2)}}
-                                    </td>
-                                    <td>
-                                        
-                                        {{number_format($total/count($evaluations),2)}}
-                                    </td>
-                                    
+                                        <td>{{$value->teacher->fullname}}</td>
+                                        @foreach ($evaluations as $item)
+                                        @php
+                                        $p1a += array_sum($item->part1['p1a1']) + array_sum($item->part1['p1a2']) +
+                                        array_sum($item->part1['p1a3']);
+                                        $p1b += array_sum($item->part1['p1b1']) + array_sum($item->part1['p1b2']);
+                                        $p1c += array_sum($item->part1['p1c']);
+                                        $p2a += array_sum($item->part2['p2a1']) + array_sum($item->part2['p2a2']) +
+                                        array_sum($item->part2['p2a3']);
+                                        $p2b += array_sum($item->part2['p2b1']) + array_sum($item->part2['p2b2']);
+                                        $p2c += array_sum($item->part2['p2c1']) + array_sum($item->part2['p2c2']) +
+                                        array_sum($item->part2['p2c3']);
+                                        $p3a += array_sum($item->part3['p3a1']) + array_sum($item->part3['p3a2']) +
+                                        array_sum($item->part3['p3a3']);
+                                        $p3b += array_sum($item->part3['p3b1']) + array_sum($item->part3['p3b2']) +
+                                        array_sum($item->part3['p3b3']);
+                                        $p3c += array_sum($item->part3['p3c1']) + array_sum($item->part3['p3c2']);
+                                        $p3d += array_sum($item->part3['p3d1']) + array_sum($item->part3['p3d2']);
+                                        $p3e += array_sum($item->part3['p3e1']);
+                                        $p4a += array_sum($item->part4['p4a']);
+                                        $p4b += array_sum($item->part4['p4b']);
+                                        $p4c += array_sum($item->part4['p4c']);
+                                        $p4d += array_sum($item->part4['p4d1']) + array_sum($item->part4['p4d2']);
+                                        $p5a += array_sum($item->part5['p5a']);
+                                        $p5b += array_sum($item->part5['p5b']);
+                                        $p5c += array_sum($item->part5['p5c']);
+                                        $total1 = $p1a + $p1b + $p1c
+                                        +$p2a + $p2b + $p2c
+                                        + $p3a + $p3b + $p3c + $p3d + $p3e
+                                        + $p4a + $p4b + $p4c + $p4d
+                                        +$p5a + $p5b + $p5c;
+                                        @endphp
+                                        @endforeach
+                                        <td>
+                                            {{number_format($p1a/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p1b/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p1c/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p2a/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p2b/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p2c/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p3a/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p3b/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p3c/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p3d/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p3e/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p4a/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p4b/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p4c/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p4d/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p5a/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p5b/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($p5c/count($evaluations),2)}}
+                                        </td>
+                                        <td>
+                                            {{number_format($total1/count($evaluations),2)}}
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -636,8 +801,15 @@ Chart {{$location->name}}
             <div class="row">
                 <div id="chartContainer2" style="height: 600px; width: 100%;"></div>
             </div>
-<hr>
+            <hr>
 
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p1a" style="height: 300px; width: 50%;"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p1b" style="height: 300px; width: 50%;"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p1c" style="height: 300px; width: 50%;"></div>
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p2a" style="height: 300px; width: 50%;"></div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p2b" style="height: 300px; width: 50%;"></div>
@@ -645,7 +817,6 @@ Chart {{$location->name}}
             <hr>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p2c" style="height: 300px; width: 50%;"></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p2d" style="height: 300px; width: 50%;"></div>
             </div>
             <hr>
             <div class="row">
@@ -657,6 +828,9 @@ Chart {{$location->name}}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p3c" style="height: 300px; width: 50%;"></div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p3d" style="height: 300px; width: 50%;"></div>
             </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p3e" style="height: 300px; width: 50%;"></div>
+            </div>
             <hr>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p4a" style="height: 300px; width: 50%;"></div>
@@ -665,193 +839,21 @@ Chart {{$location->name}}
             <hr>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p4c" style="height: 300px; width: 50%;"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p4d" style="height: 300px; width: 50%;"></div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p4c" style="height: 300px; width: 50%;"></div>
-            </div> --}}
-
-        </div>
-    </div>
-</div>
-
-
-<div class="container" style=" height: 300px;">
-
-    <!-- Panels -->
-    <div class="swipe">
-        <div class="panel"
-            data-img="http://payload100.cargocollective.com/1/9/296422/4317770/1%20-%20Landscape%201_o.jpg">
-        </div>
-        <div class="panel"
-            data-img="http://payload100.cargocollective.com/1/9/296422/4317770/1%20-%20Landscape%208_o.jpg">
-        </div>
-        <div class="panel"
-            data-img="http://payload100.cargocollective.com/1/9/296422/4317770/1%20-%20Landscape%209_o.jpg">
-        
-    <div class="info">
-        <div class="inner">
-            <h3>Simply swipe on any device!</h3>
-            <p>Use this buttons or your fingers. No matter what you do, no matter which
-                device you choose, the picture will swipe and swipe again!</p>
-        </div>
-    </div></div>
-        <div class="panel"
-            data-img="http://payload100.cargocollective.com/1/9/296422/4317770/2-%20Arquitectura%205_o.jpg">
-        
-            <div class="inner">
-                <h3>Simply swipe on any device!</h3>
-                <p>Use this buttons or your fingers. No matter what you do, no matter which
-                    device you choose, the picture will swipe and swipe again!</p>
-            </div></div>
-        <div class="panel"
-            data-img="http://payload100.cargocollective.com/1/9/296422/4317770/3%20-%20Interiores%201_o.jpg">
-            <div class="inner">
-                <h3>Simply swipe on any device!</h3>
-                <p>Use this buttons or your fingers. No matter what you do, no matter which
-                    device you choose, the picture will swipe and swipe again!</p>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p5a" style="height: 300px; width: 50%;"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p5b" style="height: 300px; width: 50%;"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="p5c" style="height: 300px; width: 50%;"></div>
             </div>
+
         </div>
     </div>
-
-    <!-- Info -->
-    <div class="info">
-        <div class="buttons">
-            <button class="btn-prev" disabled>&larr;</button>
-            <button class="btn-next">&rarr;</button>
-        </div>
-    </div>
-
 </div>
+
+
 @endsection
 @section('script')
-<script>
-    /*
-===============================================================
-
-Hi! Welcome to my little playground!
-
-My name is Tobias Bogliolo. 'Open source' by default and always 'responsive',
-I'm a publicist, visual designer and frontend developer based in Barcelona. 
-
-Here you will find some of my personal experiments. Sometimes usefull,
-sometimes simply for fun. You are free to use them for whatever you want 
-but I would appreciate an attribution from my work. I hope you enjoy it.
-
-===============================================================
-*/
-$(document).ready(function(){
-
-//Swipe speed:
-var tolerance = 100; //px.
-var speed = 650; //ms.
-
-//Elements:
-var interactiveElements = $('input, button, a');
-var itemsLength = $('.panel').length;
-var active = 1;
-
-//Background images:
-for (i=1; i<=itemsLength; i++){
-  var $layer = $(".panel:nth-child("+i+")");
-  var bgImg = $layer.attr("data-img");
-  $layer.css({
-    "background": "url("+bgImg+") no-repeat center / cover"
-  });
-};
-
-//Transitions:
-setTimeout(function() {
-  $(".panel").css({
-    "transition": "cubic-bezier(.4,.95,.5,1.5) "+speed+"ms"
-  });
-}, 200);
-
-//Presets:
-$(".panel:not(:first)").addClass("right");
-
-//Swipe:
-function swipeScreen() {
-  $('.swipe').on('mousedown touchstart', function(e) {
-
-    var touch = e.originalEvent.touches;
-    var start = touch ? touch[0].pageX : e.pageX;
-    var difference;
-
-    $(this).on('mousemove touchmove', function(e) {
-      var contact = e.originalEvent.touches,
-      end = contact ? contact[0].pageX : e.pageX;
-      difference = end-start;
-    });
-
-    //On touch end:
-    $(window).one('mouseup touchend', function(e) {
-      e.preventDefault();
-
-      //Swipe right:
-      if (active < itemsLength && difference < -tolerance) {
-        $(".panel:nth-child("+active+")").addClass("left");
-        $(".panel:nth-child("+(active+1)+")").removeClass("right");
-        active += 1;
-        btnDisable();
-      };
-
-      // Swipe left:
-      if (active > 1 && difference > tolerance) {
-        $(".panel:nth-child("+(active-1)+")").removeClass("left");
-        $(".panel:nth-child("+active+")").addClass("right");
-        active -= 1;
-        btnDisable();
-      };
-
-      $('.swipe').off('mousemove touchmove');
-    });
-
-  });
-};
-swipeScreen();
-
-//Prevent swipe on interactive elements:
-interactiveElements.on('touchstart touchend touchup', function(e) {
-  e.stopPropagation();
-});
-
-//Buttons:
-$(".btn-prev").click(function(){
-  // Swipe left:
-  if (active > 1) {
-    $(".panel:nth-child("+(active-1)+")").removeClass("left");
-    $(".panel:nth-child("+active+")").addClass("right");
-    active -= 1;
-    btnDisable();
-  };
-});
-
-$(".btn-next").click(function(){
-  //Swipe right:
-  if (active < itemsLength) {
-    $(".panel:nth-child("+active+")").addClass("left");
-    $(".panel:nth-child("+(active+1)+")").removeClass("right");
-    active += 1;
-    btnDisable();
-  };
-});
-
-function btnDisable() {
-  if (active >= itemsLength) {
-    $(".btn-next").prop("disabled", true);
-    $(".btn-prev").prop("disabled", false);
-  }
-  else if (active <= 1) {
-    $(".btn-prev").prop("disabled", true);
-    $(".btn-next").prop("disabled", false);
-  }
-  else {
-    $(".btn-prev, .btn-next").prop("disabled", false);
-  };
-};
-
-});
-</script>
 <script src="be/js/charts/canvas.js"></script>
 @endsection

@@ -129,11 +129,13 @@ Edit Evaluation
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="tab-content-details mg-b-30">
-                        <h2>Evaluation</h2>
+                        <h3>{{$evalu->subject->name}}
+                        </h3>
+                        <h3>{{$evalu->schedule->session->name}}/{{$evalu->teacher->fullname}}
+                        </h3>
                     </div>
                     <div class="tab-content-details mg-b-30">
-                        <h3>{{$evalu->teacher->fullname}} / {{$evalu->subject->name}}
-                        </h3>
+                        <h2>Evaluation criteria {{$evalu->criteria}}</h2>
                     </div>
                 </div>
             </div>
@@ -217,41 +219,6 @@ Edit Evaluation
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="panel-group edu-custon-design" id="accordion">
-                    <div class="panel panel-default">
-                        <div class="panel-heading accordion-head">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                    PART 1 - PRE-REQUISITES</a>
-                            </h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse panel-ic collapse  in">
-                            <div class="panel-body admin-panel-content animated bounce">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                        <div class="i-checks pull-left">
-                                            <label>Teacher is professional and shows respect to all
-                                                learners.</label> <br>
-                                            <label>Teacher displays solid knowledge of the subject.</label>
-                                        </div>
-                                        <div class="i-checks pull-right">
-                                            <input type="checkbox" @if ($evalu->part1['part_1_1'] == 1)
-                                            checked
-                                            @endif
-                                            name="part_1_1" value="1">
-                                            <br>
-                                            <input type="checkbox" @if ($evalu->part1['part_1_2'] == 2)
-                                            checked
-                                            @endif
-                                            name="part_1_2" value="2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
             <table>
                 <thead>
@@ -444,7 +411,7 @@ Edit Evaluation
                         </td>
                     </tr>
                     <tr class="none-bot">
-                        <td rowspan="8"><b>1B: Kiến thức chuyên môn và phương pháp sư phạm</b></td>
+                        <td rowspan="4"><b>1B: Kiến thức chuyên môn và phương pháp sư phạm</b></td>
                         <td rowspan="2"><b>1B.1. Kiến thức chuyên môn</b></td>
                         <td class="basic">
                             <p class="login2 pull-left pull-left-pro">Kế hoạch dạy học thể hiện giáo viên có thể xác
@@ -487,142 +454,122 @@ Edit Evaluation
                         </td>
                     </tr>
                     <tr class="none-bot">
-                        <td rowspan="4"><b>1B.2. Thiết kế hoạt động và tiến trình dạy học</b></td>
+                        <td rowspan="2"><b>1B.2. Phương pháp sư phạm</b></td>
                         <td class="basic">
-                            <p class="login2 pull-left pull-left-pro">Với mỗi bài tập/ hoạt động, kế hoạch dạy học
-                                cung cấp: mô tả nhiệm vụ GV-HS, mục tiêu và tiêu chí hoàn thành của bài tập/hoạt
-                                động.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Kế hoạch dạy học cho thấy các phương pháp giảng dạy phù hợp với nội dung bài học.
+                            </p>
                         </td>
                         <td class="appro">
-                            <p class="login2 pull-left pull-left-pro">Bài học được phân chia hợp lý về tiến trình
-                                sao cho mỗi hoạt động đều hỗ trợ việc đạt mục tiêu bài học.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Kế hoạch dạy học cho thấy các phương pháp giảng dạy phù hợp với năng lực của học
+                                sinh.
+                            </p>
                         </td>
                         <td class="compe">
-                            <p class="login2 pull-left pull-left-pro">Kế hoạch dạy học đưa ra các đánh giá ban đầu,
-                                đánh giá quá trình hoặc tổng kết để kiểm soát việc học của học sinh với nhiều năng
-                                lực khác nhau xuyên suốt buổi học.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Phương pháp giảng dạy sử dụng trong giáo án hoàn toàn phù hợp với giai đoạn phát
+                                triển và đặc điểm của đối tượng học sinh.
+                            </p>
                         </td>
                         <td class="outst">
-                            <p class="login2 pull-left pull-left-pro">Kế hoạch dạy học thể hiện một cách tiếp cận
-                                sáng tạo trong việc tích hợp các kiến thức/ kỹ năng chuyên môn với kỹ năng giao tiếp
-                                và/hoặc hợp tác, đáng được nhân rộng và hệ thống hóa.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Kế hoạch dạy học thể hiện một cách tiếp cận sáng tạo, linh hoạt các phương pháp dạy
+                                học hiện đại, truyền tải hiệu quả các kiến thức nội môn, liên môn, đáng được nhân
+                                rộng và hệ thống hóa.
+                            </p>
                         </td>
                     </tr>
                     <tr class="none-top" style="text-align: center">
                         <td class="basic">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['basic_1'] == 1)
+                                <input type="checkbox" @if ($evalu->part1['p1b2']['basic'] == 1)
                                 checked
-                                @endif name="p1b2_1_basic" value="1">
+                                @endif name="p1b2_basic" value="1">
                             </div>
                         </td>
                         <td class="appro">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['appro_1'] == 2)
+                                <input type="checkbox" @if ($evalu->part1['p1b2']['appro'] == 2)
                                 checked
-                                @endif name="p1b2_1_appro" value="2">
+                                @endif name="p1b2_appro" value="2">
                             </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['compe_1'] == 3)
+                                <input type="checkbox" @if ($evalu->part1['p1b2']['compe'] == 3)
                                 checked
-                                @endif name="p1b2_1_compe" value="3">
+                                @endif name="p1b2_compe" value="3">
                             </div>
                         </td>
                         <td class="outst">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['outst_1'] == 4)
+                                <input type="checkbox" @if ($evalu->part1['p1b2']['outst'] == 4)
                                 checked
-                                @endif name="p1b2_1_outst" value="4">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="none-bot">
-                        <td class="empty-gray">
-                        </td>
-                        <td class="appro">
-                            <p class="login2 pull-left pull-left-pro">Các hoạt động và bước chuyển tiếp hoạt động
-                                được phân bổ thời gian hợp lý.</p>
-                        </td>
-                        <td class="compe">
-                            <p class="login2 pull-left pull-left-pro">Kế hoạch dạy học thể hiện các phương pháp dạy
-                                học phân hóa, hình thức tổ chức phù hợp, tạo điều kiện học tập cho các dạng học sinh
-                                khác nhau.</p>
-                        </td>
-                        <td class="outst">
-                            <p class="login2 pull-left pull-left-pro">Kế hoạch dạy học thể hiện một cách tiếp cận
-                                sáng tạo trong việc tích hợp các kiến thức/ kỹ năng chuyên môn với tư duy sáng tạo
-                                và/hoặc tư duy phản biện, đáng được nhân rộng và hệ thống hóa.</p>
-                        </td>
-                    </tr>
-                    <tr class="none-top" style="text-align: center">
-                        <td class="empty-gray">
-                        </td>
-                        <td class="appro">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['appro_2'] == 2)
-                                checked
-                                @endif name="p1b2_2_appro" value="2">
-                            </div>
-                        </td>
-                        <td class="compe">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['compe_2'] == 3)
-                                checked
-                                @endif name="p1b2_2_compe" value="3">
-                            </div>
-                        </td>
-                        <td class="outst">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b2']['outst_2'] == 4)
-                                checked
-                                @endif name="p1b2_2_outst" value="4">
+                                @endif name="p1b2_outst" value="4">
                             </div>
                         </td>
                     </tr>
 
                     <tr class="none-bot">
-                        <td rowspan="2"><b>1B.3. Số hóa học liệu</b></td>
+                        <td rowspan="2"><b>1C: Rút kinh nghiệm và tiếp nhận phản hồi</b></td>
+                        <td rowspan="2"></td>
                         <td class="basic">
-                            <p class="login2 pull-left pull-left-pro">Các giờ học đều có nhiệm vụ/ phiếu bài tập
-                                trước- trong-sau giờ lên lớp.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Giáo viên tích cực tham gia việc rút kinh nghiệm sau dự giờ, có ghi chép lại các đề
+                                xuất sửa đổi. (Vd: lắng nghe nhận xét, đặt câu hỏi để hiểu rõ vấn đề, thảo luận và
+                                ghi chú nếu cần.)
+                            </p>
                         </td>
                         <td class="appro">
-                            <p class="login2 pull-left pull-left-pro">Xây dựng bài giảng điện tử và/ hoặc một phần
-                                hoạt động dạy học được công nghệ hóa.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Giáo viên có thể xác định điểm mạnh và điểm yếu của buổi học được dự giờ trong cuộc
+                                họp rút kinh nghiệm sau đó. (Vd: giáo viên nhìn lại chứng cứ về việc học của học
+                                sinh qua các tình huống cụ thể trong lớp...)
+                            </p>
                         </td>
                         <td class="compe">
-                            <p class="login2 pull-left pull-left-pro">Giáo án thể hiện việc áp dụng công nghệ trong
-                                công tác dạy học một cách linh hoạt, sáng tạo, đáng nhân rộng và hệ thống hóa.</p>
+                            <p class="login2 pull-left pull-left-pro">
+                                Giáo viên có thể phân tích các nguyên nhân, yếu tố tác động đến sự hiệu quả/ kém
+                                hiệu quả của các hoạt động trong tiết học.
+                            </p>
                         </td>
-                        <td class="empty-gray">
+                        <td class="outst">
+                            <p class="login2 pull-left pull-left-pro">Có chứng cứ cho thấy giáo viên đã tiếp nhận
+                                các nhận xét một cách hiệu quả, khi giáo viên thiết lập các điểm học tập cụ thể và
+                                rõ ràng, có thể áp dụng trong tương lai. (Vd: giáo viên áp dụng phương pháp thực
+                                nghiệm đối chứng, có ghi chép trong hồ sơ dạy học...)</p>
                         </td>
                     </tr>
                     <tr class="none-top" style="text-align: center">
 
                         <td class="basic">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b3']['basic'] == 1)
+                                <input type="checkbox" @if ($evalu->part1['p1c']['basic'] == 1)
                                 checked
-                                @endif name="p1b3_basic" value="1">
+                                @endif name="p1c_basic" value="1">
                             </div>
                         </td>
                         <td class="appro">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b3']['appro'] == 2)
+                                <input type="checkbox" @if ($evalu->part1['p1c']['appro'] == 2)
                                 checked
-                                @endif name="p1b3_appro" value="2">
+                                @endif name="p1c_appro" value="2">
                             </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part1['p1b3']['compe'] == 3)
+                                <input type="checkbox" @if ($evalu->part1['p1c']['compe'] == 3)
                                 checked
-                                @endif name="p1b3_compe" value="3">
+                                @endif name="p1c_compe" value="3">
                             </div>
                         </td>
-                        <td class="empty-gray">
+                        <td class="outst">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part1['p1c']['outst'] == 4)
+                                checked
+                                @endif name="p1c_outst" value="4">
+                            </div>
                         </td>
                     </tr>
                     <!--part2-->
@@ -978,28 +925,28 @@ Edit Evaluation
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part2['p2c2']['basic_1'] == 1)
                                 checked
-                                @endif   name="p2c2_basic" value="1">
+                                @endif   name="p2c2_1_basic" value="1">
                             </div>
                         </td>
                         <td class="appro">
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part2['p2c2']['appro_1'] == 2)
                                 checked
-                                @endif   name="p2c2_appro" value="2">
+                                @endif   name="p2c2_1_appro" value="2">
                             </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part2['p2c2']['compe_1'] == 3)
                                 checked
-                                @endif   name="p2c2_compe" value="3">
+                                @endif   name="p2c2_1_compe" value="3">
                             </div>
                         </td>
                         <td class="outst">
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part2['p2c2']['outst_1'] == 4)
                                 checked
-                                @endif   name="p2c2_outst" value="4">
+                                @endif   name="p2c2_1_outst" value="4">
                             </div>
                         </td>
                     </tr>
@@ -1022,7 +969,7 @@ Edit Evaluation
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part2['p2c2']['basic_2'] == 1)
                                 checked
-                                @endif   name="p2c2_basic" value="1">
+                                @endif   name="p2c2_2_basic" value="1">
                             </div>
                         </td>
                         <td class="empty-gray">
@@ -1929,21 +1876,21 @@ Edit Evaluation
                     <tr class="none-top" style="text-align: center">
                         <td class="empty-gray">
                         </td>
-                        <td class="empty-gray">
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['appro_2'] == 2)
+                                checked
+                                @endif   name="p3e1_2_appro" value="2">
+                            </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_2'] == 3)
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['compe_2'] == 3)
                                 checked
-                                @endif   name="p4a_2_compe" value="3">
+                                @endif   name="p3e1_2_compe" value="3">
                             </div>
                         </td>
-                        <td class="outst">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_2'] == 4)
-                                checked
-                                @endif   name="p4a_2_outst" value="4">
-                            </div>
+                        <td class="empty-gray">
                         </td>
                     </tr>
                     @elseif ($evalu->criteria == 2)
@@ -2021,21 +1968,21 @@ Edit Evaluation
                     <tr class="none-top" style="text-align: center">
                         <td class="empty-gray">
                         </td>
-                        <td class="empty-gray">
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['appro_2'] == 2)
+                                checked
+                                @endif   name="p3e1_2_appro" value="2">
+                            </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_2'] == 3)
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['compe_2'] == 3)
                                 checked
-                                @endif   name="p4a_2_compe" value="3">
+                                @endif   name="p3e1_2_compe" value="3">
                             </div>
                         </td>
-                        <td class="outst">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_2'] == 4)
-                                checked
-                                @endif   name="p4a_2_outst" value="4">
-                            </div>
+                        <td class="empty-gray">
                         </td>
                     </tr>
                     @elseif ($evalu->criteria == 3)
@@ -2113,21 +2060,21 @@ Edit Evaluation
                     <tr class="none-top" style="text-align: center">
                         <td class="empty-gray">
                         </td>
-                        <td class="empty-gray">
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['appro_2'] == 2)
+                                checked
+                                @endif   name="p3e1_2_appro" value="2">
+                            </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_2'] == 3)
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['compe_2'] == 3)
                                 checked
-                                @endif   name="p4a_2_compe" value="3">
+                                @endif   name="p3e1_2_compe" value="3">
                             </div>
                         </td>
-                        <td class="outst">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_2'] == 4)
-                                checked
-                                @endif   name="p4a_2_outst" value="4">
-                            </div>
+                        <td class="empty-gray">
                         </td>
                     </tr>
                     @elseif ($evalu->criteria == 4)
@@ -2205,21 +2152,21 @@ Edit Evaluation
                     <tr class="none-top" style="text-align: center">
                         <td class="empty-gray">
                         </td>
-                        <td class="empty-gray">
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['appro_2'] == 2)
+                                checked
+                                @endif   name="p3e1_2_appro" value="2">
+                            </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_2'] == 3)
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['compe_2'] == 3)
                                 checked
-                                @endif   name="p4a_2_compe" value="3">
+                                @endif   name="p3e1_2_compe" value="3">
                             </div>
                         </td>
-                        <td class="outst">
-                            <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_2'] == 4)
-                                checked
-                                @endif   name="p4a_2_outst" value="4">
-                            </div>
+                        <td class="empty-gray">
                         </td>
                     </tr>
                     @else
@@ -2297,24 +2244,127 @@ Edit Evaluation
                     <tr class="none-top" style="text-align: center">
                         <td class="empty-gray">
                         </td>
-                        <td class="empty-gray">
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['appro_2'] == 2)
+                                checked
+                                @endif   name="p3e1_2_appro" value="2">
+                            </div>
                         </td>
                         <td class="compe">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_2'] == 3)
+                                <input type="checkbox" @if ($evalu->part3['p3e1']['compe_2'] == 3)
                                 checked
-                                @endif   name="p4a_2_compe" value="3">
+                                @endif   name="p3e1_2_compe" value="3">
+                            </div>
+                        </td>
+                        <td class="empty-gray">
+                        </td>
+                    </tr>
+                    @endif
+                    <tr>
+                        <td colspan="7" style="background-color: #134f5c; color: #fff;">
+                            <b>PHẦN 4: PHÁT TRIỂN CHUYÊN MÔN </b>
+                        </td>
+                    </tr>
+                    <tr class="none-bot">
+                        <td rowspan="4"><b>4A. Hoạt động đào tạo </b></td>
+                        <td rowspan="4"><b></b></td>
+                        <td class="basic">
+                            <p>
+                                Tham gia đầy đủ chương trình/ hoạt động đào tạo và bồi dưỡng cấp toàn trường, cấp
+                                học và tổ chuyên môn.
+                            </p>
+                        </td>
+                        <td class="appro">
+                            <p>
+                                Hoàn thành tất cả các bài tập, nhiệm vụ của chương trình/ hoạt động đào tạo và bồi
+                                dưỡng cấp toàn trường, trường và tổ chuyên môn, đạt mức yêu cầu tối thiểu của lộ
+                                trình cá nhân.
+                            </p>
+                        </td>
+                        <td class="compe">
+                            <p>
+                                Áp dụng hiệu quả các kiến thức, lý thuyết được đào tạo, bồi dưỡng trong công tác
+                                giảng dạy và giáo dục.
+                            </p>
+                        </td>
+                        <td class="outst">
+                            <p>
+                                Chia sẻ trải nghiệm áp dụng các kiến thức, lý thuyết được đào tạo, bồi dưỡng và/
+                                hoặc những sáng kiến kinh nghiệm tự nghiên cứu/ phát triển, đáng được nhân rộng và
+                                hệ thống hóa (được chọn và trình bày chia sẻ cấp trường).
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="none-top" style="text-align: center">
+                        <td class="basic">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part4['p4a']['basic_1'] == 1)
+                                checked
+                                @endif  name="p4a_1_basic" value="1">
+                            </div>
+                        </td>
+                        <td class="appro">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part4['p4a']['appro_1'] == 2)
+                                checked
+                                @endif name="p4a_1_appro" value="2">
+                            </div>
+                        </td>
+                        <td class="compe">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_1'] == 3)
+                                checked
+                                @endif name="p4a_1_compe" value="3">
                             </div>
                         </td>
                         <td class="outst">
                             <div class="i-checks">
-                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_2'] == 4)
+                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_1'] == 4)
                                 checked
-                                @endif   name="p4a_2_outst" value="4">
+                                @endif name="p4a_1_outst" value="4">
                             </div>
                         </td>
                     </tr>
-                    @endif
+                    <tr class="none-bot">
+                        <td class="empty-gray">
+                        </td>
+                        <td class="empty-gray">
+                        </td>
+                        <td class="compe">
+                            <p>
+                                Thành công xây dựng học phần đào tạo (module), được phê duyệt và triển khai trên hệ
+                                thống.
+                            </p>
+                        </td>
+                        <td class="outst">
+                            <p>
+                                Thành công trong việc hỗ trợ các đồng nghiệp trong trường (khác tổ bộ môn) triển
+                                khai và được phản hồi tích cực.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="none-top" style="text-align: center">
+                        <td class="empty-gray">
+                        </td>
+                        <td class="empty-gray">
+                        </td>
+                        <td class="compe">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part4['p4a']['compe_1'] == 3)
+                                checked
+                                @endif name="p4a_2_compe" value="3">
+                            </div>
+                        </td>
+                        <td class="outst">
+                            <div class="i-checks">
+                                <input type="checkbox" @if ($evalu->part4['p4a']['outst_1'] == 4)
+                                checked
+                                @endif name="p4a_2_outst" value="4">
+                            </div>
+                        </td>
+                    </tr>
                     <tr class="none-bot">
                         <td rowspan="4"><b>4B. Sinh hoạt tổ chuyên môn </b></td>
                         <td rowspan="4"><b></b></td>
@@ -2805,7 +2855,7 @@ Edit Evaluation
                             <div class="i-checks">
                                 <input type="checkbox" @if ($evalu->part5['p5b']['outst_2'] == 4)
                                 checked
-                                @endif   name="p5c_2_outst" value="4">
+                                @endif   name="p5b_2_outst" value="4">
                             </div>
                         </td>
                     </tr>

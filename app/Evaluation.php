@@ -67,4 +67,8 @@ class Evaluation extends Model
     {
         return $this->belongsto('App\User', 'author', 'id');
     }
+    public function criteria()
+    {
+        return $this->belongsTo('App\Criteria', 'criteria_id', 'id');
+    }
 }

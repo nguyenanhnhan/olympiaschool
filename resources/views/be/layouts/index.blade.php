@@ -27,7 +27,7 @@
 
     <!-- summernote CSS
 		============================================ -->
-        <link rel="stylesheet" href="be/css/summernote/summernote.css">
+    <link rel="stylesheet" href="be/css/summernote/summernote.css">
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="be/css/owl.carousel.css">
@@ -125,15 +125,15 @@
     <!-- Start Welcome area -->
     <div class="all-content-wrapper" @if (Auth::user()->role == 2)
         style="margin-left: 0px;"
-        @endif >>
-        <div class="container-fluid">
+        @endif >
+        {{-- <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro" style="height: 100px">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="header-advance-area">
             @include('be/layouts/header')
             <!-- Mobile Menu start -->
@@ -141,70 +141,147 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="mobile-menu">
-                                <nav id="dropdown">
+
+                            <style>
+                                body {
+                                    font-family: Arial, Helvetica, sans-serif;
+                                }
+
+                                .mobile-container {
+                                    max-width: 480px;
+                                    margin: auto;
+                                    background-color: #555;
+                                    height: 500px;
+                                    color: white;
+                                    border-radius: 10px;
+                                }
+
+                                .topnav {
+                                    /* overflow: hidden; */
+                                    background-color: #fff;
+                                    position: relative;
+                                }
+
+                                .topnav #myLinks {
+                                    display: none;
+                                }
+
+                                .topnav a {
+                                    color: #000;
+                                    padding: 14px 16px;
+                                    text-decoration: none;
+                                    font-size: 17px;
+                                    display: block;
+                                }
+
+                                .topnav a.icon {
+                                    background: #d0d0d0;
+                                    display: block;
+                                    position: absolute;
+                                    right: 0;
+                                    top: 0;
+                                }
+
+                                .topnav a:hover {
+                                    background-color: #ddd;
+                                    color: black;
+                                }
+
+                                /*                     
+                    .active {
+                      background-color: #4CAF50;
+                      color: white;
+                    } */
+                            </style>
+                            <!-- Top Navigation Menu -->
+                            <div class="topnav">
+                                <img class="main-logo" src="be/img/logo.png" alt="">
+                                <div id="myLinks">
                                     <ul class="mobile-menu-nav">
-                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span
-                                                    class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul class="collapse dropdown-header-top">
-                                                <li><a href="index.html">Dashboard v.1</a></li>
-                                                <li><a href="index-1.html">Dashboard v.2</a></li>
-                                                <li><a href="index-3.html">Dashboard v.3</a></li>
-                                                <li><a href="analytics.html">Analytics</a></li>
-                                                <li><a href="widgets.html">Widgets</a></li>
-                                            </ul>
+                                        <li><a href="{{route('schedule_create')}}" class="nav-link">Schedule</a></li>
+
+                                        <li
+                                            class="nav-item {{ request()->is('admin/schedules/schedules*') ? 'current' : '' }}">
+                                            <a href="admin/schedules/schedules" class="nav-link">Observation plan</a>
                                         </li>
-                                        <li><a href="events.html">Event</a></li>
-                                        <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span
-                                                    class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li><a href="all-professors.html">All Professors</a>
-                                                </li>
-                                                <li><a href="add-professor.html">Add Professor</a>
-                                                </li>
-                                                <li><a href="edit-professor.html">Edit Professor</a>
-                                                </li>
-                                                <li><a href="professor-profile.html">Professor Profile</a>
-                                                </li>
-                                            </ul>
+                                        <li
+                                            class="nav-item {{ request()->is('admin/evaluation/draft*') ? 'current' : '' }}">
+                                            <a href="admin/evaluation/draft" class="nav-link">Draft</a>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span
-                                                    class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demopro" class="collapse dropdown-header-top">
-                                                <li><a href="all-students.html">All Students</a>
-                                                </li>
-                                                <li><a href="add-student.html">Add Student</a>
-                                                </li>
-                                                <li><a href="edit-student.html">Edit Student</a>
-                                                </li>
-                                                <li><a href="student-profile.html">Student Profile</a>
-                                                </li>
-                                            </ul>
+                                        <li
+                                            class="nav-item {{ request()->is('admin/evaluation/completed*') ? 'current' : '' }}">
+                                            <a href="admin/evaluation/completed" class="nav-link">Completed</a>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span
-                                                    class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="democrou" class="collapse dropdown-header-top">
-                                                <li><a href="all-courses.html">All Courses</a>
-                                                </li>
-                                                <li><a href="add-course.html">Add Course</a>
-                                                </li>
-                                                <li><a href="edit-course.html">Edit Course</a>
-                                                </li>
-                                                <li><a href="course-profile.html">Courses Info</a>
-                                                </li>
-                                                <li><a href="course-payment.html">Courses Payment</a>
-                                                </li>
-                                            </ul>
+                                        <li class="nav-item dropdown res-dis-nn">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                class="nav-link dropdown-toggle">Subject
+                                                <span class="angle-down-topmenu"><i
+                                                        class="fa fa-angle-down"></i></span></a>
+                                            <div role="menu" class="dropdown-menu animated zoomIn">
+                                                <a href="{{route('subject_show')}}" class="dropdown-item">All
+                                                    Subject</a>
+                                                <a href="{{route('subject_create')}}" class="dropdown-item">Add
+                                                    Subject</a>
+
+                                                {{-- <a href="#" class="dropdown-item">Contact Support</a> --}}
+                                            </div>
                                         </li>
+                                        <li class="nav-item dropdown res-dis-nn">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                class="nav-link dropdown-toggle">Teachers
+                                                <span class="angle-down-topmenu"><i
+                                                        class="fa fa-angle-down"></i></span></a>
+                                            <div role="menu" class="dropdown-menu animated zoomIn">
+                                                <a href="{{route('teacher_show')}}" class="dropdown-item">All
+                                                    Teachers</a>
+                                                <a href="{{route('teacher_create')}}" class="dropdown-item">Add
+                                                    Teachers</a>
+
+                                                {{-- <a href="#" class="dropdown-item">Contact Support</a> --}}
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown res-dis-nn">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                class="nav-link dropdown-toggle">Reports
+                                                <span class="angle-down-topmenu"><i
+                                                        class="fa fa-angle-down"></i></span></a>
+                                            <div role="menu" class="dropdown-menu animated zoomIn">
+                                                <a href="{{route('export_cot')}}" class="dropdown-item">Export RAWdata</a>
+                                                <a href="{{route('ranking')}}" class="dropdown-item">Ranking</a>
+                                                <a href="{{route('chart_search')}}" class="dropdown-item">Search Chart
+                                                    Teacher</a>
+                                                <a href="{{route('chart_location')}}" class="dropdown-item">Chart All
+                                                    Location</a>
+                                                {{-- <a href="#" class="dropdown-item">Contact Support</a> --}}
+                                            </div>
+                                        </li>
+                                        {{-- <li class="{{ request()->is('admin/teachers*') ? 'active' : '' }}">
+                                        <a class="has-arrow" href="all-professors.html" aria-expanded="false"><span
+                                                class="educate-icon educate-professor icon-wrap"></span> <span
+                                                class="mini-click-non">Teachers</span></a>
+                                        <ul class="submenu-angle" aria-expanded="false">
+                                            <li><a title="All Professors" href="admin/teachers/list"><span
+                                                        class="mini-sub-pro">All
+                                                        Teachers</span></a></li>
+                                            <li><a title="Add Professor" href="admin/teachers/add"><span
+                                                        class="mini-sub-pro">Add
+                                                        Teachers</span></a></li>
+                                        </ul>
+                                        </li> --}}
                                     </ul>
-                                </nav>
+                                </div>
+                                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                                    <i class="fa fa-bars"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Mobile Menu end -->
-            @yield('content')
+            <div style="min-height: 500px">
+                @yield('content')
+            </div>
             <div class="footer-copyright-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -220,6 +297,16 @@
 
         <!-- jquery
 		============================================ -->
+        <script>
+            function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+        }
+        </script>
         <script src="be/js/vendor/jquery-1.12.4.min.js"></script>
         <script>
             window.setTimeout(function() {

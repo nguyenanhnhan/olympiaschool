@@ -103,7 +103,7 @@ Evaluation Completed
                             </div>
                             <div id="collapse1" class="panel-collapse panel-ic collapse in">
                                 <div class="panel-body admin-panel-content animated bounce">
-                                    <div class="row">
+                                    <div class="row" style="overflow-x:auto;">
                                         <table id="customers">
                                             <thead>
                                                 <tr>
@@ -120,13 +120,13 @@ Evaluation Completed
                                                 {{-- @if ($evaluation->status == 1) --}}
                                                 <tr>
                                                     <td>{{$evaluation->id}}</td>
-                                                    <td>{{$evaluation->schedule->subject->name}}</td>
+                                                    <td>{{$evaluation->schedule->subject->name}}/{{$evaluation->criteria->name}}</td>
                                                     <td>{{$evaluation->teacher->fullname}}</td>
                                                     <td>{{$evaluation->schedule->class}}</td>
                                                     <td>
                                                         {{$total =  
                                                         array_sum($evaluation->part1['p1a1']) + array_sum($evaluation->part1['p1a2']) + array_sum($evaluation->part1['p1a3']) +
-                                                        array_sum($evaluation->part1['p1b1']) + array_sum($evaluation->part1['p1b2']) + array_sum($evaluation->part1['p1b3']) +
+                                                        array_sum($evaluation->part1['p1b1']) + array_sum($evaluation->part1['p1b2']) + array_sum($evaluation->part1['p1c']) +
                                                         array_sum($evaluation->part2['p2a1']) + array_sum($evaluation->part2['p2a2']) + array_sum($evaluation->part2['p2a3']) +
                                                         array_sum($evaluation->part2['p2b1']) + array_sum($evaluation->part2['p2b2']) + 
                                                         array_sum($evaluation->part2['p2c1']) + array_sum($evaluation->part2['p2c2']) + array_sum($evaluation->part2['p2c3']) +

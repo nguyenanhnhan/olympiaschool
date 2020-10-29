@@ -49,31 +49,23 @@ add new admin
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
-                                                    <select name="criteria" class="form-control">
+                                                    <select name="criteria_id" class="form-control">
                                                         <option value="none" selected="" hidden disabled="">
                                                             Select criteria</option>
-                                                        <option @if ($subject->criteria == 1)
+                                                        @foreach ($criterias as $criteria)
+                                                        <option @if ($subject->criteria_id == $criteria->id)
                                                             selected
-                                                        @endif value="1">1</option>
-                                                        <option @if ($subject->criteria == 2)
-                                                            selected
-                                                        @endif value="2">2</option>
-                                                        <option @if ($subject->criteria == 3)
-                                                            selected
-                                                        @endif value="3">3</option>
-                                                        <option @if ($subject->criteria == 4)
-                                                            selected
-                                                        @endif value="4">4</option>
-                                                        <option @if ($subject->criteria == 5)
-                                                            selected
-                                                        @endif value="5">5</option>
+                                                            @endif
+                                                            value="{{$criteria->id}}">{{$criteria->name}}
+                                                        </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <input name="name" type="text" class="form-control"
-                                                placeholder="Full Name Subject*" value="{{$subject->name}}">
+                                                        placeholder="Full Name Subject*" value="{{$subject->name}}">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="code_name"
