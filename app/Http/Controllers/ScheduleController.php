@@ -7,6 +7,7 @@ use App\Session;
 use App\Address;
 use App\Teacher;
 use App\Subject;
+use App\Course;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -33,7 +34,8 @@ class ScheduleController extends Controller
         $sessions = Session::all();
         $subjects = Subject::all();
         $teachers = Teacher::all();
-        return view('be/schedules/add', compact('sessions', 'teachers', 'subjects'));
+        $courses = Course::all();
+        return view('be/schedules/add', compact('sessions', 'teachers', 'subjects', 'courses'));
     }
 
     /**
@@ -58,12 +60,13 @@ class ScheduleController extends Controller
             $schedule->id_session = $rq->id_session;
             $schedule->id_teacher = $rq->id_teacher;
             $schedule->id_subject = $rq->id_subject;
+            $schedule->class = $rq->course;
             $schedule->time = $rq->time;
             $schedule->time1 = date('Y-m-d', strtotime($rq->time1));
             $schedule->author = Auth::user()->id;
             // dd($schedule);
             $schedule->save();
-            return redirect()->route('waiting_list')->with('msg','add new schedule success!');
+            return redirect()->route('waiting_list')->with('msg','update schedule success!');
         // } catch (\Exception  $ex) {
         //     return back()->withErrors($ex->getMessage());
         // }
@@ -89,7 +92,11 @@ class ScheduleController extends Controller
     public function edit($id)
     {
         $schedule = Schedule::find($id);
-        return view('be/schedules/edit',['schedule'=>$schedule]);
+        $sessions = Session::all();
+        $subjects = Subject::all();
+        $teachers = Teacher::all();
+        $courses = Course::all();
+        return view('be/schedules/edit',compact('schedule','sessions', 'teachers', 'subjects', 'courses'));
     }
 
     /**
@@ -101,39 +108,18 @@ class ScheduleController extends Controller
      */
     public function update(Request $rq, $id)
     {
-        $this->validate($rq,[
-            'fullname' => 'required|max:500',
-            'email' => 'required',
-        ],[
-            'name.required' =>'please insert name',
-            'email.required' =>'please insert email',
-        ]);
-        // try {
-            // dd($rq->image);
-            $schedule = Schedule::find($id);
-            $schedule->fullname = $rq->fullname;
-            $schedule->address = $rq->address;
-            $schedule->dob = $rq->dob;
-            $schedule->facebook = $rq->facebook;
-            $schedule->twitter = $rq->twitter;
-            $schedule->email = $rq->email;
-            $schedule->mobile = $rq->mobile;
-            $schedule->gender = $rq->gender;
-            if ($rq->hasFile('image')) {
-                $file = $rq->file('image');
-                $name = $file->getClientOriginalName();
-                $img = str_random(4)."-".$name;
-                while (file_exists("upload/schedules/".$img)){
-                    $img = str_random(4)."-".$name;
-                }
-                $file->move("upload/schedules", $img);
-                unlink("upload/schedules/".$schedule->image);
-                $schedule->image = $img;
-            } else {
-                $schedule->image = 'default.png';
-            }
-            $schedule->save();
-            return redirect('admin/schedules/list')->with('msg','oklah');
+        $schedule = Schedule::find($id);
+        
+        $schedule->id_session = $rq->id_session;
+        $schedule->id_teacher = $rq->id_teacher;
+        $schedule->id_subject = $rq->id_subject;
+        $schedule->class = $rq->course;
+        $schedule->time = $rq->time;
+        $schedule->time1 = date('Y-m-d', strtotime($rq->time1));
+        $schedule->author = Auth::user()->id;
+        // dd($schedule);
+        $schedule->save();
+        return redirect()->route('waiting_list')->with('msg','add new schedule success!');
     }
 
     /**
@@ -207,7 +193,7 @@ class ScheduleController extends Controller
             $schedule = new Schedule();
             $schedule->id_location = $rq->id_location;
             $schedule->id_teacher = $rq->id_teacher;
-            $schedule->class = $rq->class;
+            $schedule->class = $rq->course;
             // $schedule->time = $rq->time;
             $schedule->time = $rq->session;
             $schedule->day = $rq->day;

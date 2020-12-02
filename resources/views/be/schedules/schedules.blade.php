@@ -57,6 +57,7 @@ Schedules
                                                                 <tr
                                                                     style="color: #fff; text-align: center; background-color: #114275;">
                                                                     <th>Subject</th>
+                                                                    <th>Class</th>
                                                                     <th>Teacher</th>
                                                                     {{-- <th>Class</th> --}}
                                                                     <th>Time (dd-mm/yyyy)</th>
@@ -69,13 +70,15 @@ Schedules
                                                                 @foreach ($schedules as $book)
                                                                 <tr>
                                                                     <td>{{$book->subject->name}}/{{$book->subject->criteria->name}}</td>
+                                                                    <td>{{$book->class}}</td>
                                                                     <td>{{$book->teacher->fullname}}</td>
                                                                     <td>{{$book->time1}}</td>
                                                                     <td>{{$book->session->name}}</td>
                                                                     <td>{{$book->user->name}}</td>
                                                                     <td>
+                                                                        <a href="{{route('schedule_edit',$book->id)}}">Edit</a>
                                                                         @if ($book->booking == null)
-                                                                            
+                                                                        /
                                                                         <a href="{{route('schedule_destroy',$book->id)}}">Cancel</a> /
                                                                         <a href="{{route('evaluation_show',$book->id)}}">Evaluate</a>
                                                                         {{-- @else --}}

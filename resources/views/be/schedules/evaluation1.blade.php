@@ -131,7 +131,10 @@ Edit Evaluation
                     <div class="tab-content-details mg-b-30">
                         <h2>Evaluation criteria {{$schedule->subject->criteria->name}}</h2>
 
-                        <h3>{{$schedule->subject->name}}/{{$schedule->session->name}}/{{$schedule->teacher->fullname}}
+                        <h3>{{$schedule->subject->name}} / {{$schedule->session->name}} /
+                            {{$schedule->teacher->fullname}}
+                            <br>
+                            {{$schedule->class}}
                         </h3>
                     </div>
                 </div>
@@ -148,7 +151,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Time:</label>
+                                    <label class="login2 pull-right pull-right-pro">Date/Ngày dự:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <div class="data-custon-pick" id="data_1">
@@ -164,7 +167,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Lesson content:</label>
+                                    <label class="login2 pull-right pull-right-pro">Content/ Nội dung dạy học:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <textarea class="form-control" name="content" id="summernote1" rows="3"></textarea>
@@ -175,7 +178,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Objective:</label>
+                                    <label class="login2 pull-right pull-right-pro">Objectives/ Mục tiêu:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <textarea class="form-control" name="objective" id="summernote2" cols="30"
@@ -188,7 +191,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Lesson flow:</label>
+                                    <label class="login2 pull-right pull-right-pro">Agenda/ Tiến trình dạy học:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <textarea class="form-control" name="lesson_flow" id="summernote3" cols="30"
@@ -199,7 +202,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Strengths:</label>
+                                    <label class="login2 pull-right pull-right-pro">Strengths/ Điểm mạnh:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <textarea class="form-control" name="strengths" id="summernote4" cols="30"
@@ -210,8 +213,7 @@ Edit Evaluation
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <label class="login2 pull-right pull-right-pro">Areas for <br>
-                                        improvement:</label>
+                                    <label class="login2 pull-right pull-right-pro">Areas for improvement/ Điểm cần khắc phục:</label>
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <textarea class="form-control" name="improvement" id="summernote5"

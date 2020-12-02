@@ -279,7 +279,7 @@
                 </div>
             </div>
             <!-- Mobile Menu end -->
-            <div style="min-height: 500px">
+            <div style="min-height: 30px">
                 @yield('content')
             </div>
             <div class="footer-copyright-area">

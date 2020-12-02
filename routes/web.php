@@ -131,8 +131,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
         Route::get('list', 'ScheduleController@index');
         Route::get('add', 'ScheduleController@create')->name('schedule_create');
         Route::post('add', 'ScheduleController@store')->name('schedule_store');
-        Route::get('edit/{id}', 'ScheduleController@edit');
-        Route::post('edit/{id}', 'ScheduleController@update')->name('schedule_edit');
+        Route::get('edit/{id}', 'ScheduleController@edit')->name('schedule_edit');
+        Route::post('update/{id}', 'ScheduleController@update')->name('schedule_update');
         Route::get('delete/{id}', 'ScheduleController@destroy')->name('schedule_destroy');
         Route::get('booking', 'ScheduleController@booking');
         Route::post('booking_result', 'DefaultScheduleController@result_booking')->name('default_booking_result');
@@ -168,6 +168,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is_admin'], function () {
         Route::post('add', 'EvaluationController@store')->name('evaluation_add');
         Route::get('edit/{id}', 'EvaluationController@edit')->name('evaluation_edit');
         Route::post('edit/{id}', 'EvaluationController@update')->name('evaluation_update');
+        Route::post('save_to_draft/{id}', 'EvaluationController@savetodraft')->name('savetodraft');
         Route::get('delete/{id}', 'EvaluationController@destroy')->name('evaluation_destroy');
         
         Route::get('ranking', 'EvaluationController@ranking')->name('ranking');

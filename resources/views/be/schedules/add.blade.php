@@ -61,7 +61,7 @@ add new Schedule
                                                         <div class="form-group">
                                                             <select name="id_session" class="form-control">
                                                                 <option value="none" selected="" hidden disabled="">
-                                                                    Select Session
+                                                                    Select block/ Chọn block
                                                                 </option>
                                                                 @foreach ($sessions as $session)
                                                                 <option value="{{$session->id}}">
@@ -71,13 +71,25 @@ add new Schedule
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><div class="form-group">
+                                                        <select name="course" class="chosen-select"
+                                                            tabindex="-1">
+                                                            <option value="none" selected="" hidden disabled="">
+                                                                Select class/ Chọn lớp</option>
+                                                                <option value=""></option>
+                                                            @foreach ($courses as $course)
+                                                            <option value="{{$course->course_name}}">
+                                                                {{$course->course_name}}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                         <div class="form-group">
                                                             <select name="id_teacher" class="chosen-select"
                                                                 tabindex="-1">
                                                                 <option value="none" selected="" hidden disabled="">
                                                                     Select
-                                                                    Teacher</option>
+                                                                    Teacher/ Chọn giáo viên</option>
                                                                 @foreach ($teachers as $teacher)
                                                                 <option value="{{$teacher->id}}">
                                                                     {{$teacher->first_name}} |
@@ -90,7 +102,7 @@ add new Schedule
                                                             <select name="id_subject"
                                                                 class="form-control chosen-select">
                                                                 <option value="none" selected="" hidden disabled="">
-                                                                    Select Subject</option>
+                                                                    Select Subject/ Chọn môn</option>
                                                                 @foreach ($subjects as $subject)
                                                                 <option value="{{$subject->id}}">
                                                                     {{$subject->name}}/{{$subject->criteria->name}}
